@@ -1,4 +1,4 @@
-# Resume made using a Free Resume Maker.
+# Resume made using a Free Resume Maker
 
 ## [Start Bootstrap - Resume](https://startbootstrap.com/template-overviews/resume/)
 
