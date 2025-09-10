@@ -67,19 +67,18 @@ export const Dock: React.FC = () => {
       role="navigation"
       aria-label="Application dock"
     >
-      <div className="border flex gap-4 flex-wrap px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.15)] border-solid max-md:max-w-full">
+      <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.15)] border-solid w-fit">
         {dockApps.slice(0, -2).map((app) => (
           <DockIcon
             key={app.id}
             src={app.icon}
             alt={app.name}
             onClick={() => handleAppClick(app)}
-            className={app.id === 'app7' ? 'w-8 mt-1' : ''}
           />
         ))}
         
         {/* Separator */}
-        <div className="self-stretch flex items-center">
+        <div className="flex items-center">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/1e16124ee43a3ce418d64092cbba50cede15404e?placeholderIfAbsent=true"
             alt=""
@@ -89,13 +88,11 @@ export const Dock: React.FC = () => {
         </div>
         
         {/* Trash */}
-        <div className="self-stretch flex flex-col items-center">
-          <DockIcon
-            src={dockApps[dockApps.length - 1].icon}
-            alt={dockApps[dockApps.length - 1].name}
-            onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
-          />
-        </div>
+        <DockIcon
+          src={dockApps[dockApps.length - 1].icon}
+          alt={dockApps[dockApps.length - 1].name}
+          onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
+        />
       </div>
     </nav>
   );
