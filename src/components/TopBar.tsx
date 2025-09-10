@@ -28,7 +28,7 @@ export const TopBar: React.FC = () => {
   };
 
   return (
-    <header className="relative bg-[rgba(255,255,255,0.1)] backdrop-blur-md border-b border-[rgba(255,255,255,0.2)] flex w-full items-center gap-[40px_100px] justify-between flex-wrap px-20 py-2 max-md:max-w-full max-md:px-5 shadow-lg">
+    <header className="relative bg-[rgba(255,255,255,0.1)] backdrop-blur-md flex w-full items-center gap-[40px_100px] justify-between flex-wrap px-20 py-2 max-md:max-w-full max-md:px-5 shadow-lg">
       <nav className="self-stretch flex items-center gap-5 text-base text-[rgba(255,255,240,1)] font-medium whitespace-nowrap my-auto">
         <div className="self-stretch my-auto">
           sohampod
