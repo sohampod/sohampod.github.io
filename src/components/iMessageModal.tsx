@@ -61,22 +61,19 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-[20px] w-[400px] max-w-[90vw] h-[600px] shadow-2xl overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-              <span className="text-sm font-medium">SP</span>
-            </div>
-            <div>
-              <h3 className="font-medium">Soham</h3>
-              <p className="text-xs text-white/80">Developer</p>
-            </div>
+        {/* macOS Navbar */}
+        <div className="bg-gray-100 border-b border-gray-200 p-3 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
           </div>
+          <h3 className="text-sm font-medium text-gray-700">Messages</h3>
           <button 
             onClick={onClose}
-            className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+            className="w-6 h-6 flex items-center justify-center hover:bg-gray-200 rounded transition-colors"
           >
-            <X size={16} />
+            <X size={12} className="text-gray-600" />
           </button>
         </div>
 
