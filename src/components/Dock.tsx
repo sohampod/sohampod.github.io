@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DockIcon } from '@/components/ui/dock-icon';
+import { IMessageModal } from '@/components/iMessageModal';
 
 interface DockApp {
   id: string;
@@ -56,9 +57,14 @@ const dockApps: DockApp[] = [
 ];
 
 export const Dock: React.FC = () => {
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+
   const handleAppClick = (app: DockApp) => {
-    console.log(`Opening ${app.name}`);
-    // Here you could implement app launching logic
+    if (app.id === 'app1') {
+      setIsMessageModalOpen(true);
+    } else {
+      console.log(`Opening ${app.name}`);
+    }
   };
 
   return (
@@ -94,6 +100,11 @@ export const Dock: React.FC = () => {
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
         />
       </div>
+      
+      <IMessageModal 
+        isOpen={isMessageModalOpen}
+        onClose={() => setIsMessageModalOpen(false)}
+      />
     </nav>
   );
 };
