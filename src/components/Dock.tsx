@@ -15,11 +15,6 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/b8bf148cd21b0202e2ebaecc611c36be1a387e72?placeholderIfAbsent=true'
   },
   {
-    id: 'app1',
-    name: 'Application 1',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/0720e85bda36af5cf72bffadc72b433d809fd19b?placeholderIfAbsent=true'
-  },
-  {
     id: 'app2',
     name: 'Application 2',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/8d4d39199399d8c52d26d3e6a437315176acec38?placeholderIfAbsent=true'
@@ -60,7 +55,7 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const handleAppClick = (app: DockApp) => {
-    if (app.id === 'app1') {
+    if (app.id === 'app2') {
       setIsMessageModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
