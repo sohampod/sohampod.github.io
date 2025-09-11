@@ -69,7 +69,7 @@ export const Dock: React.FC = () => {
 
   return (
     <nav 
-      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] self-center w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
+      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
       role="navigation"
       aria-label="Application dock"
     >
