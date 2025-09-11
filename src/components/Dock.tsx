@@ -74,7 +74,7 @@ export const Dock: React.FC = () => {
       aria-label="Application dock"
     >
       <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
-        {dockApps.slice(0, -2).map((app) => (
+        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
           <DockIcon
             key={app.id}
             src={app.icon}
