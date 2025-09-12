@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DockIcon } from '@/components/ui/dock-icon';
 import { IMessageModal } from '@/components/iMessageModal';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface DockApp {
   id: string;
@@ -62,6 +63,8 @@ export const Dock: React.FC = () => {
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
+    } else if (app.id === 'app2') {
+      window.open('mailto:soham.poddar23@gmail.com', '_blank');
     } else {
       console.log(`Opening ${app.name}`);
     }
@@ -75,12 +78,27 @@ export const Dock: React.FC = () => {
     >
       <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
-          <DockIcon
-            key={app.id}
-            src={app.icon}
-            alt={app.name}
-            onClick={() => handleAppClick(app)}
-          />
+          app.id === 'app2' ? (
+            <Tooltip key={app.id}>
+              <TooltipTrigger asChild>
+                <DockIcon
+                  src={app.icon}
+                  alt={app.name}
+                  onClick={() => handleAppClick(app)}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>soham.poddar23@gmail.com</p>
+              </TooltipContent>
+            </Tooltip>
+          ) : (
+            <DockIcon
+              key={app.id}
+              src={app.icon}
+              alt={app.name}
+              onClick={() => handleAppClick(app)}
+            />
+          )
         ))}
         
         {/* Separator */}
