@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DockIcon } from '@/components/ui/dock-icon';
 import { IMessageModal } from '@/components/iMessageModal';
+import { PhotosModal } from '@/components/PhotosModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 interface DockApp {
@@ -59,12 +60,15 @@ const dockApps: DockApp[] = [
 
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+  const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
     } else if (app.id === 'app2') {
       window.open('mailto:soham.poddar23@gmail.com', '_blank');
+    } else if (app.id === 'app3') {
+      setIsPhotosModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
@@ -124,6 +128,11 @@ export const Dock: React.FC = () => {
       <IMessageModal 
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
+      />
+      
+      <PhotosModal 
+        isOpen={isPhotosModalOpen}
+        onClose={() => setIsPhotosModalOpen(false)}
       />
     </nav>
   );
