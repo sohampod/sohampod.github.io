@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DockIcon } from '@/components/ui/dock-icon';
 import { IMessageModal } from '@/components/iMessageModal';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 interface DockApp {
   id: string;
@@ -79,18 +79,20 @@ export const Dock: React.FC = () => {
       <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
           app.id === 'app2' ? (
-            <Tooltip key={app.id}>
-              <TooltipTrigger asChild>
-                <DockIcon
-                  src={app.icon}
-                  alt={app.name}
-                  onClick={() => handleAppClick(app)}
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>soham.poddar23@gmail.com</p>
-              </TooltipContent>
-            </Tooltip>
+            <TooltipProvider delayDuration={0} key={app.id}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <DockIcon
+                    src={app.icon}
+                    alt={app.name}
+                    onClick={() => handleAppClick(app)}
+                  />
+                </TooltipTrigger>
+                <TooltipContent side="top" align="center">
+                  <p>soham.poddar23@gmail.com</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ) : (
             <DockIcon
               key={app.id}
