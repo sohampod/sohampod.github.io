@@ -61,7 +61,7 @@ export const Dock: React.FC = () => {
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
-      setIsMessageModalOpen(true);
+      window.open('mailto:soham.poddar23@gmail.com', '_blank');
     } else {
       console.log(`Opening ${app.name}`);
     }
