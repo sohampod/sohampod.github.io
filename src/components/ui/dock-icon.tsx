@@ -7,14 +7,15 @@ interface DockIconProps {
   className?: string;
 }
 
-export const DockIcon: React.FC<DockIconProps> = ({
+export const DockIcon = React.forwardRef<HTMLButtonElement, DockIconProps>(({
   src,
   alt,
   onClick,
   className = ""
-}) => {
+}, ref) => {
   return (
     <button
+      ref={ref}
       className={`hover:scale-110 transition-transform duration-200 ${className}`}
       onClick={onClick}
       aria-label={alt}
@@ -26,4 +27,6 @@ export const DockIcon: React.FC<DockIconProps> = ({
       />
     </button>
   );
-};
+});
+
+DockIcon.displayName = "DockIcon";
