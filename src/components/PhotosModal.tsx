@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { X, Grid3X3, Heart, Share, Trash2 } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface PhotosModalProps {
   isOpen: boolean;
@@ -26,12 +26,12 @@ const photos = [
 export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 bg-[#ffffff] border-none shadow-2xl rounded-[12px] overflow-hidden">
+      <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 bg-[#ffffff] border-none shadow-2xl rounded-[12px] overflow-hidden flex flex-col">
         {/* macOS title bar - exact replica */}
-        <div className="flex items-center h-[52px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9]">
+        <div className="flex items-center h-[52px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
           <div className="flex items-center gap-[8px]">
-            <button 
-              className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center" 
+            <button
+              className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
               onClick={onClose}
             >
               <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
@@ -46,10 +46,11 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Main content area */}
-        <div className="flex h-[calc(100%-52px)]">
+        <div className="flex flex-1 min-h-0"> {/* Use flex-1 and min-h-0 here */}
           {/* Sidebar - exact macOS styling */}
-          <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col">
-            <div className="flex-1 pt-[8px]">
+          {/* Added flex-shrink-0 to prevent sidebar from shrinking */}
+          <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
+            <div className="flex-1 pt-[8px] overflow-auto"> {/* Added overflow-auto for scrollable sidebar content */}
               {/* Library section */}
               <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
@@ -92,16 +93,16 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Main photos area */}
-          <div className="flex-1 bg-[#ffffff] flex flex-col">
+          <div className="flex-1 bg-[#ffffff] flex flex-col min-w-0"> {/* Added min-w-0 to allow shrinking */}
             {/* Content header */}
-            <div className="px-[24px] py-[16px] bg-[#ffffff]">
+            <div className="px-[24px] py-[16px] bg-[#ffffff] flex-shrink-0">
               <h2 className="text-[28px] font-[700] text-[#1d1d1f] tracking-[-0.374px] leading-[1.14286] mb-[2px]">All Photos</h2>
               <p className="text-[13px] text-[#86868b] font-[400]">{photos.length} photos</p>
             </div>
 
             {/* Photos grid - exact macOS layout */}
             <div className="flex-1 px-[24px] pb-[24px] overflow-auto">
-              <div className="grid grid-cols-6 gap-[3px] auto-rows-min">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[3px] auto-rows-min">
                 {photos.map((photo, index) => {
                   // Create realistic photo layout variations
                   const isPanorama = (index + 1) % 9 === 0;
@@ -112,9 +113,9 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
                     <div
                       key={photo.id}
                       className={`bg-[#f6f6f6] rounded-[2px] hover:scale-[1.02] transition-all duration-150 cursor-pointer relative group overflow-hidden ${
-                        isPanorama ? 'col-span-3 aspect-[3/1]' : 
-                        isPortrait ? 'row-span-2 aspect-[3/4]' : 
-                        isLandscape ? 'col-span-2 aspect-[4/3]' : 
+                        isPanorama ? 'col-span-full aspect-[3/1]' :
+                        isPortrait ? 'row-span-2 aspect-[3/4] col-span-1' :
+                        isLandscape ? 'col-span-2 aspect-[4/3]' :
                         'aspect-square'
                       }`}
                     >
