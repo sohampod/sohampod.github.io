@@ -50,7 +50,8 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           {/* Sidebar - exact macOS styling */}
           {/* Added flex-shrink-0 to prevent sidebar from shrinking */}
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
-            <div className="flex-1 pt-[8px] overflow-auto"> {/* Added overflow-auto for scrollable sidebar content */}
+            {/* Added flex-1 and overflow-y-auto for scrollable sidebar content */}
+            <div className="flex-1 overflow-y-auto pt-[8px]">
               {/* Library section */}
               <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
