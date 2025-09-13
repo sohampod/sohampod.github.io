@@ -87,7 +87,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
 
           {/* Photos area */}
           <div className="flex-1 bg-white">
-            <div className="px-4 py-2 border-b border-[#f0f0f0]">
+            <div className="px-4 py-1 bg-white">
               <h2 className="text-lg font-semibold text-[#1d1d1f]">All Photos</h2>
               <p className="text-xs text-[#86868b]">{photos.length} photos</p>
             </div>
