@@ -76,3 +76,4 @@ export const TimelineModal: React.FC<TimelineModalProps> = ({ isOpen, onClose })
     </Dialog>
   );
 };
+```eof
