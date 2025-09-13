@@ -28,7 +28,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-6xl w-[90vw] h-[85vh] p-0 bg-white border-none shadow-2xl rounded-xl overflow-hidden">
         {/* macOS title bar */}
-        <div className="flex items-center justify-between h-11 px-3 bg-[#f6f6f6] border-b border-[#e0e0e0]">
+        <div className="flex items-center h-11 px-3 bg-[#f6f6f6] border-b border-[#e0e0e0]">
           <div className="flex items-center gap-2">
             <div className="flex gap-2">
               <button 
@@ -43,31 +43,16 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <span className="text-sm font-medium text-[#333] select-none">Photos</span>
           </div>
-          
-          <div className="flex items-center gap-3">
-            <button className="p-1.5 hover:bg-[#e0e0e0] rounded-md transition-colors">
-              <Grid3X3 className="w-4 h-4 text-[#666]" />
-            </button>
-            <button className="p-1.5 hover:bg-[#e0e0e0] rounded-md transition-colors">
-              <Heart className="w-4 h-4 text-[#666]" />
-            </button>
-            <button className="p-1.5 hover:bg-[#e0e0e0] rounded-md transition-colors">
-              <Share className="w-4 h-4 text-[#666]" />
-            </button>
-            <button className="p-1.5 hover:bg-[#e0e0e0] rounded-md transition-colors">
-              <Trash2 className="w-4 h-4 text-[#666]" />
-            </button>
-          </div>
         </div>
 
         {/* Main content */}
         <div className="flex h-full">
           {/* Sidebar */}
-          <div className="w-52 bg-[#f8f8f8] border-r border-[#e0e0e0]">
-            <div className="p-4 space-y-4">
+          <div className="w-52 bg-[#f8f8f8] border-r border-[#e0e0e0] pt-2">
+            <div className="px-3 space-y-3">
               <div>
-                <div className="text-xs font-semibold text-[#8e8e93] uppercase tracking-wide mb-2">Library</div>
-                <div className="space-y-1">
+                <div className="text-xs font-semibold text-[#8e8e93] uppercase tracking-wide mb-1.5">Library</div>
+                <div className="space-y-0.5">
                   <div className="px-2 py-1.5 bg-[#007aff] text-white rounded-md text-sm font-medium cursor-pointer">
                     All Photos
                   </div>
@@ -84,8 +69,8 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
               </div>
               
               <div>
-                <div className="text-xs font-semibold text-[#8e8e93] uppercase tracking-wide mb-2">Albums</div>
-                <div className="space-y-1">
+                <div className="text-xs font-semibold text-[#8e8e93] uppercase tracking-wide mb-1.5">Albums</div>
+                <div className="space-y-0.5">
                   <div className="px-2 py-1.5 text-[#333] rounded-md text-sm hover:bg-[#e8e8e8] cursor-pointer transition-colors">
                     Recents
                   </div>
@@ -102,27 +87,39 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
 
           {/* Photos area */}
           <div className="flex-1 bg-white">
-            {/* Content header */}
-            <div className="px-5 py-3 border-b border-[#f0f0f0]">
-              <h2 className="text-xl font-semibold text-[#1d1d1f]">All Photos</h2>
-              <p className="text-sm text-[#86868b] mt-0.5">{photos.length} photos</p>
+            <div className="px-4 py-2 border-b border-[#f0f0f0]">
+              <h2 className="text-lg font-semibold text-[#1d1d1f]">All Photos</h2>
+              <p className="text-xs text-[#86868b]">{photos.length} photos</p>
             </div>
 
             {/* Photos grid */}
-            <div className="p-5 h-full overflow-auto">
-              <div className="grid grid-cols-8 gap-1">
-                {photos.map((photo) => (
-                  <div
-                    key={photo.id}
-                    className="aspect-square bg-[#f5f5f7] rounded hover:scale-105 transition-transform duration-200 cursor-pointer group border border-transparent hover:border-[#007aff]"
-                  >
-                    <div className="w-full h-full rounded bg-gradient-to-br from-[#f5f5f7] to-[#e8e8ed] flex items-center justify-center">
-                      <div className="text-[#86868b] text-xs font-medium">
-                        {photo.id}
+            <div className="p-3 h-full overflow-auto">
+              <div className="grid grid-cols-6 gap-0.5">
+                {photos.map((photo, index) => {
+                  // Create varied aspect ratios for more realistic layout
+                  const isPortrait = (index + 1) % 7 === 0 || (index + 1) % 11 === 0;
+                  const isLandscape = (index + 1) % 5 === 0 || (index + 1) % 13 === 0;
+                  
+                  return (
+                    <div
+                      key={photo.id}
+                      className={`bg-[#f5f5f7] rounded-sm hover:scale-[1.02] transition-all duration-200 cursor-pointer border border-transparent hover:border-[#007aff] hover:shadow-lg ${
+                        isPortrait ? 'row-span-2' : isLandscape ? 'col-span-2' : 'aspect-square'
+                      }`}
+                      style={{
+                        aspectRatio: isPortrait ? '3/4' : isLandscape ? '4/3' : '1'
+                      }}
+                    >
+                      <div className="w-full h-full rounded-sm bg-gradient-to-br from-[#f5f5f7] via-[#efefef] to-[#e8e8ed] flex items-center justify-center relative overflow-hidden">
+                        {/* Subtle photo-like gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40 opacity-30"></div>
+                        <div className="text-[#86868b] text-xs font-medium z-10">
+                          {photo.id}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
