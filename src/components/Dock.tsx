@@ -1,9 +1,148 @@
 import React, { useState } from 'react';
-import { DockIcon } from './ui/dock-icon';
-import { IMessageModal } from './iMessageModal';
-import { PhotosModal } from './PhotosModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
+// DockIcon component is now defined within this single file.
+interface DockIconProps {
+  src: string;
+  alt: string;
+  onClick: () => void;
+}
+
+const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <div
+      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer hover:scale-150"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="h-12 w-12 rounded-lg"
+      />
+      {isHovered && (
+        <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-80">
+          {alt}
+        </span>
+      )}
+    </div>
+  );
+};
+
+// IMessageModal component is now defined within this single file.
+const IMessageModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
+      <div
+        className="w-full max-w-lg rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-white">Messages</h2>
+          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div className="mt-4 text-white">
+          <p>I'm not available via iMessage at the moment. Please feel free to reach out via email.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// PhotosModal component is now defined within this single file.
+const PhotosModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
+      <div
+        className="w-full max-w-lg rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-white">Photos</h2>
+          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div className="mt-4 text-white">
+          <p>This is a placeholder for the Photos app.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// TimelineModal component is now defined within this single file.
+const TimelineModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  const milestones = [
+    {
+      date: 'Q1 2024',
+      title: 'Project Kick-off',
+      description: 'Defined project scope, goals, and core functionalities. Assembled the development team and established the initial roadmap.'
+    },
+    {
+      date: 'Q2 2024',
+      title: 'Prototype Development',
+      description: 'Completed the first functional prototype. Focused on core user flows and tested initial design concepts with user groups.'
+    },
+    {
+      date: 'Q3 2024',
+      title: 'Beta Launch',
+      description: 'Launched the private beta to a select group of users. Collected feedback and began iterating on key features.'
+    },
+    {
+      date: 'Q4 2024',
+      title: 'Full Public Release',
+      description: 'After extensive testing and refinements, the project was officially launched to the public. Focused on performance and scalability.'
+    }
+  ];
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
+      <div
+        className="w-full max-w-2xl rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-white">Project Timeline</h2>
+          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <div className="mt-6 space-y-8 text-white">
+          {milestones.map((milestone, index) => (
+            <div key={index} className="flex gap-4 items-start">
+              <div className="flex flex-col items-center">
+                <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
+                {index < milestones.length - 1 && (
+                  <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <p className="text-sm font-light uppercase text-gray-300">{milestone.date}</p>
+                <h3 className="text-lg font-bold">{milestone.title}</h3>
+                <p className="mt-1 text-sm text-gray-200">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main Dock Component
 interface DockApp {
   id: string;
   name: string;
@@ -38,7 +177,7 @@ const dockApps: DockApp[] = [
   },
   {
     id: 'app5',
-    name: 'Application 5',
+    name: 'Calendar',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
@@ -61,6 +200,7 @@ const dockApps: DockApp[] = [
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
+  const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
   const calendlyUrl = 'https://calendly.com/sohampod/30min';
 
   const handleAppClick = (app: DockApp) => {
@@ -71,15 +211,16 @@ export const Dock: React.FC = () => {
     } else if (app.id === 'app3') {
       setIsPhotosModalOpen(true);
     } else if (app.id === 'app4') {
-      // This is the FaceTime icon - open Calendly link
       window.open(calendlyUrl, '_blank');
+    } else if (app.id === 'app5') {
+      setIsTimelineModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
   };
 
   return (
-    <nav 
+    <nav
       className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
       role="navigation"
       aria-label="Application dock"
@@ -110,7 +251,7 @@ export const Dock: React.FC = () => {
             />
           )
         ))}
-        
+
         {/* Separator */}
         <div className="flex items-center">
           <img
@@ -120,7 +261,7 @@ export const Dock: React.FC = () => {
             role="separator"
           />
         </div>
-        
+
         {/* Trash */}
         <DockIcon
           src={dockApps[dockApps.length - 1].icon}
@@ -128,15 +269,20 @@ export const Dock: React.FC = () => {
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
         />
       </div>
-      
-      <IMessageModal 
+
+      <IMessageModal
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
       />
-      
-      <PhotosModal 
+
+      <PhotosModal
         isOpen={isPhotosModalOpen}
         onClose={() => setIsPhotosModalOpen(false)}
+      />
+
+      <TimelineModal
+        isOpen={isTimelineModalOpen}
+        onClose={() => setIsTimelineModalOpen(false)}
       />
     </nav>
   );
