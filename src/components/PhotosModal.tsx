@@ -46,14 +46,13 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Main content area */}
-        <div className="flex flex-1 min-h-0"> {/* Use flex-1 and min-h-0 here */}
+        <div className="flex flex-1 min-h-0">
           {/* Sidebar - exact macOS styling */}
-          {/* Added flex-shrink-0 to prevent sidebar from shrinking */}
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
-            {/* Added flex-1 and overflow-y-auto for scrollable sidebar content */}
+            {/* Removed pt-[8px] to close the gap */}
             <div className="flex-1 overflow-y-auto">
               {/* Library section */}
-              <div className="px-[16px] mb-[16px]">
+              <div className="px-[16px] mb-[16px] pt-[8px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] bg-[#0066cc] text-white rounded-[4px] text-[13px] font-[400] cursor-pointer select-none">
@@ -94,7 +93,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Main photos area */}
-          <div className="flex-1 bg-[#ffffff] flex flex-col min-w-0"> {/* Added min-w-0 to allow shrinking */}
+          <div className="flex-1 bg-[#ffffff] flex flex-col min-w-0">
             {/* Content header */}
             <div className="px-[24px] py-[16px] bg-[#ffffff] flex-shrink-0">
               <h2 className="text-[28px] font-[700] text-[#1d1d1f] tracking-[-0.374px] leading-[1.14286] mb-[2px]">All Photos</h2>
