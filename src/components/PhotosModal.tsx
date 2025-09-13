@@ -39,7 +39,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
             <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
             <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
           </div>
-          
+
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">Photos</span>
           </div>
@@ -51,7 +51,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col">
             <div className="flex-1 pt-[8px]">
               {/* Library section */}
-              <div className="mb-[16px]">
+              <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] bg-[#0066cc] text-white rounded-[4px] text-[13px] font-[400] cursor-pointer select-none">
@@ -71,7 +71,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
               </div>
 
               {/* Albums section */}
-              <div>
+              <div className="px-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Albums</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] text-[#000000] rounded-[4px] text-[13px] font-[400] hover:bg-[#e5e5e5] cursor-pointer transition-colors select-none">
@@ -107,7 +107,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
                   const isPanorama = (index + 1) % 9 === 0;
                   const isPortrait = (index + 1) % 7 === 0 && !isPanorama;
                   const isLandscape = (index + 1) % 11 === 0 && !isPanorama && !isPortrait;
-                  
+
                   return (
                     <div
                       key={photo.id}
@@ -121,10 +121,10 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
                       <div className="w-full h-full bg-gradient-to-br from-[#f8f8f8] via-[#f0f0f0] to-[#e8e8e8] flex items-center justify-center relative">
                         {/* Photo-like gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-white/60 opacity-40"></div>
-                        
+
                         {/* Selection border on hover */}
                         <div className="absolute inset-0 border-[3px] border-[#0066cc] rounded-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-                        
+
                         <div className="text-[#86868b] text-[11px] font-[500] z-10 select-none">
                           {photo.id}
                         </div>
