@@ -265,7 +265,7 @@ export const Dock: React.FC = () => {
     >
       <div
         ref={dockRef}
-        className="border flex gap-2 items-end px-4 py-2 rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm"
+        className="border flex gap-2 items-end px-4 py-2 rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid min-w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -274,11 +274,11 @@ export const Dock: React.FC = () => {
           if (hoveredIndex !== null) {
             const distance = Math.abs(hoveredIndex - index);
             if (distance === 0) {
-              scale = 1.5;
+              scale = 1.25;
             } else if (distance === 1) {
-              scale = 1.2;
+              scale = 1.15;
             } else if (distance === 2) {
-              scale = 1.1;
+              scale = 1.05;
             }
           }
           
@@ -309,7 +309,7 @@ export const Dock: React.FC = () => {
           src={dockApps[dockApps.length - 1].icon}
           alt={dockApps[dockApps.length - 1].name}
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
-          scale={hoveredIndex === dockApps.length - 1 ? 1.5 : 1}
+          scale={hoveredIndex === dockApps.length - 1 ? 1.25 : 1}
           isHovered={hoveredIndex === dockApps.length - 1}
         />
       </div>
