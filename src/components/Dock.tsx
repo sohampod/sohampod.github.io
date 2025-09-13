@@ -205,7 +205,6 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const calendlyUrl = 'https://calendly.com/sohampod/30min';
   const dockRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState<{ x: number | null }>({ x: null });
@@ -245,7 +244,7 @@ export const Dock: React.FC = () => {
     const iconCenter = index * (iconWidth + 8) + iconWidth / 2 + 16;
     const distance = Math.abs(mousePosition.x - iconCenter);
     const radius = 100; // Radius of effect
-    const maxScale = 1.25;
+    const maxScale = 1.1; // Reduced maximum scale for a more minimal effect
 
     if (distance > radius) {
       return 1;
@@ -269,7 +268,7 @@ export const Dock: React.FC = () => {
       >
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
           const scale = calculateScale(index);
-          const isHovered = scale > 1.1; // Show tooltip if icon is significantly scaled
+          const isHovered = scale > 1.05; // Show tooltip if icon is significantly scaled
           
           return (
             <DockIcon
