@@ -1,179 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { DockIcon } from '@/components/ui/dock-icon';
+import { IMessageModal } from '@/components/iMessageModal';
+import { PhotosModal } from '@/components/PhotosModal';
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
-// DockIcon component
-interface DockIconProps {
-  src: string;
-  alt: string;
-  scale: number;
-  isHovered: boolean;
-  onClick: () => void;
-}
-
-const DockIcon: React.FC<DockIconProps> = ({ src, alt, scale, isHovered, onClick }) => {
-  return (
-    <div
-      className="relative flex items-center justify-center transition-transform duration-100 ease-out"
-      style={{
-        transform: `scale(${scale})`,
-        height: '4rem', // Fixed size to prevent layout shift
-        width: '4rem',
-      }}
-      onClick={onClick}
-    >
-      <img
-        src={src}
-        alt={alt}
-        className="h-12 w-12 rounded-lg"
-        style={{ transform: `scale(${scale})` }}
-      />
-      {isHovered && (
-        <span className="absolute -top-4 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
-          {alt}
-        </span>
-      )}
-    </div>
-  );
-};
-
-// IMessageModal component
-const IMessageModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
-      <div
-        className="w-full max-w-lg rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-white">Messages</h2>
-          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </button>
-        </div>
-        <div className="mt-4 text-white">
-          <p>I'm not available via iMessage at the moment. Please feel free to reach out via email.</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// PhotosModal component
-const PhotosModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
-      <div
-        className="w-full max-w-lg rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-white">Photos</h2>
-          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </button>
-        </div>
-        <div className="mt-4 text-white">
-          <p>This is a placeholder for the Photos app.</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// **Updated** TimelineModal component with navbar and scrolling
-const TimelineModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-  const milestones = [
-    {
-      date: 'Q1 2024',
-      title: 'Project Kick-off',
-      description: 'Defined project scope, goals, and core functionalities. Assembled the development team and established the initial roadmap.'
-    },
-    {
-      date: 'Q2 2024',
-      title: 'Prototype Development',
-      description: 'Completed the first functional prototype. Focused on core user flows and tested initial design concepts with user groups.'
-    },
-    {
-      date: 'Q3 2024',
-      title: 'Beta Launch',
-      description: 'Launched the private beta to a select group of users. Collected feedback and began iterating on key features.'
-    },
-    {
-      date: 'Q4 2024',
-      title: 'Full Public Release',
-      description: 'After extensive testing and refinements, the project was officially launched to the public. Focused on performance and scalability.'
-    },
-    {
-      date: 'Q1 2025',
-      title: 'Feature Expansion',
-      description: 'Began development on new features and modules to expand the project\'s capabilities and user base.'
-    },
-    {
-      date: 'Q2 2025',
-      title: 'Performance Optimization',
-      description: 'Conducted a comprehensive review of the codebase, resulting in significant improvements to speed and efficiency.'
-    },
-    {
-      date: 'Q3 2025',
-      title: 'Mobile App Launch',
-      description: 'Released the official mobile application, bringing the project to iOS and Android platforms.'
-    },
-    {
-      date: 'Q4 2025',
-      title: 'Community Building',
-      description: 'Focused on creating a strong user community through forums, events, and a dedicated support team.'
-    }
-  ];
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
-      <div
-        className="w-full max-w-2xl rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100 overflow-hidden flex flex-col h-[70vh]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* macOS-style Navbar */}
-        <div className="flex-shrink-0 flex items-center justify-between p-2 border-b border-b-gray-400">
-          <div className="flex gap-2">
-            <button onClick={onClose} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400"></button>
-            <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400"></div>
-          </div>
-          <h3 className="text-sm font-semibold text-white/70">Timeline</h3>
-          <div className="w-12"></div> {/* Placeholder to center the title */}
-        </div>
-
-        {/* Scrollable Content */}
-        <div className="p-6 overflow-y-auto custom-scrollbar-light">
-          <div className="mt-2 space-y-8 text-white">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="flex gap-4 items-start">
-                <div className="flex flex-col items-center">
-                  <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
-                  {index < milestones.length - 1 && (
-                    <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
-                  )}
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-sm font-light uppercase text-gray-300">{milestone.date}</p>
-                  <h3 className="text-lg font-bold">{milestone.title}</h3>
-                  <p className="mt-1 text-sm text-gray-200">{milestone.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Main Dock Component
 interface DockApp {
   id: string;
   name: string;
@@ -188,27 +18,27 @@ const dockApps: DockApp[] = [
   },
   {
     id: 'app1',
-    name: 'Messages',
+    name: 'Application 1',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/0720e85bda36af5cf72bffadc72b433d809fd19b?placeholderIfAbsent=true'
   },
   {
     id: 'app2',
-    name: 'Mail',
+    name: 'Application 2',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/8d4d39199399d8c52d26d3e6a437315176acec38?placeholderIfAbsent=true'
   },
   {
     id: 'app3',
-    name: 'Photos',
+    name: 'Application 3',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/0314866760e369841c1e5abb8fce2ce5bcbc7e18?placeholderIfAbsent=true'
   },
   {
     id: 'app4',
-    name: 'FaceTime',
+    name: 'Application 4',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/cf06eb75be61de7f90f45fea8c755e8dda461547?placeholderIfAbsent=true'
   },
   {
     id: 'app5',
-    name: 'Calendar',
+    name: 'Application 5',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
@@ -231,10 +61,6 @@ const dockApps: DockApp[] = [
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
-  const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
-  const calendlyUrl = 'https://calendly.com/sohampod/30min';
-  const dockRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState<{ x: number | null }>({ x: null });
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
@@ -243,105 +69,70 @@ export const Dock: React.FC = () => {
       window.open('mailto:soham.poddar23@gmail.com', '_blank');
     } else if (app.id === 'app3') {
       setIsPhotosModalOpen(true);
-    } else if (app.id === 'app4') {
-      window.open(calendlyUrl, '_blank');
-    } else if (app.id === 'app5') {
-      setIsTimelineModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!dockRef.current) return;
-    const dockRect = dockRef.current.getBoundingClientRect();
-    const x = e.clientX - dockRect.left;
-    setMousePosition({ x });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePosition({ x: null });
-  };
-
-  const calculateScale = (index: number) => {
-    if (mousePosition.x === null) return 1;
-
-    const dockRect = dockRef.current.getBoundingClientRect();
-    const iconWidth = 64; // The width of each DockIcon div (16*4)
-    const iconCenter = index * (iconWidth + 8) + iconWidth / 2 + 16;
-    const distance = Math.abs(mousePosition.x - iconCenter);
-    const radius = 100; // Radius of effect
-    const maxScale = 1.1; // Reduced maximum scale for a more minimal effect
-
-    if (distance > radius) {
-      return 1;
-    }
-
-    const scale = 1 + (maxScale - 1) * (1 - distance / radius);
-    return Math.max(1, scale);
-  };
-
   return (
-    <nav
-      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-fit mt-[42px] rounded-[17px] max-md:mt-10"
+    <nav 
+      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
       role="navigation"
       aria-label="Application dock"
     >
-      <div
-        ref={dockRef}
-        className="border flex gap-2 items-end px-4 py-2 rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid min-w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
-          const scale = calculateScale(index);
-          const isHovered = scale > 1.05; // Show tooltip if icon is significantly scaled
-          
-          return (
+      <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
+        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
+          app.id === 'app2' ? (
+            <TooltipProvider delayDuration={0} key={app.id}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <DockIcon
+                    src={app.icon}
+                    alt={app.name}
+                    onClick={() => handleAppClick(app)}
+                  />
+                </TooltipTrigger>
+                <TooltipContent side="top" align="center">
+                  <p>soham.poddar23@gmail.com</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ) : (
             <DockIcon
               key={app.id}
               src={app.icon}
               alt={app.name}
               onClick={() => handleAppClick(app)}
-              scale={scale}
-              isHovered={isHovered}
             />
-          );
-        })}
-
+          )
+        ))}
+        
         {/* Separator */}
-        <div className="flex items-center self-stretch">
+        <div className="flex items-center">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/1e16124ee43a3ce418d64092cbba50cede15404e?placeholderIfAbsent=true"
             alt=""
-            className="aspect-[0.02] object-contain w-px shrink-0 h-full"
+            className="aspect-[0.02] object-contain w-px shrink-0"
             role="separator"
           />
         </div>
-
+        
         {/* Trash */}
         <DockIcon
           src={dockApps[dockApps.length - 1].icon}
           alt={dockApps[dockApps.length - 1].name}
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
-          scale={1}
-          isHovered={false}
         />
       </div>
-
-      <IMessageModal
+      
+      <IMessageModal 
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
       />
-
-      <PhotosModal
+      
+      <PhotosModal 
         isOpen={isPhotosModalOpen}
         onClose={() => setIsPhotosModalOpen(false)}
-      />
-
-      <TimelineModal
-        isOpen={isTimelineModalOpen}
-        onClose={() => setIsTimelineModalOpen(false)}
       />
     </nav>
   );
