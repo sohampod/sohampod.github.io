@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { DockIcon } from '@/components/ui/dock-icon';
-import { IMessageModal } from '@/components/iMessageModal';
-import { PhotosModal } from '@/components/PhotosModal';
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
+import { DockIcon } from './ui/dock-icon';
+import { IMessageModal } from './iMessageModal';
+import { PhotosModal } from './PhotosModal';
+import { TimelineModal } from './TimelineModal';
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
 
 interface DockApp {
   id: string;
@@ -61,7 +62,8 @@ const dockApps: DockApp[] = [
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
-
+  const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
+  
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
@@ -71,6 +73,8 @@ export const Dock: React.FC = () => {
       setIsPhotosModalOpen(true);
     } else if (app.id === 'app4') {
       window.open('https://calendly.com/sohampod/30min', '_blank');
+    } else if (app.id === 'app5') {
+      setIsTimelineModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
@@ -135,6 +139,11 @@ export const Dock: React.FC = () => {
       <PhotosModal 
         isOpen={isPhotosModalOpen}
         onClose={() => setIsPhotosModalOpen(false)}
+      />
+
+      <TimelineModal
+        isOpen={isTimelineModalOpen}
+        onClose={() => setIsTimelineModalOpen(false)}
       />
     </nav>
   );
