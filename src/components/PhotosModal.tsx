@@ -27,7 +27,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 bg-[#ffffff] border-none shadow-2xl rounded-[12px] overflow-hidden flex flex-col">
-        {/* macOS title bar */}
+        {/* macOS title bar - exact replica */}
         <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
           <div className="flex items-center gap-[8px]">
             <button
@@ -47,12 +47,11 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
 
         {/* Main content area */}
         <div className="flex flex-1 min-h-0">
-          {/* Sidebar - now with a border-t to connect it to the nav bar */}
+          {/* Sidebar - exact macOS styling */}
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
-            {/* The gap was caused by padding on this div. Removed it and added px-4 to the sections themselves. */}
             <div className="flex-1 overflow-y-auto">
-              {/* Library section - now with px and pt */}
-              <div className="px-[16px] pt-[8px] mb-[16px]">
+              {/* Library section - removed pt-[8px] to fix the gap */}
+              <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] bg-[#0066cc] text-white rounded-[4px] text-[13px] font-[400] cursor-pointer select-none">
@@ -71,7 +70,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
                 </div>
               </div>
 
-              {/* Albums section - now with px */}
+              {/* Albums section */}
               <div className="px-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Albums</div>
                 <div className="space-y-[1px]">
@@ -96,43 +95,4 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           <div className="flex-1 bg-[#ffffff] flex flex-col min-w-0">
             {/* Content header */}
             <div className="px-[24px] py-[16px] bg-[#ffffff] flex-shrink-0">
-              <h2 className="text-[28px] font-[700] text-[#1d1d1f] tracking-[-0.374px] leading-[1.14286] mb-[2px]">All Photos</h2>
-              <p className="text-[13px] text-[#86868b] font-[400]">{photos.length} photos</p>
-            </div>
-
-            {/* Photos grid */}
-            <div className="flex-1 px-[24px] pb-[24px] overflow-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[3px] auto-rows-min">
-                {photos.map((photo, index) => {
-                  const isPanorama = (index + 1) % 9 === 0;
-                  const isPortrait = (index + 1) % 7 === 0 && !isPanorama;
-                  const isLandscape = (index + 1) % 11 === 0 && !isPanorama && !isPortrait;
-
-                  return (
-                    <div
-                      key={photo.id}
-                      className={`bg-[#f6f6f6] rounded-[2px] hover:scale-[1.02] transition-all duration-150 cursor-pointer relative group overflow-hidden ${
-                        isPanorama ? 'col-span-full aspect-[3/1]' :
-                        isPortrait ? 'row-span-2 aspect-[3/4] col-span-1' :
-                        isLandscape ? 'col-span-2 aspect-[4/3]' :
-                        'aspect-square'
-                      }`}
-                    >
-                      <div className="w-full h-full bg-gradient-to-br from-[#f8f8f8] via-[#f0f0f0] to-[#e8e8e8] flex items-center justify-center relative">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-white/60 opacity-40"></div>
-                        <div className="absolute inset-0 border-[3px] border-[#0066cc] rounded-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-                        <div className="text-[#86868b] text-[11px] font-[500] z-10 select-none">
-                          {photo.id}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
+              <h2
