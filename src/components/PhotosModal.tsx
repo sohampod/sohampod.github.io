@@ -20,6 +20,13 @@ const photos = [
   { id: 10, src: '', alt: 'Photo 10' },
   { id: 11, src: '', alt: 'Photo 11' },
   { id: 12, src: '', alt: 'Photo 12' },
+  // Adding more photos to force a scrollbar
+  { id: 13, src: '', alt: 'Photo 13' },
+  { id: 14, src: '', alt: 'Photo 14' },
+  { id: 15, src: '', alt: 'Photo 15' },
+  { id: 16, src: '', alt: 'Photo 16' },
+  { id: 17, src: '', alt: 'Photo 17' },
+  { id: 18, src: '', alt: 'Photo 18' },
 ];
 
 export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => {
@@ -96,8 +103,8 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
                 <h2 className="text-[28px] font-[700] text-[#1d1d1f] tracking-[-0.374px] leading-[1.14286] mb-[2px]">All Photos</h2>
                 <p className="text-[13px] text-[#86868b] font-[400]">{photos.length} photos</p>
               </div>
-              {/* Photo Cards */}
-              <div className="flex-1 px-[24px] pb-[24px] overflow-auto">
+              {/* Photo Cards Container */}
+              <div className="flex-1 px-[24px] pb-[24px] overflow-y-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-[3px] auto-rows-min">
                   {photos.map((photo, index) => {
                     const isPanorama = (index + 1) % 9 === 0;
