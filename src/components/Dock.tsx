@@ -14,19 +14,19 @@ interface DockIconProps {
 const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, onMouseEnter, onMouseLeave }) => {
   return (
     <div
-      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer"
+      className="relative flex items-end justify-center h-16 w-16"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      style={{ transform: `scale(${scale})` }}
     >
       <img
         src={src}
         alt={alt}
-        className="h-12 w-12 rounded-lg"
+        className="h-12 w-12 rounded-lg transform transition-transform duration-300 ease-in-out cursor-pointer"
+        style={{ transform: `scale(${scale})` }}
       />
       {scale > 1.1 && (
-        <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
+        <span className="absolute -top-6 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
           {alt}
         </span>
       )}
