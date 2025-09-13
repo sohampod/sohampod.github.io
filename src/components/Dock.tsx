@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { DockIcon } from '@/components/ui/dock-icon';
 import { IMessageModal } from '@/components/iMessageModal';
 import { PhotosModal } from '@/components/PhotosModal';
-import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 interface DockApp {
@@ -62,23 +61,20 @@ const dockApps: DockApp[] = [
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
-  const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);f
 
   const handleAppClick = (app: DockApp) => {
-    if (app.id === 'app1') {
-      setIsMessageModalOpen(true);
-    } else if (app.id === 'app2') {
-      window.open('mailto:soham.poddar23@gmail.com', '_blank');
-    } else if (app.id === 'app3') {
-      setIsPhotosModalOpen(true);
-    } else if (app.id === 'app4') {
-      window.open('https://calendly.com/sohampod/30min', '_blank');
-    } else if (app.id === 'app5') { // Add this new condition
-      setIsTimelineModalOpen(true);
+    if (app.id === 'app1') {
+      setIsMessageModalOpen(true);
+    } else if (app.id === 'app2') {
+      window.open('mailto:soham.poddar23@gmail.com', '_blank');
+    } else if (app.id === 'app3') {
+      setIsPhotosModalOpen(true);
+    } else if (app.id === 'app4') {
+      window.open('https://calendly.com/sohampod/30min', '_blank');
     } else {
-      console.log(`Opening ${app.name}`);
-    }
-  };
+      console.log(`Opening ${app.name}`);
+    }
+  };
 
   return (
     <nav 
@@ -139,11 +135,6 @@ export const Dock: React.FC = () => {
       <PhotosModal 
         isOpen={isPhotosModalOpen}
         onClose={() => setIsPhotosModalOpen(false)}
-      />
-
-      <TimelineModal // Add this new component
-        isOpen={isTimelineModalOpen}
-        onClose={() => setIsTimelineModalOpen(false)}
       />
     </nav>
   );
