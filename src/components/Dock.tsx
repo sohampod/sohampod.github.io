@@ -6,23 +6,26 @@ interface DockIconProps {
   src: string;
   alt: string;
   onClick: () => void;
+  scale: number;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
-const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick }) => {
-  const [isHovered, setIsHovered] = useState(false);
+const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, onMouseEnter, onMouseLeave }) => {
   return (
     <div
-      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer hover:scale-120"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       onClick={onClick}
+      style={{ transform: `scale(${scale})` }}
     >
       <img
         src={src}
         alt={alt}
         className="h-12 w-12 rounded-lg"
       />
-      {isHovered && (
+      {scale > 1.1 && (
         <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
           {alt}
         </span>
@@ -201,8 +204,9 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const calendlyUrl = 'https://calendly.com/sohampod/30min';
-
+  
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
@@ -226,8 +230,20 @@ export const Dock: React.FC = () => {
       aria-label="Application dock"
     >
       <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
-        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
-          app.id === 'app2' ? (
+        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
+          let scale = 1;
+          if (hoveredIndex !== null) {
+            const distance = Math.abs(hoveredIndex - index);
+            if (distance === 0) {
+              scale = 1.5;
+            } else if (distance === 1) {
+              scale = 1.2;
+            } else if (distance === 2) {
+              scale = 1.1;
+            }
+          }
+          
+          return app.id === 'app2' ? (
             <TooltipProvider delayDuration={0} key={app.id}>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -235,6 +251,9 @@ export const Dock: React.FC = () => {
                     src={app.icon}
                     alt={app.name}
                     onClick={() => handleAppClick(app)}
+                    scale={scale}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   />
                 </TooltipTrigger>
                 <TooltipContent side="top" align="center" className="bg-white/10 backdrop-blur-sm text-white">
@@ -248,9 +267,12 @@ export const Dock: React.FC = () => {
               src={app.icon}
               alt={app.name}
               onClick={() => handleAppClick(app)}
+              scale={scale}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             />
-          )
-        ))}
+          );
+        })}
 
         {/* Separator */}
         <div className="flex items-center">
@@ -267,6 +289,9 @@ export const Dock: React.FC = () => {
           src={dockApps[dockApps.length - 1].icon}
           alt={dockApps[dockApps.length - 1].name}
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
+          scale={hoveredIndex === dockApps.length - 1 ? 1.5 : 1}
+          onMouseEnter={() => setHoveredIndex(dockApps.length - 1)}
+          onMouseLeave={() => setHoveredIndex(null)}
         />
       </div>
 
