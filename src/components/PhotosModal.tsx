@@ -49,7 +49,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
         <div className="flex h-[calc(100%-52px)]">
           {/* Sidebar - exact macOS styling */}
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col">
-            <div className="flex-1">
+            <div className="flex-1 pt-[8px]">
               {/* Library section */}
               <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
