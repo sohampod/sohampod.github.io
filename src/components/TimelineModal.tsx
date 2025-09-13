@@ -34,7 +34,7 @@ export const TimelineModal: React.FC<TimelineModalProps> = ({ isOpen, onClose })
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl w-[95vw] h-auto p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
-        <div className="flex flex-col h-full bg-[#f7f7f7]">
+        <div className="flex flex-col h-full bg-[#ffffff] border border-[#d9d9d9]">
           {/* Top Bar with traffic lights */}
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
             <div className="flex items-center gap-[8px]">
