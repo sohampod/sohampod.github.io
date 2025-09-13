@@ -12,10 +12,9 @@ interface DockIconProps {
 const DockIcon: React.FC<DockIconProps> = ({ src, alt, scale, isHovered, onClick }) => {
   return (
     <div
-      className="relative flex items-center justify-center"
+      className="relative flex items-center justify-center transition-transform duration-100 ease-out"
       style={{
         transform: `scale(${scale})`,
-        transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
         height: '4rem', // Fixed size to prevent layout shift
         width: '4rem',
       }}
@@ -209,6 +208,7 @@ export const Dock: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const calendlyUrl = 'https://calendly.com/sohampod/30min';
   const dockRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number | null }>({ x: null });
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
@@ -228,33 +228,31 @@ export const Dock: React.FC = () => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!dockRef.current) return;
-
     const dockRect = dockRef.current.getBoundingClientRect();
-    const mouseX = e.clientX - dockRect.left;
-    const iconWidth = 64; // The width of each DockIcon div (16*4)
-
-    let closestIconIndex = -1;
-    let minDistance = Infinity;
-    
-    // Find the closest icon to the mouse position
-    dockApps.slice(0, -2).filter(app => app.id !== 'finder').forEach((_, index) => {
-      const iconCenter = index * (iconWidth + 8) + iconWidth / 2 + 16; // 8px for gap-2, 16px for px-4
-      const distance = Math.abs(mouseX - iconCenter);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIconIndex = index;
-      }
-    });
-
-    if (closestIconIndex !== -1 && minDistance < 100) {
-      setHoveredIndex(closestIconIndex);
-    } else {
-      setHoveredIndex(null);
-    }
+    const x = e.clientX - dockRect.left;
+    setMousePosition({ x });
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(null);
+    setMousePosition({ x: null });
+  };
+
+  const calculateScale = (index: number) => {
+    if (mousePosition.x === null) return 1;
+
+    const dockRect = dockRef.current.getBoundingClientRect();
+    const iconWidth = 64; // The width of each DockIcon div (16*4)
+    const iconCenter = index * (iconWidth + 8) + iconWidth / 2 + 16;
+    const distance = Math.abs(mousePosition.x - iconCenter);
+    const radius = 100; // Radius of effect
+    const maxScale = 1.25;
+
+    if (distance > radius) {
+      return 1;
+    }
+
+    const scale = 1 + (maxScale - 1) * (1 - distance / radius);
+    return Math.max(1, scale);
   };
 
   return (
@@ -270,17 +268,8 @@ export const Dock: React.FC = () => {
         onMouseLeave={handleMouseLeave}
       >
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
-          let scale = 1;
-          if (hoveredIndex !== null) {
-            const distance = Math.abs(hoveredIndex - index);
-            if (distance === 0) {
-              scale = 1.25;
-            } else if (distance === 1) {
-              scale = 1.15;
-            } else if (distance === 2) {
-              scale = 1.05;
-            }
-          }
+          const scale = calculateScale(index);
+          const isHovered = scale > 1.1; // Show tooltip if icon is significantly scaled
           
           return (
             <DockIcon
@@ -289,7 +278,7 @@ export const Dock: React.FC = () => {
               alt={app.name}
               onClick={() => handleAppClick(app)}
               scale={scale}
-              isHovered={hoveredIndex === index}
+              isHovered={isHovered}
             />
           );
         })}
@@ -309,8 +298,8 @@ export const Dock: React.FC = () => {
           src={dockApps[dockApps.length - 1].icon}
           alt={dockApps[dockApps.length - 1].name}
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
-          scale={hoveredIndex === dockApps.length - 1 ? 1.25 : 1}
-          isHovered={hoveredIndex === dockApps.length - 1}
+          scale={1}
+          isHovered={false}
         />
       </div>
 
