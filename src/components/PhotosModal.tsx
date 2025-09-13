@@ -28,7 +28,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 bg-[#ffffff] border-none shadow-2xl rounded-[12px] overflow-hidden flex flex-col">
         {/* macOS title bar - exact replica */}
-        <div className="flex items-center h-[52px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
+        <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
           <div className="flex items-center gap-[8px]">
             <button
               className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
@@ -51,7 +51,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           {/* Added flex-shrink-0 to prevent sidebar from shrinking */}
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
             {/* Added flex-1 and overflow-y-auto for scrollable sidebar content */}
-            <div className="flex-1 overflow-y-auto pt-[8px]">
+            <div className="flex-1 overflow-y-auto">
               {/* Library section */}
               <div className="px-[16px] mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
