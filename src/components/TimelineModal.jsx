@@ -1,7 +1,13 @@
 import React from 'react';
+import { Dialog, DialogContent } from '@radix-ui/react-dialog';
+import { X } from 'lucide-react';
 
-export const TimelineModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+interface TimelineModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const TimelineModal: React.FC<TimelineModalProps> = ({ isOpen, onClose }) => {
   const milestones = [
     {
       date: 'Q1 2024',
@@ -24,38 +30,49 @@ export const TimelineModal = ({ isOpen, onClose }) => {
       description: 'After extensive testing and refinements, the project was officially launched to the public. Focused on performance and scalability.'
     }
   ];
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-3xl" onClick={onClose}>
-      <div
-        className="w-full max-w-2xl rounded-2xl border border-[rgba(255,255,255,0.2)] bg-white/10 p-6 shadow-2xl backdrop-blur-3xl transition-transform duration-300 transform scale-100 opacity-100"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-white">Project Timeline</h2>
-          <button onClick={onClose} className="p-1 rounded-full text-white hover:bg-white/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </button>
-        </div>
-        <div className="mt-6 space-y-8 text-white overflow-y-auto max-h-96">
-          {milestones.map((milestone, index) => (
-            <div key={index} className="flex gap-4 items-start">
-              <div className="flex flex-col items-center">
-                <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
-                {index < milestones.length - 1 && (
-                  <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <p className="text-sm font-light uppercase text-gray-300">{milestone.date}</p>
-                <h3 className="text-lg font-bold">{milestone.title}</h3>
-                <p className="mt-1 text-sm text-gray-200">{milestone.description}</p>
-              </div>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl w-[95vw] h-auto p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+        <div className="flex flex-col h-full bg-[#f7f7f7]">
+          {/* Top Bar */}
+          <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
+            <div className="flex items-center gap-[8px]">
+              <button
+                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
+                onClick={onClose}
+              >
+                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
+              </button>
+              <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
+              <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
-          ))}
+            <div className="absolute left-1/2 transform -translate-x-1/2">
+              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">Project Timeline</span>
+            </div>
+          </div>
+          {/* Main Content Area */}
+          <div className="flex flex-1 min-h-0 p-6 overflow-y-auto">
+            <div className="mt-6 space-y-8 text-black w-full">
+              {milestones.map((milestone, index) => (
+                <div key={index} className="flex gap-4 items-start">
+                  <div className="flex flex-col items-center">
+                    <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
+                    {index < milestones.length - 1 && (
+                      <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
+                    )}
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm font-light uppercase text-gray-500">{milestone.date}</p>
+                    <h3 className="text-lg font-bold">{milestone.title}</h3>
+                    <p className="mt-1 text-sm text-gray-700">{milestone.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };
