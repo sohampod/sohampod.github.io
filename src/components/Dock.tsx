@@ -82,11 +82,11 @@ export const Dock: React.FC = () => {
 
   return (
     <nav 
-      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl shadow-2xl mx-auto w-fit px-4 py-2 rounded-[17px] border border-[rgba(255,255,255,0.1)]"
       role="navigation"
       aria-label="Application dock"
     >
-      <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
+      <div className="flex gap-4 items-center">
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
           app.id === 'app2' ? (
             <TooltipProvider delayDuration={0} key={app.id}>
@@ -118,7 +118,7 @@ export const Dock: React.FC = () => {
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/1e16124ee43a3ce418d64092cbba50cede15404e?placeholderIfAbsent=true"
             alt=""
-            className="aspect-[0.02] object-contain w-px shrink-0"
+            className="aspect-[0.02] object-contain w-px shrink-0 h-10"
             role="separator"
           />
         </div>
