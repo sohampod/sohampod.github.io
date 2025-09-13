@@ -51,7 +51,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
           <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col">
             <div className="flex-1 pt-[8px]">
               {/* Library section */}
-              <div className="px-[16px] mb-[16px]">
+              <div className="mb-[16px]">
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Library</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] bg-[#0066cc] text-white rounded-[4px] text-[13px] font-[400] cursor-pointer select-none">
@@ -71,7 +71,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
               </div>
 
               {/* Albums section */}
-              <div className="px-[16px]">
+              <div>
                 <div className="text-[11px] font-[600] text-[#6d6d6d] uppercase tracking-[0.6px] mb-[6px] select-none">Albums</div>
                 <div className="space-y-[1px]">
                   <div className="flex items-center px-[8px] py-[3px] text-[#000000] rounded-[4px] text-[13px] font-[400] hover:bg-[#e5e5e5] cursor-pointer transition-colors select-none">
