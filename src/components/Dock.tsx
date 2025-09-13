@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 // DockIcon component is now defined within this single file.
 interface DockIconProps {
@@ -7,11 +6,12 @@ interface DockIconProps {
   alt: string;
   onClick: () => void;
   scale: number;
+  isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
 
-const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, onMouseEnter, onMouseLeave }) => {
+const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, isHovered, onMouseEnter, onMouseLeave }) => {
   return (
     <div
       className="relative flex items-end justify-center h-16 w-16"
@@ -25,7 +25,7 @@ const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, onMouseEn
         className="h-12 w-12 rounded-lg transform transition-transform duration-300 ease-in-out cursor-pointer"
         style={{ transform: `scale(${scale})` }}
       />
-      {scale > 1.1 && (
+      {isHovered && (
         <span className="absolute -top-6 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
           {alt}
         </span>
@@ -225,11 +225,11 @@ export const Dock: React.FC = () => {
 
   return (
     <nav
-      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-[529px] max-w-full mt-[42px] rounded-[17px] max-md:mt-10"
+      className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-fit mt-[42px] rounded-[17px] max-md:mt-10"
       role="navigation"
       aria-label="Application dock"
     >
-      <div className="border flex gap-4 items-center px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
+      <div className="border flex gap-2 items-end px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
           let scale = 1;
           if (hoveredIndex !== null) {
@@ -243,31 +243,14 @@ export const Dock: React.FC = () => {
             }
           }
           
-          return app.id === 'app2' ? (
-            <TooltipProvider delayDuration={0} key={app.id}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <DockIcon
-                    src={app.icon}
-                    alt={app.name}
-                    onClick={() => handleAppClick(app)}
-                    scale={scale}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  />
-                </TooltipTrigger>
-                <TooltipContent side="top" align="center" className="bg-white/10 backdrop-blur-sm text-white">
-                  <p className="text-[10px]">soham.poddar23@gmail.com</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ) : (
+          return (
             <DockIcon
               key={app.id}
               src={app.icon}
               alt={app.name}
               onClick={() => handleAppClick(app)}
               scale={scale}
+              isHovered={hoveredIndex === index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             />
@@ -275,11 +258,11 @@ export const Dock: React.FC = () => {
         })}
 
         {/* Separator */}
-        <div className="flex items-center">
+        <div className="flex items-center self-stretch">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/1e16124ee43a3ce418d64092cbba50cede15404e?placeholderIfAbsent=true"
             alt=""
-            className="aspect-[0.02] object-contain w-px shrink-0"
+            className="aspect-[0.02] object-contain w-px shrink-0 h-full"
             role="separator"
           />
         </div>
@@ -290,6 +273,7 @@ export const Dock: React.FC = () => {
           alt={dockApps[dockApps.length - 1].name}
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
           scale={hoveredIndex === dockApps.length - 1 ? 1.5 : 1}
+          isHovered={hoveredIndex === dockApps.length - 1}
           onMouseEnter={() => setHoveredIndex(dockApps.length - 1)}
           onMouseLeave={() => setHoveredIndex(null)}
         />
