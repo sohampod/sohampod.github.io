@@ -12,7 +12,7 @@ const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
-      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer hover:scale-150"
+      className="relative transform transition-transform duration-300 ease-in-out cursor-pointer hover:scale-120"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
@@ -23,7 +23,7 @@ const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick }) => {
         className="h-12 w-12 rounded-lg"
       />
       {isHovered && (
-        <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-80">
+        <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
           {alt}
         </span>
       )}
@@ -237,8 +237,8 @@ export const Dock: React.FC = () => {
                     onClick={() => handleAppClick(app)}
                   />
                 </TooltipTrigger>
-                <TooltipContent side="top" align="center">
-                  <p>soham.poddar23@gmail.com</p>
+                <TooltipContent side="top" align="center" className="bg-white/10 backdrop-blur-sm text-white">
+                  <p className="text-[10px]">soham.poddar23@gmail.com</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
