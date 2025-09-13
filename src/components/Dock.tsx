@@ -1,32 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 // DockIcon component is now defined within this single file.
 interface DockIconProps {
   src: string;
   alt: string;
-  onClick: () => void;
   scale: number;
   isHovered: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  onClick: () => void;
 }
 
-const DockIcon: React.FC<DockIconProps> = ({ src, alt, onClick, scale, isHovered, onMouseEnter, onMouseLeave }) => {
+const DockIcon: React.FC<DockIconProps> = ({ src, alt, scale, isHovered, onClick }) => {
   return (
     <div
-      className="relative flex items-end justify-center h-16 w-16"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className="relative flex items-center justify-center"
+      style={{
+        transform: `scale(${scale})`,
+        transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        height: '4rem', // Fixed size to prevent layout shift
+        width: '4rem',
+      }}
       onClick={onClick}
     >
       <img
         src={src}
         alt={alt}
-        className="h-12 w-12 rounded-lg transform transition-transform duration-300 ease-in-out cursor-pointer"
+        className="h-12 w-12 rounded-lg"
         style={{ transform: `scale(${scale})` }}
       />
       {isHovered && (
-        <span className="absolute -top-6 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md">
+        <span className="absolute -top-4 bg-white/10 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap">
           {alt}
         </span>
       )}
@@ -206,7 +208,8 @@ export const Dock: React.FC = () => {
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const calendlyUrl = 'https://calendly.com/sohampod/30min';
-  
+  const dockRef = useRef<HTMLDivElement>(null);
+
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
@@ -223,13 +226,49 @@ export const Dock: React.FC = () => {
     }
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!dockRef.current) return;
+
+    const dockRect = dockRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - dockRect.left;
+    const iconWidth = 64; // The width of each DockIcon div (16*4)
+
+    let closestIconIndex = -1;
+    let minDistance = Infinity;
+    
+    // Find the closest icon to the mouse position
+    dockApps.slice(0, -2).filter(app => app.id !== 'finder').forEach((_, index) => {
+      const iconCenter = index * (iconWidth + 8) + iconWidth / 2 + 16; // 8px for gap-2, 16px for px-4
+      const distance = Math.abs(mouseX - iconCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIconIndex = index;
+      }
+    });
+
+    if (closestIconIndex !== -1 && minDistance < 100) {
+      setHoveredIndex(closestIconIndex);
+    } else {
+      setHoveredIndex(null);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
+
   return (
     <nav
       className="bg-[rgba(255,255,255,0.002)] shadow-[0px_0px_31px_rgba(0,0,0,0.25)] mx-auto w-fit mt-[42px] rounded-[17px] max-md:mt-10"
       role="navigation"
       aria-label="Application dock"
     >
-      <div className="border flex gap-2 items-end px-4 py-[7px] rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm">
+      <div
+        ref={dockRef}
+        className="border flex gap-2 items-end px-4 py-2 rounded-[17px] border-[rgba(255,255,255,0.1)] border-solid w-fit bg-[rgba(255,255,255,0.05)] backdrop-blur-sm"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app, index) => {
           let scale = 1;
           if (hoveredIndex !== null) {
@@ -251,8 +290,6 @@ export const Dock: React.FC = () => {
               onClick={() => handleAppClick(app)}
               scale={scale}
               isHovered={hoveredIndex === index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             />
           );
         })}
@@ -274,8 +311,6 @@ export const Dock: React.FC = () => {
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
           scale={hoveredIndex === dockApps.length - 1 ? 1.5 : 1}
           isHovered={hoveredIndex === dockApps.length - 1}
-          onMouseEnter={() => setHoveredIndex(dockApps.length - 1)}
-          onMouseLeave={() => setHoveredIndex(null)}
         />
       </div>
 
