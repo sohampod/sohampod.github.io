@@ -61,7 +61,7 @@ const dockApps: DockApp[] = [
 export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
-  const calendlyUrl = 'https://calendly.com/your-meeting-link';
+  const calendlyUrl = 'https://calendly.com/sohampod/30min';
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
