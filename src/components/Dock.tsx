@@ -69,6 +69,8 @@ export const Dock: React.FC = () => {
       window.open('mailto:soham.poddar23@gmail.com', '_blank');
     } else if (app.id === 'app3') {
       setIsPhotosModalOpen(true);
+    } else if (app.id === 'app4') {
+      window.open('https://calendly.com/sohampod/30min', '_blank');
     } else {
       console.log(`Opening ${app.name}`);
     }
