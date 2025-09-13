@@ -28,7 +28,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 bg-[#f6f6f6] border-none shadow-2xl rounded-lg overflow-hidden">
         {/* macOS window header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[#ececec] border-b border-[#d1d1d1]">
+        <div className="flex items-center justify-between px-4 py-2 bg-[#ececec] border-b border-[#d1d1d1]">
           <div className="flex items-center gap-3">
             <div className="flex gap-2">
               <button 
