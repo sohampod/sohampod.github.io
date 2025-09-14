@@ -76,7 +76,6 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
               </span>
             </div>
           </div>
-
           {/* Messages Container */}
           <div className="h-full overflow-y-auto p-4 space-y-4 bg-gray-50">
             {questions.map((item) => (
@@ -102,7 +101,6 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
                     <p className="text-xs text-gray-500 mt-1 ml-4">Just now</p>
                   </div>
                 </div>
-
                 {/* Answer from user (when expanded) */}
                 {expandedAnswers.has(item.id) && (
                   <div className="flex justify-end">
