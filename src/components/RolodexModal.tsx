@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent } from '@radix-ui/react-dialog';
+import { X } from 'lucide-react';
 
 interface RolodexModalProps {
   isOpen: boolean;
@@ -39,18 +40,17 @@ export const RolodexModal: React.FC<RolodexModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
             <div className="flex items-center gap-[8px]">
               <button
-                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors"
+                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
                 onClick={onClose}
-              />
+              >
+                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
+              </button>
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
             <div className="absolute left-1/2 transform -translate-x-1/2">
-              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
-                Contacts
-              </span>
+              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">Contacts</span>
             </div>
-            {/* The extra X icon is removed */}
           </div>
           {/* Main Content Area: Contacts List */}
           <div className="flex flex-col flex-1 p-6 overflow-y-auto">
