@@ -3,7 +3,6 @@ import { DockIcon } from './ui/dock-icon';
 import { IMessageModal } from './iMessageModal';
 import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
-import { RolodexModal } from './RolodexModal'; // New Import
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
 
 interface DockApp {
@@ -39,8 +38,8 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/cf06eb75be61de7f90f45fea8c755e8dda461547?placeholderIfAbsent=true'
   },
   {
-    id: 'contacts', // Changed from 'app5' for clarity
-    name: 'Contacts',
+    id: 'app5',
+    name: 'Application 5',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
@@ -64,7 +63,6 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
-  const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false); // New state variable
   
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
@@ -75,8 +73,8 @@ export const Dock: React.FC = () => {
       setIsPhotosModalOpen(true);
     } else if (app.id === 'app4') {
       window.open('https://calendly.com/sohampod/30min', '_blank');
-    } else if (app.id === 'contacts') { // Check for the new ID
-      setIsRolodexModalOpen(true);
+    } else if (app.id === 'app5') {
+      setIsTimelineModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
@@ -146,12 +144,6 @@ export const Dock: React.FC = () => {
       <TimelineModal
         isOpen={isTimelineModalOpen}
         onClose={() => setIsTimelineModalOpen(false)}
-      />
-
-      {/* New Modal */}
-      <RolodexModal
-        isOpen={isRolodexModalOpen}
-        onClose={() => setIsRolodexModalOpen(false)}
       />
     </nav>
   );
