@@ -4,6 +4,7 @@ import { IMessageModal } from './iMessageModal';
 import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
+import { RolodexModal } from './RolodexModal'; // NEW: Import RolodexModal
 
 interface DockApp {
   id: string;
@@ -63,6 +64,7 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
+  const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false); // NEW: State for Rolodex
   
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
@@ -74,7 +76,11 @@ export const Dock: React.FC = () => {
     } else if (app.id === 'app4') {
       window.open('https://calendly.com/sohampod/30min', '_blank');
     } else if (app.id === 'app5') {
+      // Check if it's the app for the timeline modal or rolodex
+      // Your existing code uses app5 for timeline, so we'll add a new one for rolodex
       setIsTimelineModalOpen(true);
+    } else if (app.id === 'app6') { // NEW: Handle click for a new app icon
+        setIsRolodexModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
@@ -144,6 +150,11 @@ export const Dock: React.FC = () => {
       <TimelineModal
         isOpen={isTimelineModalOpen}
         onClose={() => setIsTimelineModalOpen(false)}
+      />
+
+      <RolodexModal
+        isOpen={isRolodexModalOpen}
+        onClose={() => setIsRolodexModalOpen(false)}
       />
     </nav>
   );
