@@ -50,9 +50,9 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/fd8217c417340dce4e235c72bccb617c649e2308?placeholderIfAbsent=true'
   },
   {
-    id: 'music', // 👈 New, descriptive ID for the Apple Music app
+    id: 'music',
     name: 'Apple Music',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true' // Apple Music Icon
+    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
   },
   {
     id: 'trash',
@@ -81,7 +81,7 @@ export const Dock: React.FC = () => {
       setIsTimelineModalOpen(true);
     } else if (app.id === 'app6') {
       setIsRolodexModalOpen(true);
-    } else if (app.id === 'music') { // 👈 Update this condition to match the new ID
+    } else if (app.id === 'music') {
       setIsAppleMusicModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
