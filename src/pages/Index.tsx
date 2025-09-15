@@ -21,14 +21,14 @@ const Index = () => {
         </div>
         
         {/* Main Content Area - Takes remaining space */}
-        <main className="relative z-10 flex-1 flex flex-col items-start min-h-0">
-          {/* Project Grid - Takes available space */}
+        <main className="relative z-10 flex-1 flex flex-col min-h-0">
+          {/* Project Grid - Right aligned, takes available space */}
           <div className="flex-1 flex items-start justify-end w-full pr-4 sm:pr-8 lg:pr-[76px] pt-8 sm:pt-12 lg:pt-16">
             <ProjectGrid />
           </div>
           
-          {/* Quote Section - Fixed height at bottom */}
-          <div className="w-full px-4 sm:px-8 lg:px-[76px] pb-8">
+          {/* Quote Section - Left aligned, positioned above dock */}
+          <div className="w-full pl-4 sm:pl-8 lg:pl-[76px] pb-4 mb-16">
             <QuoteSection />
           </div>
         </main>
