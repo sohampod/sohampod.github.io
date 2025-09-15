@@ -4,7 +4,8 @@ import { IMessageModal } from './iMessageModal';
 import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
-import { RolodexModal } from './RolodexModal'; // NEW: Import RolodexModal
+import { RolodexModal } from './RolodexModal';
+import { AppleMusicModal } from './AppleMusicModal'; // 👈 Import the new modal
 
 interface DockApp {
   id: string;
@@ -54,6 +55,11 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
   },
   {
+    id: 'app8', // 👈 New icon for Apple Music
+    name: 'Application 8',
+    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
+  },
+  {
     id: 'trash',
     name: 'Trash',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/993227f21a88eb8e7556fd58357efb7a435b4409?placeholderIfAbsent=true'
@@ -64,8 +70,9 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
-  const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false); // NEW: State for Rolodex
-  
+  const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false);
+  const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false); // 👈 New state for Apple Music
+
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
@@ -76,18 +83,18 @@ export const Dock: React.FC = () => {
     } else if (app.id === 'app4') {
       window.open('https://calendly.com/sohampod/30min', '_blank');
     } else if (app.id === 'app5') {
-      // Check if it's the app for the timeline modal or rolodex
-      // Your existing code uses app5 for timeline, so we'll add a new one for rolodex
       setIsTimelineModalOpen(true);
-    } else if (app.id === 'app6') { // NEW: Handle click for a new app icon
-        setIsRolodexModalOpen(true);
+    } else if (app.id === 'app6') {
+      setIsRolodexModalOpen(true);
+    } else if (app.id === 'app8') { // 👈 Handle click for the new Apple Music app
+      setIsAppleMusicModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
     }
   };
 
   return (
-    <nav 
+    <nav
       className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl shadow-2xl mx-auto w-fit px-4 py-2 rounded-[17px] border border-[rgba(255,255,255,0.1)]"
       role="navigation"
       aria-label="Application dock"
@@ -118,7 +125,6 @@ export const Dock: React.FC = () => {
             />
           )
         ))}
-        
         {/* Separator */}
         <div className="flex items-center">
           <img
@@ -128,7 +134,6 @@ export const Dock: React.FC = () => {
             role="separator"
           />
         </div>
-        
         {/* Trash */}
         <DockIcon
           src={dockApps[dockApps.length - 1].icon}
@@ -136,25 +141,27 @@ export const Dock: React.FC = () => {
           onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
         />
       </div>
-      
-      <IMessageModal 
+
+      <IMessageModal
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
       />
-      
-      <PhotosModal 
+      <PhotosModal
         isOpen={isPhotosModalOpen}
         onClose={() => setIsPhotosModalOpen(false)}
       />
-
       <TimelineModal
         isOpen={isTimelineModalOpen}
         onClose={() => setIsTimelineModalOpen(false)}
       />
-
       <RolodexModal
         isOpen={isRolodexModalOpen}
         onClose={() => setIsRolodexModalOpen(false)}
+      />
+      {/* 👈 Render the new modal */}
+      <AppleMusicModal
+        isOpen={isAppleMusicModalOpen}
+        onClose={() => setIsAppleMusicModalOpen(false)}
       />
     </nav>
   );
