@@ -95,7 +95,7 @@ export const Dock: React.FC = () => {
       aria-label="Application dock"
     >
       <div className="flex gap-4 items-center">
-        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'trash').map((app) => (
+        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'trash' && app.id !== 'music').map((app) => (
           app.id === 'app2' ? (
             <TooltipProvider delayDuration={0} key={app.id}>
               <Tooltip>
@@ -129,11 +129,17 @@ export const Dock: React.FC = () => {
             role="separator"
           />
         </div>
-        {/* Trash */}
+        {/* Apple Music Icon */}
         <DockIcon
-          src={dockApps[dockApps.length - 1].icon}
-          alt={dockApps[dockApps.length - 1].name}
-          onClick={() => handleAppClick(dockApps[dockApps.length - 1])}
+          src={dockApps.find(app => app.id === 'music')?.icon}
+          alt={dockApps.find(app => app.id === 'music')?.name}
+          onClick={() => handleAppClick(dockApps.find(app => app.id === 'music'))}
+        />
+        {/* Trash Icon */}
+        <DockIcon
+          src={dockApps.find(app => app.id === 'trash')?.icon}
+          alt={dockApps.find(app => app.id === 'trash')?.name}
+          onClick={() => handleAppClick(dockApps.find(app => app.id === 'trash'))}
         />
       </div>
 
