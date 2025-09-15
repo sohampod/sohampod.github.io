@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dialog, DialogContent } from '@radix-ui/react-dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
 
 interface RolodexModalProps {
   isOpen: boolean;
@@ -33,15 +34,17 @@ const contacts = [
 export const RolodexModal: React.FC<RolodexModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-lg w-[90vw] h-auto p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+      <DialogContent className="max-w-lg w-[90vw] h-auto p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
         <div className="flex flex-col h-full bg-[#f7f7f7]">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
             <div className="flex items-center gap-[8px]">
               <button
-                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors"
+                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
                 onClick={onClose}
-              />
+              >
+                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
+              </button>
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
