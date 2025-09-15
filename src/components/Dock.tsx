@@ -95,7 +95,7 @@ export const Dock: React.FC = () => {
       aria-label="Application dock"
     >
       <div className="flex gap-4 items-center">
-        {dockApps.slice(0, -2).filter(app => app.id !== 'finder').map((app) => (
+        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'trash').map((app) => (
           app.id === 'app2' ? (
             <TooltipProvider delayDuration={0} key={app.id}>
               <Tooltip>
