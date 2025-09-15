@@ -7,7 +7,7 @@ import { Dock } from '@/components/Dock';
 const Index = () => {
   return (
     <div className="bg-white overflow-hidden">
-      <div className="flex flex-col relative h-screen w-full items-stretch pb-14">
+      <div className="flex flex-col relative h-screen w-full">
         {/* Background Image */}
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/ece3a9a4a90eb024df83793dac977ef2baa0c3d6?placeholderIfAbsent=true"
@@ -16,21 +16,25 @@ const Index = () => {
         />
         
         {/* Top Navigation Bar */}
-        <TopBar />
+        <div className="relative z-10 flex-shrink-0">
+          <TopBar />
+        </div>
         
-        {/* Main Content Area */}
-        <main className="relative flex flex-col items-start flex-1 overflow-y-auto">
-          {/* Project Grid */}
-          <ProjectGrid />
+        {/* Main Content Area - Takes remaining space */}
+        <main className="relative z-10 flex-1 flex flex-col items-start min-h-0">
+          {/* Project Grid - Takes available space */}
+          <div className="flex-1 flex items-start justify-end w-full pr-4 sm:pr-8 lg:pr-[76px] pt-8 sm:pt-12 lg:pt-16">
+            <ProjectGrid />
+          </div>
           
-          {/* Quote Section */}
-          <div className="w-full max-w-[658px] px-4 sm:px-8 lg:ml-[76px] lg:px-0">
+          {/* Quote Section - Fixed height at bottom */}
+          <div className="w-full px-4 sm:px-8 lg:px-[76px] pb-8">
             <QuoteSection />
           </div>
         </main>
         
-        {/* Bottom Dock */}
-        <footer className="relative flex justify-center">
+        {/* Bottom Dock - Fixed at bottom */}
+        <footer className="relative z-10 flex-shrink-0">
           <Dock />
         </footer>
       </div>
