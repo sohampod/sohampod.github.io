@@ -50,9 +50,9 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/fd8217c417340dce4e235c72bccb617c649e2308?placeholderIfAbsent=true'
   },
   {
-    id: 'music',
-    name: 'Apple Music',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
+    id: 'trash',
+    name: 'Apple Music', // Updated name for tooltip
+    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true' // Apple Music Icon
   }
 ];
 
@@ -76,7 +76,7 @@ export const Dock: React.FC = () => {
       setIsTimelineModalOpen(true);
     } else if (app.id === 'app6') {
       setIsRolodexModalOpen(true);
-    } else if (app.id === 'music') {
+    } else if (app.id === 'trash') { // Now opens the Apple Music Modal when clicking the trash icon
       setIsAppleMusicModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
@@ -90,7 +90,7 @@ export const Dock: React.FC = () => {
       aria-label="Application dock"
     >
       <div className="flex gap-4 items-center">
-        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'music').map((app) => (
+        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'trash').map((app) => (
           app.id === 'app2' ? (
             <TooltipProvider delayDuration={0} key={app.id}>
               <Tooltip>
@@ -124,11 +124,11 @@ export const Dock: React.FC = () => {
             role="separator"
           />
         </div>
-        {/* Apple Music Icon */}
+        {/* Apple Music Icon (formerly trash) */}
         <DockIcon
-          src={dockApps.find(app => app.id === 'music')?.icon}
-          alt={dockApps.find(app => app.id === 'music')?.name}
-          onClick={() => handleAppClick(dockApps.find(app => app.id === 'music'))}
+          src={dockApps.find(app => app.id === 'trash')?.icon}
+          alt={dockApps.find(app => app.id === 'trash')?.name}
+          onClick={() => handleAppClick(dockApps.find(app => app.id === 'trash'))}
         />
       </div>
 
