@@ -7,12 +7,12 @@ import { Dock } from '@/components/Dock';
 const Index = () => {
   return (
     <div className="bg-white overflow-hidden">
-      <div className="flex flex-col relative min-h-[1080px] w-full items-stretch pb-14 max-md:max-w-full">
+      <div className="flex flex-col relative min-h-screen w-full items-stretch pb-14">
         {/* Background Image */}
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/ece3a9a4a90eb024df83793dac977ef2baa0c3d6?placeholderIfAbsent=true"
           alt="Desktop background"
-          className="absolute h-full w-full object-cover inset-0"
+          className="fixed inset-0 h-full w-full object-cover -z-10"
         />
         
         {/* Top Navigation Bar */}
