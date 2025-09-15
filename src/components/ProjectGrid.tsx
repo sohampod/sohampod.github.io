@@ -118,7 +118,7 @@ export const ProjectGrid: React.FC = () => {
   };
 
   return (
-    <section className="flex w-full justify-center">
+    <section className="flex w-full justify-end">
       {/* 2-column grid */}
       <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-[300px]">
         {projects.map((project, index) => (
