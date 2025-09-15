@@ -7,7 +7,7 @@ import { Dock } from '@/components/Dock';
 const Index = () => {
   return (
     <div className="bg-white overflow-hidden">
-      <div className="flex flex-col relative min-h-screen w-full items-stretch pb-14">
+      <div className="flex flex-col relative h-screen w-full items-stretch pb-14">
         {/* Background Image */}
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/ece3a9a4a90eb024df83793dac977ef2baa0c3d6?placeholderIfAbsent=true"
@@ -19,12 +19,12 @@ const Index = () => {
         <TopBar />
         
         {/* Main Content Area */}
-        <main className="relative flex flex-col items-start">
+        <main className="relative flex flex-col items-start flex-1 overflow-y-auto">
           {/* Project Grid */}
           <ProjectGrid />
           
           {/* Quote Section */}
-          <div className="w-[658px] max-md:max-w-full ml-[76px] max-md:ml-2.5">
+          <div className="w-full max-w-[658px] px-4 sm:px-8 lg:ml-[76px] lg:px-0">
             <QuoteSection />
           </div>
         </main>
