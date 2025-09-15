@@ -5,7 +5,7 @@ import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
 import { RolodexModal } from './RolodexModal';
-import { AppleMusicModal } from './AppleMusicModal'; // 👈 Import the new modal
+import { AppleMusicModal } from './AppleMusicModal';
 
 interface DockApp {
   id: string;
@@ -21,43 +21,38 @@ const dockApps: DockApp[] = [
   },
   {
     id: 'app1',
-    name: 'Application 1',
+    name: 'iMessage',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/0720e85bda36af5cf72bffadc72b433d809fd19b?placeholderIfAbsent=true'
   },
   {
     id: 'app2',
-    name: 'Application 2',
+    name: 'Mail',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/8d4d39199399d8c52d26d3e6a437315176acec38?placeholderIfAbsent=true'
   },
   {
     id: 'app3',
-    name: 'Application 3',
+    name: 'Photos',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/0314866760e369841c1e5abb8fce2ce5bcbc7e18?placeholderIfAbsent=true'
   },
   {
     id: 'app4',
-    name: 'Application 4',
+    name: 'Video Chat',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/cf06eb75be61de7f90f45fea8c755e8dda461547?placeholderIfAbsent=true'
   },
   {
     id: 'app5',
-    name: 'Application 5',
+    name: 'Calendar',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
     id: 'app6',
-    name: 'Application 6',
+    name: 'Contacts',
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/fd8217c417340dce4e235c72bccb617c649e2308?placeholderIfAbsent=true'
   },
   {
     id: 'app7',
-    name: 'Application 7',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
-  },
-  {
-    id: 'app8', // 👈 New icon for Apple Music
-    name: 'Application 8',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true'
+    name: 'Apple Music',
+    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true' // Apple Music Icon
   },
   {
     id: 'trash',
@@ -71,7 +66,7 @@ export const Dock: React.FC = () => {
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
   const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false);
-  const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false); // 👈 New state for Apple Music
+  const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false);
 
   const handleAppClick = (app: DockApp) => {
     if (app.id === 'app1') {
@@ -86,7 +81,7 @@ export const Dock: React.FC = () => {
       setIsTimelineModalOpen(true);
     } else if (app.id === 'app6') {
       setIsRolodexModalOpen(true);
-    } else if (app.id === 'app8') { // 👈 Handle click for the new Apple Music app
+    } else if (app.id === 'app7') {
       setIsAppleMusicModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
@@ -158,7 +153,6 @@ export const Dock: React.FC = () => {
         isOpen={isRolodexModalOpen}
         onClose={() => setIsRolodexModalOpen(false)}
       />
-      {/* 👈 Render the new modal */}
       <AppleMusicModal
         isOpen={isAppleMusicModalOpen}
         onClose={() => setIsAppleMusicModalOpen(false)}
