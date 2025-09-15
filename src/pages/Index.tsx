@@ -12,7 +12,7 @@ const Index = () => {
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/ece3a9a4a90eb024df83793dac977ef2baa0c3d6?placeholderIfAbsent=true"
           alt="Desktop background"
-          className="fixed inset-0 h-full w-full object-cover -z-10"
+          className="absolute inset-0 h-full w-full object-cover"
         />
         
         {/* Top Navigation Bar */}
