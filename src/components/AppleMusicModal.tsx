@@ -33,7 +33,6 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
 
           {/* Apple Music Embed */}
           <div className="flex-1 p-4 flex items-center justify-center">
-            {/* The src URL below is updated with a known working example */}
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
               height="450"
@@ -44,7 +43,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
                 background: 'transparent',
               }}
               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-              src="https://embed.music.apple.com/us/playlist/best-of-the-week/pl.2b3f17d3d2c94294b63e9e30a8c2f1b4"
+              src="https://embed.music.apple.com/us/album/sweater-weather/635016635?i=635016640"
             ></iframe>
           </div>
         </div>

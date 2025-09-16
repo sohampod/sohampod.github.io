@@ -51,8 +51,8 @@ const dockApps: DockApp[] = [
   },
   {
     id: 'trash',
-    name: 'Apple Music', // Updated name for tooltip
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/a1337cf666eaa6346cf0ac6a06de1bd74fc45efe?placeholderIfAbsent=true' // Apple Music Icon
+    name: 'Apple Music',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Apple_Music_logo.svg'
   }
 ];
 
