@@ -11,7 +11,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="fixed inset-0 flex items-center justify-center p-4 z-50">
-        <div className="max-w-md w-[400px] h-[500px] bg-black/80 backdrop-blur-xl border border-white/10 rounded-[20px] overflow-hidden shadow-2xl flex flex-col">
+        <div className="w-[min(400px,100%)] max-h-[85vh] bg-black/80 backdrop-blur-xl border border-white/10 rounded-[20px] overflow-hidden shadow-2xl flex flex-col">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-black/20 backdrop-blur-sm border-b border-white/10 flex-shrink-0">
             <div className="flex items-center gap-[8px]">
@@ -32,11 +32,11 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Apple Music Embed */}
-          <div className="flex-1 p-4 flex items-center justify-center">
+          <div className="p-3 flex items-center justify-center">
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-              height="400"
-              width="350"
+              height="175"
+              width="100%"
               style={{
                 overflow: 'hidden',
                 background: 'transparent',
