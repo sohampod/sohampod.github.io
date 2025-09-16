@@ -52,7 +52,7 @@ const dockApps: DockApp[] = [
   {
     id: 'trash',
     name: 'Apple Music',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Apple_Music_logo.svg'
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png'
   }
 ];
 

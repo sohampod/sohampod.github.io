@@ -43,7 +43,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
                 background: 'transparent',
               }}
               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-              src="https://embed.music.apple.com/us/album/sweater-weather/635016635?i=635016640"
+              src="https://embed.music.apple.com/us/song/neighbors/1440934978"
             ></iframe>
           </div>
         </div>
