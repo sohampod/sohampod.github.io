@@ -10,8 +10,8 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-md w-[400px] h-[500px] p-0 border-none shadow-2xl rounded-[20px] overflow-hidden backdrop-blur-xl bg-black/80 border border-white/10">
-        <div className="flex flex-col h-full">
+      <DialogContent className="fixed inset-0 flex items-center justify-center p-4 z-50">
+        <div className="max-w-md w-[400px] h-[500px] bg-black/80 backdrop-blur-xl border border-white/10 rounded-[20px] overflow-hidden shadow-2xl flex flex-col">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-black/20 backdrop-blur-sm border-b border-white/10 flex-shrink-0">
             <div className="flex items-center gap-[8px]">
