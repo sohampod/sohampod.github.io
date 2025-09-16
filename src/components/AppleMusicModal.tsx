@@ -10,7 +10,7 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-7xl w-[95vw] h-[90vh] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+      <DialogContent className="max-w-md w-[420px] h-[520px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
         <div className="flex flex-col h-full bg-[#ffffff]">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
@@ -32,15 +32,15 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           </div>
 
           {/* Apple Music Embed */}
-          <div className="flex-1 p-4 flex items-center justify-center bg-[#ffffff]">
+          <div className="flex-1 p-3 flex items-center justify-center bg-[#ffffff]">
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-              height="450"
+              height="400"
+              width="380"
               style={{
-                width: '100%',
-                maxWidth: '660px',
                 overflow: 'hidden',
                 background: 'transparent',
+                borderRadius: '8px',
               }}
               sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
               src="https://embed.music.apple.com/us/song/neighbors/1440934978"
