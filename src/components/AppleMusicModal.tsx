@@ -10,7 +10,7 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md w-[420px] h-[520px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+      <DialogContent className="max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
         <div className="flex flex-col h-full bg-[#ffffff]">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
@@ -35,7 +35,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           <div className="flex-1 p-3 flex items-center justify-center bg-[#ffffff]">
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-              height="400"
+              height="175"
               width="380"
               style={{
                 overflow: 'hidden',
