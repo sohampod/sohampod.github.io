@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
 
 interface AppleMusicModalProps {
@@ -10,7 +10,23 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+      {/* This is the new overlay for the background blur. 
+        The `backdrop-blur-lg` class creates the glassmorphism effect.
+      */}
+      <DialogOverlay className="fixed inset-0 bg-black/30 backdrop-blur-lg" />
+      
+      <DialogContent 
+        className="
+          max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
+          
+          /* New animation classes for the macOS effect */
+          data-[state=open]:animate-in data-[state=closed]:animate-out 
+          data-[state=closed]:fade-out data-[state=open]:fade-in 
+          data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
+          data-[state=closed]:slide-out-to-top-[2%] data-[state=open]:slide-in-from-top-[2%]
+          duration-300
+        "
+      >
         <div className="flex flex-col h-full bg-[#ffffff]">
           {/* Top Bar */}
           <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
