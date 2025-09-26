@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
 import { X, Minus, Plus, ChevronLeft, ChevronRight, Grid3X3, List, ExternalLink } from 'lucide-react';
 
 interface ProjectLink {
@@ -45,10 +45,23 @@ export const FinderModal: React.FC<FinderModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[600px] w-[95vw] h-[400px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
+      <DialogOverlay className="fixed inset-0 bg-black/30 backdrop-blur-lg" />
+      
+      <DialogContent 
+        className="
+          max-w-[600px] w-[95vw] h-[400px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
+          
+          /* New animation classes for the macOS effect */
+          data-[state=open]:animate-in data-[state=closed]:animate-out 
+          data-[state=closed]:fade-out data-[state=open]:fade-in 
+          data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
+          data-[state=closed]:slide-out-to-top-[2%] data-[state=open]:slide-in-from-top-[2%]
+          duration-300
+        "
+      >
         <div className="bg-[#f6f6f6] rounded-lg shadow-2xl w-full h-full flex flex-col overflow-hidden border border-gray-300">
-          {/* Title Bar */}
-          <div className="bg-gradient-to-b from-[#e8e8e8] to-[#d0d0d0] border-b border-gray-300 flex items-center justify-between px-4 py-2">
+          {/* Title Bar: Reduced height (h-8) and simplified content */}
+          <div className="bg-gradient-to-b from-[#e8e8e8] to-[#d0d0d0] border-b border-gray-300 flex items-center px-3 h-8">
             <div className="flex items-center gap-2">
               <button
                 onClick={onClose}
@@ -60,7 +73,8 @@ export const FinderModal: React.FC<FinderModalProps> = ({
               <button className="w-3 h-3 bg-[#ffbd2e] rounded-full hover:bg-[#ff9500] transition-colors" />
               <button className="w-3 h-3 bg-[#28ca42] rounded-full hover:bg-[#00a82d] transition-colors" />
             </div>
-            <div className="text-sm font-medium text-gray-700 absolute left-1/2 transform -translate-x-1/2">
+            {/* Original title and navigation buttons moved/removed */}
+            <div className='flex-grow text-center text-sm font-medium text-gray-700 pointer-events-none'>
               {projectTitle}
             </div>
             <div className="flex items-center gap-2">
@@ -71,7 +85,7 @@ export const FinderModal: React.FC<FinderModalProps> = ({
             </div>
           </div>
 
-          {/* Toolbar */}
+          {/* Toolbar (remains the same) */}
           <div className="bg-[#f6f6f6] border-b border-gray-200 px-4 py-2 flex items-center justify-between">
             <div className="text-sm text-gray-600">
               {projectLinks.length} {projectLinks.length === 1 ? 'item' : 'items'}
@@ -86,7 +100,7 @@ export const FinderModal: React.FC<FinderModalProps> = ({
             </div>
           </div>
 
-          {/* Content Area */}
+          {/* Content Area (remains the same) */}
           <div className="flex-1 p-4 bg-white overflow-auto">
             <div className="grid grid-cols-4 gap-4">
               {projectLinks.map((link, index) => (
@@ -107,7 +121,7 @@ export const FinderModal: React.FC<FinderModalProps> = ({
             </div>
           </div>
 
-          {/* Status Bar */}
+          {/* Status Bar (remains the same) */}
           <div className="bg-[#f6f6f6] border-t border-gray-200 px-4 py-1 text-xs text-gray-500">
             {projectLinks.length} {projectLinks.length === 1 ? 'item' : 'items'} • Available online
           </div>
