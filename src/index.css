@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ... (existing content above) ... */
 
 .backdrop-blur-overlay {
-  /* Explicitly enable the backdrop filter */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px); 
-  /* Make the overlay semi-transparent or transparent so the blur is visible */
-  background-color: transparent; /* Add a slight dark tint for contrast */
+  /* Explicitly enable the backdrop filter */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); 
+  /* 🟢 ADD BACK a semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.4); /* Use a darker tint for better contrast */
 }
+
+/* ... (existing content below) ... */
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
