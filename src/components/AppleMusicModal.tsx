@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogOverlay, DialogClose } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
 
 interface AppleMusicModalProps {
@@ -10,13 +10,12 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogOverlay className="fixed inset-0 bg-black/30 backdrop-blur-lg" />
+      {/* 1. Glassmorphism: Removed 'bg-black/30' for a pure blur effect */}
+      <DialogOverlay className="fixed inset-0 backdrop-blur-lg" />
       
       <DialogContent 
         className="
           max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
-          
-          /* New animation classes for the macOS effect */
           data-[state=open]:animate-in data-[state=closed]:animate-out 
           data-[state=closed]:fade-out data-[state=open]:fade-in 
           data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
@@ -24,9 +23,14 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           duration-300
         "
       >
+        {/* 2. Hide default close icon (if present in your DialogContent implementation) */}
+        <DialogClose className="hidden" aria-hidden="true" />
+        
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar: Reduced height (h-8) and centered content removed */}
-          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
+          {/* Top Bar: Height h-8 */}
+          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
+            
+            {/* Traffic Lights */}
             <div className="flex items-center gap-[8px]">
               <button
                 className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
@@ -37,7 +41,13 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
-            {/* Title content removed for authentic macOS look */}
+            
+            {/* 3. Restore Title, Centered */}
+            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
+                Apple Music
+              </span>
+            </div>
           </div>
 
           {/* Apple Music Embed */}
