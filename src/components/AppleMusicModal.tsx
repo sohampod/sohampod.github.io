@@ -26,7 +26,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           duration-300
         "
       >
-        <div className="flex flex-col h-full bg-[#ffffff]">
+        <div className="flex flex-col h-full">
           {/* Top Bar: Re-added the centered title and removed the X icon from the red button. */}
           <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
             
