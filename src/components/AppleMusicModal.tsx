@@ -11,7 +11,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       {/* Correction: Using a pure blur without a dark background. */}
-      <DialogOverlay className="fixed inset-0 backdrop-blur-lg" />
+      <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" />
       
       {/* Hiding the default close button that might be added by the component library. */}
       <DialogClose className="hidden" aria-hidden="true" />
