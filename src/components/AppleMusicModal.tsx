@@ -10,9 +10,12 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      {/* 1. Glassmorphism: Removed 'bg-black/30' for a pure blur effect */}
+      {/* Correction: Using a pure blur without a dark background. */}
       <DialogOverlay className="fixed inset-0 backdrop-blur-lg" />
       
+      {/* Hiding the default close button that might be added by the component library. */}
+      <DialogClose className="hidden" aria-hidden="true" />
+
       <DialogContent 
         className="
           max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
@@ -23,11 +26,8 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           duration-300
         "
       >
-        {/* 2. Hide default close icon (if present in your DialogContent implementation) */}
-        <DialogClose className="hidden" aria-hidden="true" />
-        
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar: Height h-8 */}
+          {/* Top Bar: Re-added the centered title and removed the X icon from the red button. */}
           <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
             
             {/* Traffic Lights */}
@@ -35,14 +35,12 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
               <button
                 className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
                 onClick={onClose}
-              >
-                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
-              </button>
+              />
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
             
-            {/* 3. Restore Title, Centered */}
+            {/* Restored the centered title */}
             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
                 Apple Music
