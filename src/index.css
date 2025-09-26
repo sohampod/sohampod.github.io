@@ -8,7 +8,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px); 
   /* Make the overlay semi-transparent or transparent so the blur is visible */
-  background-color: transparent; /* Add a slight dark tint for contrast */
+  background-color: rgba(0, 0, 0, 0.3); /* Add a slight dark tint for contrast */
 }
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
