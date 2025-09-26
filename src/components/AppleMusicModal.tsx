@@ -10,9 +10,6 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      {/* This is the new overlay for the background blur. 
-        The `backdrop-blur-lg` class creates the glassmorphism effect.
-      */}
       <DialogOverlay className="fixed inset-0 bg-black/30 backdrop-blur-lg" />
       
       <DialogContent 
@@ -28,8 +25,8 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
         "
       >
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar */}
-          <div className="flex items-center h-[44px] px-[20px] bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
+          {/* Top Bar: Reduced height (h-8) and centered content removed */}
+          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
             <div className="flex items-center gap-[8px]">
               <button
                 className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
@@ -40,11 +37,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
-                Apple Music
-              </span>
-            </div>
+            {/* Title content removed for authentic macOS look */}
           </div>
 
           {/* Apple Music Embed */}
