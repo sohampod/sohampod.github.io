@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogOverlay, DialogClose } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
+import { X } from 'lucide-react'; // X is still imported but no longer used for the top-right button
 
 interface AppleMusicModalProps {
   isOpen: boolean;
@@ -10,15 +10,15 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
+      {/* This is the layer that blurs the background. It is below the modal content. */}
       <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" />
       
-      {/* Hiding the default close button that might be added by the component library. */}
+      {/* This is a hidden close button that should remain as is. */}
       <DialogClose className="hidden" aria-hidden="true" />
 
       <DialogContent 
         className="
           max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
-          bg-white/70 backdrop-blur-xl backdrop-saturate-150
           data-[state=open]:animate-in data-[state=closed]:animate-out 
           data-[state=closed]:fade-out data-[state=open]:fade-in 
           data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
@@ -26,10 +26,9 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           duration-300
         "
       >
-        {/* The main content of the modal. The original background has been removed. */}
-        <div className="flex flex-col h-full">
-          {/* Top Bar: Re-added the centered title and removed the X icon from the red button. */}
-          <div className="flex items-center h-8 px-3 bg-white/30 border-b border-[#d9d9d9] flex-shrink-0 relative">
+        <div className="flex flex-col h-full bg-[#ffffff]">
+          {/* Top Bar: The X icon is managed by the DialogClose component */}
+          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
             
             {/* Traffic Lights */}
             <div className="flex items-center gap-[8px]">
@@ -47,10 +46,14 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
                 Apple Music
               </span>
             </div>
+                
+            {/* ❌ REMOVED THE VISIBLE X ICON FROM THE RIGHT SIDE OF THE NAVBAR */}
+            {/* The `<DialogClose className="hidden" />` tag below still ensures the modal can be closed by other means. */}
+
           </div>
 
           {/* Apple Music Embed */}
-          <div className="flex-1 p-3 flex items-center justify-center bg-transparent">
+          <div className="flex-1 p-3 flex items-center justify-center bg-[#ffffff]">
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
               height="175"
