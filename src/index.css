@@ -1,13 +1,13 @@
 /* Import SF Pro Display font from reliable CDN */
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 
-/* Apply SF Pro Display to entire website */
+/* Apply SF Pro Display to entire website with normal weight and WHITE text */
 * {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 
                'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
                'Helvetica Neue', sans-serif !important;
-  font-weight: 400 !important; /* Normal weight instead of bold */
-  color: hsl(0, 0%, 25%) !important; /* Dark gray instead of pure black */
+  font-weight: 400 !important; /* Normal weight */
+  color: white !important; /* WHITE text */
 }
 
 /* macOS-style font rendering */
@@ -35,56 +35,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 25%; /* Changed from 222.2 84% 4.9% to dark gray */
+    --background: 0 0% 0%; /* Changed to BLACK background */
+    --foreground: 0 0% 100%; /* Changed to WHITE text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 25%; /* Updated to match */
+    --card: 0 0% 0%; /* Black background */
+    --card-foreground: 0 0% 100%; /* White text */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 25%; /* Updated to match */
+    --popover: 0 0% 0%; /* Black background */
+    --popover-foreground: 0 0% 100%; /* White text */
 
-    --primary: 0 0% 25%; /* Updated to dark gray */
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 0%; /* Black */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 0 0% 25%; /* Updated to dark gray */
+    --secondary: 0 0% 20%; /* Dark gray */
+    --secondary-foreground: 0 0% 100%; /* White */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 20%; /* Dark gray */
+    --muted-foreground: 0 0% 70%; /* Medium gray */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 0 0% 25%; /* Updated to dark gray */
+    --accent: 0 0% 20%; /* Dark gray */
+    --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 20%; /* Dark gray borders */
+    --input: 0 0% 20%; /* Dark gray inputs */
+    --ring: 0 0% 100%; /* White ring */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 10%; /* Very dark gray */
+    --sidebar-foreground: 0 0% 100%; /* White */
 
-    --sidebar-foreground: 0 0% 25%; /* Updated to dark gray */
+    --sidebar-primary: 0 0% 100%; /* White */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black */
 
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-accent: 0 0% 20%; /* Dark gray */
+    --sidebar-accent-foreground: 0 0% 100%; /* White */
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 0 0% 25%; /* Updated to dark gray */
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-border: 0 0% 20%; /* Dark gray */
+    --sidebar-ring: 0 0% 100%; /* White */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%; /* White background in dark mode? */
+    --foreground: 222.2 84% 4.9%;
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -129,6 +125,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-weight: 400; /* Ensure body has normal weight */
+    background-color: black !important; /* Force black background */
+    color: white !important; /* Force white text */
   }
 }
 
