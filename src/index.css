@@ -111,3 +111,9 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-kalic;
   }
 }
+
+
+/* Hide Radix default close button globally */
+[data-radix-dialog-close] {
+  display: none !important;
+}
