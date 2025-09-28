@@ -54,7 +54,6 @@ export const Dock: React.FC = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
-  const [isRolodexModalOpen, setIsRolodexModalOpen] = useState(false);
   const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false);
 
   const handleAppClick = (app: DockApp) => {
@@ -68,8 +67,6 @@ export const Dock: React.FC = () => {
       window.open('https://calendly.com/sohampod/30min', '_blank');
     } else if (app.id === 'app5') {
       setIsTimelineModalOpen(true);
-    } else if (app.id === 'app6') {
-      setIsRolodexModalOpen(true);
     } else if (app.id === 'trash') { // Now opens the Apple Music Modal when clicking the trash icon
       setIsAppleMusicModalOpen(true);
     } else {
@@ -137,10 +134,6 @@ export const Dock: React.FC = () => {
       <TimelineModal
         isOpen={isTimelineModalOpen}
         onClose={() => setIsTimelineModalOpen(false)}
-      />
-      <RolodexModal
-        isOpen={isRolodexModalOpen}
-        onClose={() => setIsRolodexModalOpen(false)}
       />
       <AppleMusicModal
         isOpen={isAppleMusicModalOpen}
