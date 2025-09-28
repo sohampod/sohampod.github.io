@@ -1,5 +1,7 @@
+// AppleMusicModal.tsx (updated)
 import React from 'react';
 import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
+import { ModalTopBar } from '@/components/ModalTopBar'; // adjust path as needed
 
 interface AppleMusicModalProps {
   isOpen: boolean;
@@ -19,29 +21,12 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
           data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
           data-[state=closed]:slide-out-to-top-[2%] data-[state=open]:slide-in-from-top-[2%]
           duration-300
-          [&>[data-radix-dialog-close]]:hidden   /* ⬅️ hide Radix default X button */
+          [&>[data-radix-dialog-close]]:hidden
         "
       >
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar */}
-          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
-            {/* Traffic Lights */}
-            <div className="flex items-center gap-[8px]">
-              <button
-                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors"
-                onClick={onClose}
-              />
-              <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
-              <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
-            </div>
-
-            {/* Centered Title */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
-                Apple Music
-              </span>
-            </div>
-          </div>
+          {/* Use the reusable top bar */}
+          <ModalTopBar title="Apple Music" onClose={onClose} />
 
           {/* Apple Music Embed */}
           <div className="flex-1 p-3 flex items-center justify-center bg-[#ffffff]">
