@@ -14,8 +14,16 @@ export default {
     },
     extend: {
       fontFamily: {
-        'kalic': ['Kalic', 'sans-serif'],
-        'sans': ['Kalic', 'sans-serif'],
+        sans: [
+          'SF Pro Display',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
       },
       colors: {
         border: "hsl(var(--border))",

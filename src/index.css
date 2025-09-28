@@ -15,10 +15,6 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 
-
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -129,7 +125,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-kalic;
+    @apply bg-background text-foreground;
   }
 }
 
