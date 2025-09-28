@@ -45,11 +45,6 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
-    id: 'app6',
-    name: 'Contacts',
-    icon: 'https://api.builder.io/api/v1/image/assets/TEMP/fd8217c417340dce4e235c72bccb617c649e2308?placeholderIfAbsent=true'
-  },
-  {
     id: 'trash',
     name: 'Apple Music',
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png'
