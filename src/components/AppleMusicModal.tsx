@@ -10,25 +10,21 @@ interface AppleMusicModalProps {
 export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      {/* Correction: Using a pure blur without a dark background. */}
       <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" />
-      
-      {/* Hiding the default close button that might be added by the component library. */}
       <DialogClose className="hidden" aria-hidden="true" />
 
       <DialogContent 
-        className="
-             dialog-content-no-close /* 🟢 ADDED CLASS TO HIDE THE DEFAULT 'X' ICON */
+        className={`
+            dialog-content-no-close
           max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
           data-[state=open]:animate-in data-[state=closed]:animate-out 
           data-[state=closed]:fade-out data-[state=open]:fade-in 
           data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
           data-[state=closed]:slide-out-to-top-[2%] data-[state=open]:slide-in-from-top-[2%]
           duration-300
-        "
+        `}
       >
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar: Re-added the centered title and removed the X icon from the red button. */}
           <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 relative">
             
             {/* Traffic Lights */}
