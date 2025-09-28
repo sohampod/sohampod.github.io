@@ -6,7 +6,7 @@
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 
                'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
                'Helvetica Neue', sans-serif !important;
-  font-weight: 400 !important; /* Normal weight instead of bold */
+  font-weight: 400 !important;
 }
 
 /* macOS-style font rendering */
@@ -16,48 +16,67 @@
   text-rendering: optimizeLegibility !important;
 }
 
-/* Apply white text ONLY to main page content, not modals */
-body {
+/* Apply white text to everything by default */
+* {
   color: #ffffff !important;
+}
+
+/* Apply black background to body */
+body {
   background: #000000 !important;
 }
 
-/* Ensure content inside the main app has white text */
-#root, 
-#__next,
-.app,
-.main-content {
-  color: #ffffff !important;
-}
-
-/* But EXCLUDE modals from the white text rule */
-[data-radix-dialog-content],
-[role="dialog"],
-.dialog-content,
-.modal-content {
-  color: inherit !important; /* Let modals keep their original colors */
-}
-
-[data-radix-dialog-content] *,
-[role="dialog"] *,
-.dialog-content *,
-.modal-content * {
-  color: inherit !important; /* Let modal children keep their original colors */
-}
-
-
-/* More specific targeting for main content only */
-body > div:first-child, /* Usually the root div */
-body > div:first-child * {
-  color: #ffffff !important;
-}
-
-/* Explicitly protect modals from white text */
+/* RESET MODALS - Make modal text dark again */
 [data-radix-dialog-content],
 [data-radix-dialog-content] * {
   color: inherit !important;
 }
 
+/* Force specific text colors inside modals to work properly */
+[data-radix-dialog-content] .text-gray-800,
+[data-radix-dialog-content] .text-gray-700,
+[data-radix-dialog-content] .text-gray-900,
+[data-radix-dialog-content] .text-gray-600 {
+  color: #1f2937 !important; /* Original gray-800 color */
+}
+
+[data-radix-dialog-content] .text-gray-500,
+[data-radix-dialog-content] .text-gray-400 {
+  color: #6b7280 !important; /* Original gray-500 color */
+}
+
+[data-radix-dialog-content] .text-black {
+  color: #000000 !important;
+}
+
+[data-radix-dialog-content] .text-white {
+  color: #ffffff !important;
+}
+
+[data-radix-dialog-content] .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+[data-radix-dialog-content] .text-blue-600 {
+  color: #2563eb !important;
+}
+
+/* Ensure modal backgrounds stay light */
+[data-radix-dialog-content] .bg-white {
+  background-color: #ffffff !important;
+}
+
+[data-radix-dialog-content] .bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+[data-radix-dialog-content] .bg-gray-200 {
+  background-color: #e5e7eb !important;
+}
+
+[data-radix-dialog-content] .bg-blue-500 {
+  background-color: #3b82f6 !important;
+}
 
 @tailwind base;
 @tailwind components;
@@ -77,14 +96,14 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 0%; /* Black background */
-    --foreground: 0 0% 100%; /* White text */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 0 0% 100%; /* Keep modals white */
-    --card-foreground: 222.2 84% 4.9%; /* Keep modal text dark */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%; /* Keep popovers white */
-    --popover-foreground: 222.2 84% 4.9%; /* Keep popover text dark */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
@@ -108,27 +127,31 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
+
     --sidebar-foreground: 240 5.3% 26.1%;
 
     --sidebar-primary: 240 5.9% 10%;
+
     --sidebar-primary-foreground: 0 0% 98%;
 
     --sidebar-accent: 240 4.8% 95.9%;
+
     --sidebar-accent-foreground: 240 5.9% 10%;
 
     --sidebar-border: 220 13% 91%;
+
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
