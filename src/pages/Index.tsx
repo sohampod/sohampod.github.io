@@ -3,7 +3,7 @@ import { TopBar } from '@/components/TopBar';
 import { ProjectGrid } from '@/components/ProjectGrid';
 import { QuoteSection } from '@/components/QuoteSection';
 import { Dock } from '@/components/Dock';
-// 👈 CRITICAL FIX: Changed the import path to match your structure
+// 🟢 CRITICAL FIX: Correct path to the component in src/components
 import { AppleMusicModal } from '@/components/AppleMusicModal'; 
 
 const Index = () => {
