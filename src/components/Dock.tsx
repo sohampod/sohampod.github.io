@@ -4,7 +4,6 @@ import { IMessageModal } from './iMessageModal';
 import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
-import { RolodexModal } from './RolodexModal';
 import { AppleMusicModal } from './AppleMusicModal';
 
 interface DockApp {
