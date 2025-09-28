@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
-import { Plus } from 'lucide-react';
+// Note: Adding DialogOverlay import back for safety, as it's needed for the backdrop.
+import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog'; 
+import { Plus, X } from 'lucide-react';
 
 interface IMessageModalProps {
   isOpen: boolean;
@@ -58,36 +59,24 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      {/* I've included DialogOverlay here to ensure the backdrop blur works consistently */}
-      <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" />
-      
-      <DialogContent
-        className="
-          max-w-xl w-[95vw] h-[90vh] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
-          data-[state=open]:animate-in data-[state=closed]:animate-out 
-          data-[state=closed]:fade-out data-[state=open]:fade-in 
-          data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
-          data-[state=closed]:slide-out-to-top-[2%] data-[state=open]:slide-in-from-top-[2%]
-          duration-300
-          [&>[data-radix-dialog-close]]:hidden   /* ⬅️ Hides Radix default X button (matching AppleMusicModal) */
-        "
-      >
+        {/* Added the DialogOverlay that was implicitly missing but likely needed */}
+        <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" /> 
+      <DialogContent className="max-w-xl w-[95vw] h-[90vh] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
         <div className="flex flex-col h-full bg-white">
-          {/* Top Bar - Dimensions changed from h-[44px] px-[20px] to h-8 px-3 */}
-          <div className="flex items-center **h-8 px-3** bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0 **relative**">
-            {/* Traffic Lights */}
+          {/* Top Bar - Original h-[44px] px-[20px] */}
+          <div className="flex items-center **h-[44px] px-[20px]** bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
             <div className="flex items-center gap-[8px]">
               <button
-                // Removed flex items-center justify-center and the <X /> child
-                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors"
+                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors **flex items-center justify-center**"
                 onClick={onClose}
-              />
+              >
+                {/* Re-added the X icon */}
+                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
+              </button>
               <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
               <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
             </div>
-
-            {/* Centered Title - Adjusted positioning for h-8 height */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute left-1/2 transform -translate-x-1/2">
               <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
                 iMessage
               </span>
