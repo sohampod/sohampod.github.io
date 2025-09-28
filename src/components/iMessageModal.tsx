@@ -1,21 +1,19 @@
-// iMessageModal.tsx (example - adapt to your existing code)
+// iMessageModal.tsx
 import React from 'react';
 import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
-import { ModalTopBar } from '@/components/ModalTopBar'; // adjust path as needed
+import { ModalTopBar } from '@/components/ModalTopBar';
 
-interface iMessageModalProps {
+interface IMessageModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const iMessageModal: React.FC<iMessageModalProps> = ({ isOpen, onClose }) => {
+export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" />
-
       <DialogContent
         className="
-          /* Keep your existing iMessageModal styles here */
           max-w-md w-[420px] h-[400px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
           data-[state=open]:animate-in data-[state=closed]:animate-out 
           data-[state=closed]:fade-out data-[state=open]:fade-in 
@@ -26,12 +24,10 @@ export const iMessageModal: React.FC<iMessageModalProps> = ({ isOpen, onClose })
         "
       >
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Use the same top bar */}
           <ModalTopBar title="iMessage" onClose={onClose} />
-
-          {/* Your existing iMessage modal content - this part remains unchanged */}
+          {/* Your iMessage content here */}
           <div className="flex-1 p-4">
-            {/* Your iMessage content here */}
+            {/* iMessage content */}
           </div>
         </div>
       </DialogContent>
