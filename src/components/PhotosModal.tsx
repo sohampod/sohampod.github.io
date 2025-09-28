@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
 import { X } from 'lucide-react';
+import { ModalTopBar } from '@/components/ModalTopBar'; // Add this import
 
 interface PhotosModalProps {
   isOpen: boolean;
@@ -47,24 +48,12 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
         "
       >
         <div className="flex flex-col h-full bg-[#ffffff]">
-          {/* Top Bar: Reduced height (h-8) and centered content removed */}
-          <div className="flex items-center h-8 px-3 bg-[#f7f7f7] border-b border-[#d9d9d9] flex-shrink-0">
-            <div className="flex items-center gap-[8px]">
-              <button
-                className="w-[12px] h-[12px] rounded-full bg-[#ff5f57] hover:bg-[#ff3b30] transition-colors flex items-center justify-center"
-                onClick={onClose}
-              >
-                <X className="w-[6px] h-[6px] text-[#bf4943] opacity-0 hover:opacity-100 transition-opacity" />
-              </button>
-              <button className="w-[12px] h-[12px] rounded-full bg-[#ffbd2e] hover:bg-[#ff9500] transition-colors" />
-              <button className="w-[12px] h-[12px] rounded-full bg-[#28ca42] hover:bg-[#28cd41] transition-colors" />
-            </div>
-            {/* Title content removed for authentic macOS look */}
-          </div>
+          {/* REPLACED: Original top bar with ModalTopBar component */}
+          <ModalTopBar title="Photos" onClose={onClose} />
 
-          {/* Main Content Area: Sidebar + Photos Grid (remains the same) */}
+          {/* Main Content Area: Sidebar + Photos Grid (remains exactly the same) */}
           <div className="flex flex-1 min-h-0">
-            {/* Sidebar (remains the same) */}
+            {/* Sidebar (remains exactly the same) */}
             <div className="w-[225px] bg-[#f5f5f5] border-r border-[#d4d4d4] flex flex-col flex-shrink-0">
               <div className="flex-1 overflow-y-auto pt-[8px]">
                 {/* Library Section */}
@@ -107,7 +96,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
               </div>
             </div>
 
-            {/* Photos Grid (remains the same) */}
+            {/* Photos Grid (remains exactly the same) */}
             <div className="flex-1 bg-[#ffffff] flex flex-col min-w-0">
               {/* Photos Header */}
               <div className="px-[24px] py-[16px] bg-[#ffffff] flex-shrink-0">
