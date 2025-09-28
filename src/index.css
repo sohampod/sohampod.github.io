@@ -45,6 +45,20 @@ body {
   color: inherit !important; /* Let modal children keep their original colors */
 }
 
+
+/* More specific targeting for main content only */
+body > div:first-child, /* Usually the root div */
+body > div:first-child * {
+  color: #ffffff !important;
+}
+
+/* Explicitly protect modals from white text */
+[data-radix-dialog-content],
+[data-radix-dialog-content] * {
+  color: inherit !important;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
