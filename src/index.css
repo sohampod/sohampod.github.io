@@ -1,11 +1,12 @@
 /* Import SF Pro Display font from reliable CDN */
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 
-/* Apply SF Pro Display to entire website */
+/* Apply SF Pro Display to entire website with lighter weight */
 * {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 
                'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
                'Helvetica Neue', sans-serif !important;
+  font-weight: 350 !important; /* Lighter weight for subtle look */
 }
 
 /* macOS-style font rendering */
@@ -34,49 +35,45 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 35%; /* Changed from pure black to dark gray */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 25%; /* Dark gray instead of black */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 25%; /* Dark gray instead of black */
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 0 0% 25%; /* Dark gray instead of black */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 25%; /* Dark gray instead of black */
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 0 0% 25%; /* Dark gray instead of black */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 0 0% 25%; /* Dark gray instead of black */
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 25%; /* Dark gray instead of black */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-primary: 0 0% 25%; /* Dark gray instead of black */
     --sidebar-primary-foreground: 0 0% 98%;
 
     --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-foreground: 0 0% 25%; /* Dark gray instead of black */
 
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -126,6 +123,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-weight: 350; /* Ensure body uses the lighter weight */
   }
 }
 
@@ -133,4 +131,17 @@ All colors MUST be HSL.
 /* Hide Radix default close button globally */
 [data-radix-dialog-close] {
   display: none !important;
+}
+
+/* Additional subtlety for specific elements that might still be too dark */
+.text-black {
+  color: hsl(0, 0%, 25%) !important; /* Replace pure black with dark gray */
+}
+
+.text-gray-900 {
+  color: hsl(0, 0%, 30%) !important; /* Make dark gray a bit lighter */
+}
+
+.text-gray-800 {
+  color: hsl(0, 0%, 40%) !important; /* Make medium gray lighter */
 }
