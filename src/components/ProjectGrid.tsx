@@ -32,7 +32,7 @@ const projects: Project[] = [
       { name: 'TLDR; Case Study', url: 'https://www.figma.com/deck/e0fGZ4yg77hcKYDzUdQxxA/Discord-Case-Study?node-id=1-42&viewport=-73%2C-100%2C0.58&t=2IGbubGZaTfajX4M-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', type: 'figma', icon: '🔗' },
       { name: 'Onboarding Flow', url: 'https://www.figma.com/proto/Erd0OPy2YDOTnWuKdLw4oO/Discord-Onboarding?node-id=535-6766&viewport=-6375%2C2668%2C0.61&scaling=scale-down&starting-point-node-id=535%3A6766&show-proto-sidebar=1', type: 'live', icon: '🌐' },
       { name: 'Discord Case Study', url: 'https://sohampod.super.site/discord-a-ux-case-study', type: 'documentation', icon: '📚' },
-      { name: 'Presentation', url: 'https://www.youtube.com/watch?v=KnDjGeLF5iw&t=111s', type: 'video', icon: '▶' }
+      { name: 'Presentation', url: 'https://www.youtube.com/watch?v=KnDjGeLF5iw&t', type: 'video', icon: '▶' }
     ]
   },
   {
