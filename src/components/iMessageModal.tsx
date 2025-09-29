@@ -18,13 +18,13 @@ interface Question {
 const questions: Question[] = [
   {
     id: '1',
-    question: 'What technologies do you work with?',
-    answer: 'I specialize in React, TypeScript, Node.js, and modern web technologies. I also have experience with cloud platforms and databases.'
+    question: 'And tell me, in a low whisper: What is the philosophical zip code of your design process?',
+    answer: 'Oh, I’m the one perpetually searching for the "Why?" If a thing just is, without a resonant purpose, I tend to treat it like mere visual noise... I’d much rather spend my energy engineering little pockets of indispensable, necessary soul into the world. If it’s not going to vibrate with purpose, I simply don’t open the toolkit.'
   },
   {
     id: '2',
-    question: 'Can you tell me about your experience?',
-    answer: 'I have over 5 years of experience in full-stack development, working on various projects from e-commerce platforms to SaaS applications.'
+    question: 'A rather large question, I admit, but... what are the highlights of your personal data log? Whats the narrative thread youve been optimizing?',
+    answer: 'My existence, so far, has been less a grand career arc and more an endless sequence of self-assigned tutorials. I specialize, you see, in the deliberate acquisition of things I dont yet know —the genuine joy is in watching that initial ignorance compile successfully into a functional, meaningful skill. If the work isnt a continuous lesson, I consider it a day spent off-motto.'
   },
   {
     id: '3',
