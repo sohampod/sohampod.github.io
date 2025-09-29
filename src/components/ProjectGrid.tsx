@@ -40,7 +40,7 @@ const projects: Project[] = [
     title: 'project 2 (atherEV)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'TLDR; Ather Case Study', url: 'https://www.figma.com/deck/guBpY7Y7WqUYSTWGLY9Xfu/Ather-Slide-Deck?node-id=2-3433&t=qxKMN5gv7yOUvVsd-1', type: 'figma', icon: '🔗' },
+      { name: 'TLDR; Ather Case Study', url: 'https://www.figma.com/deck/guBpY7Y7WqUYSTWGLY9Xfu/Ather-Slide-Deck?node-id=1-42&t=qxKMN5gv7yOUvVsd-1', type: 'figma', icon: '🔗' },
       { name: 'Ather Case Study', url: 'https://sohampod.super.site/ather-ev-a-ux-case-study', type: 'live', icon: '📚' },
       { name: 'Prototype', url: 'https://www.figma.com/proto/54Ldmu2FbAIUxWymNvwtNg/Ather-EV?kind=proto&node-id=97-424&page-id=0:1&scaling=scale-down&starting-point-node-id=97:424&viewport=1636,362,0.42', type: 'live', icon: '🌐' },
       { name: 'Presentation', url: 'https://www.youtube.com/watch?v=v393ghXUWbg', type: 'demo', icon: '▶' }
