@@ -20,6 +20,7 @@ const projects: Project[] = [
     title: 'resume.pdf',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/8b24475ceba17d421430769c195421c63929f4a2?placeholderIfAbsent=true',
     links: [
+      { name: 'Download PDF', url: '#https://drive.google.com/uc?export=download&id=1evTHFUHJTR8VZp9Ns0Gi7a1BuVZo__H3', type: 'documentation', icon: '📄' },
       { name: 'View Online', url: 'https://drive.google.com/file/d/1evTHFUHJTR8VZp9Ns0Gi7a1BuVZo__H3/view?usp=sharing', type: 'live', icon: '👁️' }
     ]
   },
