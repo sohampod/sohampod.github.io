@@ -28,18 +28,18 @@ const questions: Question[] = [
   },
   {
     id: '3',
-    question: 'What is your preferred development approach?',
-    answer: 'I follow agile methodologies and believe in clean, maintainable code. I prioritize user experience and performance in all my projects.'
+    question: 'Walk me through your typical workflow, but use an analogy that involves an ancient map and a very quiet orchestra.',
+    answer: 'It’s less a workflow and more a slow, geological excavation. I start by reducing everything to grayscale and silence until the essential signal shouts loud enough to be heard. My work is simply the gentle resistance against all the digital clutter trying to bury that original, clear intention.'
   },
   {
     id: '4',
-    question: 'Are you available for new projects?',
-    answer: 'Yes, I am currently available for new opportunities. Feel free to reach out to discuss your project requirements.'
+    question: 'How do you navigate the inevitable collision when your indispensable soul meets a stakeholders budget spreadsheet?',
+    answer: 'I treat friction as a necessary calibration. If the initial pushback is purely aesthetic, I ignore it. But if the resistance suggests a genuine structural flaw in the purpose itself, I pivot instantly. A truly good critique, you see, is merely the market whispering a required bug fix to the meaning.'
   },
   {
     id: '5',
-    question: 'How do you handle project deadlines?',
-    answer: 'I believe in setting realistic timelines and maintaining clear communication throughout the project. I break down tasks into manageable chunks and provide regular updates.'
+    question: 'And finally, if you had to assign a job title to your future self, what would be the most appropriately esoteric one?',
+    answer: 'Oh, I aspire to be the Chief Existential Curator. My only Key Performance Indicator would be ensuring that every project, every pixel, and every minute spent on the board justifies its own existence. The goal isnt scale; the goal is undeniable, quiet necessity.'
   }
 ];
 
