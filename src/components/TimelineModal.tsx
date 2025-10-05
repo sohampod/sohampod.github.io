@@ -53,7 +53,7 @@ export const TimelineModal: React.FC<TimelineModalProps> = ({ isOpen, onClose })
             </div>
             <div className="absolute left-1/2 transform -translate-x-1/2">
               <span className="text-[13px] font-[590] text-[#000000] select-none tracking-[-0.08px]">
-                Project Timeline
+                Timeline
               </span>
             </div>
           </div>
