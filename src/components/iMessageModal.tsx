@@ -67,8 +67,8 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
           {/* REPLACED: Original top bar with ModalTopBar component */}
           <ModalTopBar title="iMessage" onClose={onClose} />
           
-          {/* Messages Container - EXACTLY THE SAME AS BEFORE */}
-          <div className="h-full overflow-y-auto p-4 space-y-4 bg-gray-50">
+          {/* Messages Container - UPDATED: Added flex-1 and min-h-0 for proper scrolling */}
+          <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {questions.map((item) => (
               <div key={item.id} className="space-y-3">
                 {/* Question from sender */}
