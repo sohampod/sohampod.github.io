@@ -64,10 +64,10 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
         <div className="flex flex-col h-full bg-white">
           <ModalTopBar title="iMessage" onClose={onClose} />
           
-          {/* FIXED SCROLL CONTAINER - This will definitely work */}
-          <div className="flex-1 overflow-hidden flex flex-col">
-            <div className="flex-1 overflow-y-auto bg-gray-50">
-              <div className="p-4 space-y-4 min-h-full">
+          {/* ABSOLUTE POSITIONING APPROACH - Guaranteed to work */}
+          <div className="flex-1 relative bg-gray-50">
+            <div className="absolute inset-0 overflow-y-auto">
+              <div className="p-4 space-y-4">
                 {questions.map((item) => (
                   <div key={item.id} className="space-y-3">
                     {/* Question from sender */}
