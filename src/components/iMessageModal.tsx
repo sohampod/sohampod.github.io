@@ -67,44 +67,46 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
           {/* REPLACED: Original top bar with ModalTopBar component */}
           <ModalTopBar title="iMessage" onClose={onClose} />
           
-          {/* Messages Container - UPDATED: Added flex-1 and min-h-0 for proper scrolling */}
-          <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-4 bg-gray-50">
-            {questions.map((item) => (
-              <div key={item.id} className="space-y-3">
-                {/* Question from sender */}
-                <div className="flex items-start space-x-2">
-                  <div className="flex-shrink-0 w-6 h-6 bg-gray-300 rounded-full"></div>
-                  <div className="max-w-[280px]">
-                    <div
-                      className="bg-gray-200 rounded-[18px] rounded-bl-[4px] px-4 py-2 cursor-pointer hover:bg-gray-300 transition-colors group"
-                      onClick={() => handleQuestionClick(item.id)}
-                    >
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm text-gray-800">{item.question}</p>
-                        <Plus
-                          size={12}
-                          className={`ml-2 text-gray-500 transition-transform ${
-                            expandedAnswers.has(item.id) ? 'rotate-45' : ''
-                          }`}
-                        />
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-1 ml-4">Just now</p>
-                  </div>
-                </div>
-                {/* Answer from user (when expanded) */}
-                {expandedAnswers.has(item.id) && (
-                  <div className="flex justify-end">
+          {/* Messages Container - UPDATED: Fixed scroll container */}
+          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+              {questions.map((item) => (
+                <div key={item.id} className="space-y-3">
+                  {/* Question from sender */}
+                  <div className="flex items-start space-x-2">
+                    <div className="flex-shrink-0 w-6 h-6 bg-gray-300 rounded-full"></div>
                     <div className="max-w-[280px]">
-                      <div className="bg-blue-500 text-white rounded-[18px] rounded-br-[4px] px-4 py-2">
-                        <p className="text-sm">{item.answer}</p>
+                      <div
+                        className="bg-gray-200 rounded-[18px] rounded-bl-[4px] px-4 py-2 cursor-pointer hover:bg-gray-300 transition-colors group"
+                        onClick={() => handleQuestionClick(item.id)}
+                      >
+                        <div className="flex items-center justify-between">
+                          <p className="text-sm text-gray-800">{item.question}</p>
+                          <Plus
+                            size={12}
+                            className={`ml-2 text-gray-500 transition-transform ${
+                              expandedAnswers.has(item.id) ? 'rotate-45' : ''
+                            }`}
+                          />
+                        </div>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1 mr-4 text-right">Just now</p>
+                      <p className="text-xs text-gray-500 mt-1 ml-4">Just now</p>
                     </div>
                   </div>
-                )}
-              </div>
-            ))}
+                  {/* Answer from user (when expanded) */}
+                  {expandedAnswers.has(item.id) && (
+                    <div className="flex justify-end">
+                      <div className="max-w-[280px]">
+                        <div className="bg-blue-500 text-white rounded-[18px] rounded-br-[4px] px-4 py-2">
+                          <p className="text-sm">{item.answer}</p>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1 mr-4 text-right">Just now</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </DialogContent>
