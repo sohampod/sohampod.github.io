@@ -9,28 +9,28 @@ interface TimelineModalProps {
 
 const milestones = [
   {
-    date: 'Q1 2024',
-    title: 'Project Kick-off',
+    date: 'Till 2019',
+    title: 'Delusional Phase',
     description:
-      'Defined project scope, goals, and core functionalities. Assembled the development team and established the initial roadmap.',
+      ' I graduated with a degree in Science with Maths, which felt like the right path at the time. My days were all about the game—football and basketball were my whole world, my biggest dreams.The universe had other plans, thanks to an injury. It put me on a detour, but it also gave me a chance to reset. Im now exploring where to aim all that passion, trying to figure out whats next for someone whos had to change the rules of the game.',
   },
   {
-    date: 'Q2 2024',
-    title: 'Prototype Development',
+    date: '2019 to 2023',
+    title: 'College Years and a lot of work',
     description:
-      'Completed the first functional prototype. Focused on core user flows and tested initial design concepts with user groups.',
+      'My next four years were spent trading the turf for the bustling energy of Chennai, India. College was less about lectures and more about a high-speed juggling act—balancing books and a job. It was exhausting, slightly chaotic, and it absolutely served as my real-world masterclass in figuring out what life is truly made of.',
   },
   {
-    date: 'Q3 2024',
-    title: 'Beta Launch',
+    date: '2023 to 2025',
+    title: 'Black spot',
     description:
-      'Launched the private beta to a select group of users. Collected feedback and began iterating on key features.',
+      'The two years that followed were a deeply personal, unscheduled sabbatical. Life decided to test my resilience with a lot of heavy lifting. It wasnt a time of grand travel or achievement, but it was invaluable for learning how to stand firm when everything else felt unstable.',
   },
   {
-    date: 'Q4 2024',
-    title: 'Full Public Release',
+    date: '2025 September',
+    title: 'dream come true',
     description:
-      'After extensive testing and refinements, the project was officially launched to the public. Focused on performance and scalability.',
+      'That long-haul flight finally brought me to Germany, turning a dream from the ambitious folder into Current Reality. Now, with a deep breath and a new country under my feet, the only thing left to do is figure out what brilliant, chaotic thing comes next.',
   },
 ];
 
