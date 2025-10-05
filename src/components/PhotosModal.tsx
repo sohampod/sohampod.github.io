@@ -21,7 +21,7 @@ export const PhotosModal: React.FC<PhotosModalProps> = ({ isOpen, onClose }) => 
     {
       name: 'Behance',
       description: 'Creative Projects & Case Studies',
-      url: 'https://www.behance.net/sohampod',
+      url: 'https://www.behance.net/sohampoddar',
       color: 'from-blue-500 to-cyan-500',
       icon: '🎨',
       stats: 'Project case studies'
