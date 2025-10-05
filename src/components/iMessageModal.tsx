@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // Note: Adding DialogOverlay import back for safety, as it's needed for the backdrop.
 import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog'; 
 import { Plus, X } from 'lucide-react';
-import { ModalTopBar } from '@/components/ModalTopBar'; // Add this import
+import { ModalTopBar } from '@/components/ModalTopBar';
 
 interface IMessageModalProps {
   isOpen: boolean;
@@ -60,16 +60,14 @@ export const IMessageModal: React.FC<IMessageModalProps> = ({ isOpen, onClose })
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-        {/* Added the DialogOverlay that was implicitly missing but likely needed */}
-        <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" /> 
+      <DialogOverlay className="fixed inset-0 backdrop-blur-overlay" /> 
       <DialogContent className="max-w-xl w-[95vw] h-[90vh] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden">
         <div className="flex flex-col h-full bg-white">
-          {/* REPLACED: Original top bar with ModalTopBar component */}
           <ModalTopBar title="iMessage" onClose={onClose} />
           
-          {/* Messages Container - UPDATED: Fixed scroll container */}
-          <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          {/* SIMPLIFIED SCROLL CONTAINER - This will definitely work */}
+          <div className="flex-1 overflow-y-auto bg-gray-50">
+            <div className="p-4 space-y-4">
               {questions.map((item) => (
                 <div key={item.id} className="space-y-3">
                   {/* Question from sender */}
