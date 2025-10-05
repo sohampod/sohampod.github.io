@@ -10,19 +10,19 @@ interface TimelineModalProps {
 const milestones = [
   {
     date: 'Till 2019',
-    title: 'Delusional Phase',
+    title: 'delusional phase',
     description:
       ' I graduated with a degree in Science with Maths, which felt like the right path at the time. My days were all about the game—football and basketball were my whole world, my biggest dreams.The universe had other plans, thanks to an injury. It put me on a detour, but it also gave me a chance to reset. Im now exploring where to aim all that passion, trying to figure out whats next for someone whos had to change the rules of the game.',
   },
   {
     date: '2019 to 2023',
-    title: 'College Years and a lot of work',
+    title: 'college years and a lot of work',
     description:
       'My next four years were spent trading the turf for the bustling energy of Chennai, India. College was less about lectures and more about a high-speed juggling act—balancing books and a job. It was exhausting, slightly chaotic, and it absolutely served as my real-world masterclass in figuring out what life is truly made of.',
   },
   {
     date: '2023 to 2025',
-    title: 'Black spot',
+    title: 'black spot',
     description:
       'The two years that followed were a deeply personal, unscheduled sabbatical. Life decided to test my resilience with a lot of heavy lifting. It wasnt a time of grand travel or achievement, but it was invaluable for learning how to stand firm when everything else felt unstable.',
   },
