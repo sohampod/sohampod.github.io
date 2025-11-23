@@ -1,32 +1,28 @@
-import React from 'react';
+// src/components/ui/dock-icon.tsx
+import React from "react";
 
-interface DockIconProps {
+interface DockIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   src: string;
-  alt: string;
-  onClick?: () => void;
-  className?: string;
+  alt?: string;
+  size?: number; // optional override in pixels
 }
 
-export const DockIcon = React.forwardRef<HTMLButtonElement, DockIconProps>(({
-  src,
-  alt,
-  onClick,
-  className = ""
-}, ref) => {
+export const DockIcon: React.FC<DockIconProps> = ({ src, alt = "", size = 48, className = "", onClick }) => {
+  const s = `${size}px`;
   return (
     <button
-      ref={ref}
-      className={`hover:scale-110 transition-transform duration-200 ${className}`}
       onClick={onClick}
+      className={`flex items-center justify-center p-0 bg-transparent border-none outline-none ${className}`}
       aria-label={alt}
+      style={{ width: s, height: s }}
     >
       <img
         src={src}
         alt={alt}
-        className="aspect-[1] object-contain w-10"
+        style={{ width: s, height: s }}
+        className="object-contain block"
+        draggable={false}
       />
     </button>
   );
-});
-
-DockIcon.displayName = "DockIcon";
+};
