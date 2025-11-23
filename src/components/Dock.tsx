@@ -10,11 +10,14 @@ interface DockApp {
   id: string;
   name: string;
   icon: string;
-  visualScale?: number;   // NEW: optional per-icon scale
+  visualScale?: number;
 }
 
-const MEDIUM_URL = "https://medium.com/@soham.poddar23"; 
-const mediumIcon = "/medium.svg"; 
+const MEDIUM_URL = "https://medium.com/@soham.poddar23";
+const LINKEDIN_URL = "https://www.linkedin.com/in/sohampoddar/"; // <- replace with your exact profile URL if different
+
+const mediumIcon = "/medium.svg";
+const linkedinIcon = "/linkedin.svg";
 
 const dockApps: DockApp[] = [
   {
@@ -48,16 +51,22 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    icon: linkedinIcon,
+    visualScale: 0.90
+  },
+  {
     id: 'medium',
     name: 'Medium',
     icon: mediumIcon,
-    visualScale: 0.88    // ⬅️ Slightly smaller
+    visualScale: 0.88
   },
   {
     id: 'trash',
     name: 'Apple Music',
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png',
-    visualScale: 0.90    // ⬅️ Slightly smaller
+    visualScale: 0.90
   }
 ];
 
@@ -82,6 +91,8 @@ export const Dock: React.FC = () => {
       setIsTimelineModalOpen(true);
     } else if (app.id === 'medium') {
       window.open(MEDIUM_URL, '_blank', 'noopener,noreferrer');
+    } else if (app.id === 'linkedin') {
+      window.open(LINKEDIN_URL, '_blank', 'noopener,noreferrer');
     } else if (app.id === 'trash') {
       setIsAppleMusicModalOpen(true);
     }
