@@ -98,12 +98,12 @@ const projects: Project[] = [
   },
   {
     id: 'project8',
-    title: 'project 8 (thokbajaar)',
+    title: 'project 8 (serenezen)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/thokbajaar', type: 'github', icon: '🔗' },
-      { name: 'Live Marketplace', url: 'https://thokbajaar.com', type: 'live', icon: '🛍️' },
-      { name: 'Seller Dashboard', url: 'https://seller.thokbajaar.com', type: 'demo', icon: '📊' }
+      { name: 'Presentation', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-486&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A486&show-proto-sidebar=1', type: 'github', icon: '📄' },
+      { name: 'Wireframes', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-5962&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A5962&show-proto-sidebar=1', type: 'live', icon: '🛍️' },
+      { name: 'High Fidelity Screens', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-6194&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A6194&show-proto-sidebar=1', type: 'demo', icon: '📊' }
     ]
   }
 ];
