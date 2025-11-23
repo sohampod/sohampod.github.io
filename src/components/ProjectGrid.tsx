@@ -51,7 +51,7 @@ const projects: Project[] = [
     title: 'project 3 (theswagco)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'Presentation', url: 'https://www.figma.com/proto/zkr6MAcgUbu3jDmer8LjGp/UX-Case-Study---ReWorks?page-id=0%3A1&node-id=1-5&viewport=-144%2C233%2C0.36&t=VqtgPuDnqD5v05wH-1&scaling=scale-down&content-scaling=fixed', type: 'figma', icon: '🔗' },
+      { name: 'Presentation', url: 'https://www.figma.com/proto/zkr6MAcgUbu3jDmer8LjGp/UX-Case-Study-ReWorks?node-id=0-1&p=f&viewport=194%2C693%2C0.07&t=qki6xhNZcXR5ccOy-0&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A3', type: 'figma', icon: '🔗' },
       { name: 'The Swag Co (current site)', url: 'https://theswagco.com', type: 'live', icon: '🌐' },
       { name: 'Reworks.in (old site)', url: 'https://reworks.in/', type: 'live', icon: '🌐' }
     ]
