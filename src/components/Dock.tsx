@@ -12,7 +12,7 @@ interface DockApp {
   icon: string;
 }
 
-const MEDIUM_URL = "https://medium.com/@your-username"; // <-- REPLACE with your Medium URL
+const MEDIUM_URL = "https://medium.com/@soham.poddar23"; // <-- REPLACE with your Medium URL
 const mediumIcon = "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/medium.svg"; // or "/medium.svg" from /public
 
 const dockApps: DockApp[] = [
