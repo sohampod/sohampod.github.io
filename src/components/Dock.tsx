@@ -12,6 +12,9 @@ interface DockApp {
   icon: string;
 }
 
+const MEDIUM_URL = "https://medium.com/@your-username"; // <-- REPLACE with your Medium URL
+const mediumIcon = "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/medium.svg"; // or "/medium.svg" from /public
+
 const dockApps: DockApp[] = [
   {
     id: 'finder',
@@ -44,6 +47,11 @@ const dockApps: DockApp[] = [
     icon: 'https://api.builder.io/api/v1/image/assets/TEMP/058265cacc3489f22f961135746cb2c57a9943d0?placeholderIfAbsent=true'
   },
   {
+    id: 'medium',
+    name: 'Medium',
+    icon: mediumIcon
+  },
+  {
     id: 'trash',
     name: 'Apple Music',
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png'
@@ -56,7 +64,8 @@ export const Dock: React.FC = () => {
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
   const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false);
 
-  const handleAppClick = (app: DockApp) => {
+  const handleAppClick = (app?: DockApp) => {
+    if (!app) return;
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
     } else if (app.id === 'app2') {
@@ -67,7 +76,10 @@ export const Dock: React.FC = () => {
       window.open('https://calendly.com/sohampod/30min', '_blank');
     } else if (app.id === 'app5') {
       setIsTimelineModalOpen(true);
-    } else if (app.id === 'trash') { // Now opens the Apple Music Modal when clicking the trash icon
+    } else if (app.id === 'medium') {
+      // Open Medium directly in a new tab (user-initiated)
+      window.open(MEDIUM_URL, '_blank', 'noopener,noreferrer');
+    } else if (app.id === 'trash') {
       setIsAppleMusicModalOpen(true);
     } else {
       console.log(`Opening ${app.name}`);
