@@ -51,9 +51,9 @@ const projects: Project[] = [
     title: 'project 3 (theswagco)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/theswagco', type: 'github', icon: '🔗' },
-      { name: 'Live Store', url: 'https://theswagco.com', type: 'live', icon: '🛒' },
-      { name: 'Admin Panel', url: 'https://admin.theswagco.com', type: 'demo', icon: '⚙️' }
+      { name: 'Presentation', url: 'https://www.figma.com/proto/zkr6MAcgUbu3jDmer8LjGp/UX-Case-Study---ReWorks?page-id=0%3A1&node-id=1-5&viewport=-144%2C233%2C0.36&t=VqtgPuDnqD5v05wH-1&scaling=scale-down&content-scaling=fixed', type: 'figma', icon: '🔗' },
+      { name: 'The Swag Co (current site)', url: 'https://theswagco.com', type: 'live', icon: '🌐' },
+      { name: 'Reworks.in (old site)', url: 'https://reworks.in/', type: 'live', icon: '🌐' }
     ]
   },
   {
@@ -101,9 +101,9 @@ const projects: Project[] = [
     title: 'project 8 (serenezen)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'Presentation', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-486&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A486&show-proto-sidebar=1', type: 'github', icon: '📄' },
-      { name: 'Wireframes', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-5962&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A5962&show-proto-sidebar=1', type: 'live', icon: '🛍️' },
-      { name: 'High Fidelity Screens', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-6194&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A6194&show-proto-sidebar=1', type: 'demo', icon: '📊' }
+      { name: 'Presentation', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-486&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A486&show-proto-sidebar=1', type: 'figma', icon: '📄' },
+      { name: 'Wireframes', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-5962&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A5962&show-proto-sidebar=1', type: 'figma', icon: '🛍️' },
+      { name: 'High Fidelity Screens', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-6194&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A6194&show-proto-sidebar=1', type: 'figma', icon: '📊' }
     ]
   }
 ];
