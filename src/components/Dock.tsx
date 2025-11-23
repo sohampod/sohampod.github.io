@@ -10,10 +10,11 @@ interface DockApp {
   id: string;
   name: string;
   icon: string;
+  visualScale?: number;   // NEW: optional per-icon scale
 }
 
-const MEDIUM_URL = "https://medium.com/@soham.poddar23"; // <-- REPLACE with your Medium URL
-const mediumIcon = "/medium.svg"; // or "/medium.svg" from /public
+const MEDIUM_URL = "https://medium.com/@soham.poddar23"; 
+const mediumIcon = "/medium.svg"; 
 
 const dockApps: DockApp[] = [
   {
@@ -49,12 +50,14 @@ const dockApps: DockApp[] = [
   {
     id: 'medium',
     name: 'Medium',
-    icon: mediumIcon
+    icon: mediumIcon,
+    visualScale: 0.88    // ⬅️ Slightly smaller
   },
   {
     id: 'trash',
     name: 'Apple Music',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png'
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/2048px-Apple_Music_icon.svg.png',
+    visualScale: 0.90    // ⬅️ Slightly smaller
   }
 ];
 
@@ -66,6 +69,7 @@ export const Dock: React.FC = () => {
 
   const handleAppClick = (app?: DockApp) => {
     if (!app) return;
+
     if (app.id === 'app1') {
       setIsMessageModalOpen(true);
     } else if (app.id === 'app2') {
@@ -77,47 +81,54 @@ export const Dock: React.FC = () => {
     } else if (app.id === 'app5') {
       setIsTimelineModalOpen(true);
     } else if (app.id === 'medium') {
-      // Open Medium directly in a new tab (user-initiated)
       window.open(MEDIUM_URL, '_blank', 'noopener,noreferrer');
     } else if (app.id === 'trash') {
       setIsAppleMusicModalOpen(true);
-    } else {
-      console.log(`Opening ${app.name}`);
     }
   };
 
   return (
     <nav
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl shadow-2xl mx-auto w-fit px-4 py-2 rounded-[17px] border border-[rgba(255,255,255,0.1)]"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl 
+                 shadow-2xl mx-auto w-fit px-4 py-2 rounded-[17px] border border-[rgba(255,255,255,0.1)]"
       role="navigation"
       aria-label="Application dock"
     >
       <div className="flex gap-4 items-center">
-        {dockApps.filter(app => app.id !== 'finder' && app.id !== 'trash').map((app) => (
-          app.id === 'app2' ? (
-            <TooltipProvider delayDuration={0} key={app.id}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <DockIcon
-                    src={app.icon}
-                    alt={app.name}
-                    onClick={() => handleAppClick(app)}
-                  />
-                </TooltipTrigger>
-                <TooltipContent side="top" align="center">
-                  <p>soham.poddar23@gmail.com</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ) : (
-            <DockIcon
-              key={app.id}
-              src={app.icon}
-              alt={app.name}
-              onClick={() => handleAppClick(app)}
-            />
-          )
-        ))}
+
+        {/* Main Icons */}
+        {dockApps
+          .filter(app => app.id !== 'finder' && app.id !== 'trash')
+          .map((app) => (
+            app.id === 'app2' ? (
+              <TooltipProvider delayDuration={0} key={app.id}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DockIcon
+                      src={app.icon}
+                      alt={app.name}
+                      onClick={() => handleAppClick(app)}
+                      size={40}
+                      visualScale={app.visualScale ?? 1}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent side="top" align="center">
+                    <p>soham.poddar23@gmail.com</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ) : (
+              <DockIcon
+                key={app.id}
+                src={app.icon}
+                alt={app.name}
+                onClick={() => handleAppClick(app)}
+                size={40}
+                visualScale={app.visualScale ?? 1}
+              />
+            )
+          ))}
+
         {/* Separator */}
         <div className="flex items-center">
           <img
@@ -127,14 +138,18 @@ export const Dock: React.FC = () => {
             role="separator"
           />
         </div>
-        {/* Apple Music Icon (formerly trash) */}
+
+        {/* Apple Music (Trash) */}
         <DockIcon
-          src={dockApps.find(app => app.id === 'trash')?.icon}
-          alt={dockApps.find(app => app.id === 'trash')?.name}
+          src={dockApps.find(app => app.id === 'trash')?.icon || ""}
+          alt="Apple Music"
           onClick={() => handleAppClick(dockApps.find(app => app.id === 'trash'))}
+          size={40}
+          visualScale={dockApps.find(app => app.id === 'trash')?.visualScale ?? 1}
         />
       </div>
 
+      {/* Modals */}
       <IMessageModal
         isOpen={isMessageModalOpen}
         onClose={() => setIsMessageModalOpen(false)}
