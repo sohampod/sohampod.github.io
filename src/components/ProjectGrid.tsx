@@ -72,9 +72,9 @@ const projects: Project[] = [
     title: 'project 5 (tranquilstay)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/tranquilstay', type: 'github', icon: '🔗' },
-      { name: 'Live Booking Site', url: 'https://tranquilstay.com', type: 'live', icon: '🏨' },
-      { name: 'Mobile App', url: 'https://app.tranquilstay.com', type: 'demo', icon: '📱' }
+      { name: 'Brand Guidelines', url: 'https://www.figma.com/deck/0lND8fw9VhOpKsVwC5HkIs/Brand-Guidelines?node-id=2-456&t=zdTRfekygRh4fHv9-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', type: 'github', icon: '🔗' },
+      { name: 'Live Site', url: 'https://www.thetranquilstay.in/', type: 'live', icon: '🏨' },
+      { name: 'Tranquil Kitchen', url: 'https://www.figma.com/proto/dXhpNq4MsdH9UhIbNhkPI5/tranquil-kitchen?node-id=1-39&t=IZpMPcPqoPjG4EWh-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A39', type: 'demo', icon: '📋' }
     ]
   },
   {
