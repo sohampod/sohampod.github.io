@@ -79,22 +79,22 @@ const projects: Project[] = [
   },
   {
     id: 'project6',
-    title: 'project 6 (homefood)',
+    title: 'project 6 (AR christmas markt [WIP])',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/homefood', type: 'github', icon: '🔗' },
-      { name: 'Live Platform', url: 'https://homefood.com', type: 'live', icon: '🍽️' },
-      { name: 'Chef Dashboard', url: 'https://chef.homefood.com', type: 'demo', icon: '👨‍🍳' }
+      { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
+      { name: 'Live Platform', url: '', type: 'live', icon: '🍽️' },
+      { name: 'Chef Dashboard', url: '', type: 'demo', icon: '👨‍🍳' }
     ]
   },
   {
     id: 'project7',
-    title: 'project 7 (this portfolio)',
+    title: 'project 7 (WIP)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/portfolio', type: 'github', icon: '🔗' },
-      { name: 'Live Portfolio', url: 'https://sohampod.dev', type: 'live', icon: '🌐' },
-      { name: 'Design System', url: 'https://design.sohampod.dev', type: 'documentation', icon: '🎨' }
+      { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
+      { name: 'Live Portfolio', url: '', type: 'live', icon: '🌐' },
+      { name: 'Design System', url: '', type: 'documentation', icon: '🎨' }
     ]
   },
   {
