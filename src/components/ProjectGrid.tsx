@@ -61,7 +61,7 @@ const projects: Project[] = [
     title: 'project 4 (globacom)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'GitHub Repository', url: 'https://github.com/username/globacom', type: 'github', icon: '🔗' },
+      { name: 'Relay CSP Deck', url: 'https://www.figma.com/deck/Mzinz9WNxlzJ5xkI1OM3KN/Relay-CSP?node-id=1-96&t=gsLzbUAUcFuWjjFH-1', type: 'figma deck', icon: '🔗' },
       { name: 'Live Website', url: 'https://globacom-project.com', type: 'live', icon: '🌐' },
       { name: 'API Documentation', url: 'https://api.globacom-project.com', type: 'documentation', icon: '📋' }
     ]
