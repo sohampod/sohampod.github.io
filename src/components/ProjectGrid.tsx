@@ -61,9 +61,10 @@ const projects: Project[] = [
     title: 'project 4 (globacom)',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
-      { name: 'Relay CSP Deck', url: 'https://www.figma.com/deck/Mzinz9WNxlzJ5xkI1OM3KN/Relay-CSP?node-id=1-96&t=gsLzbUAUcFuWjjFH-1', type: 'figma deck', icon: '🔗' },
-      { name: 'Live Website', url: 'https://globacom-project.com', type: 'live', icon: '🌐' },
-      { name: 'API Documentation', url: 'https://api.globacom-project.com', type: 'documentation', icon: '📋' }
+      { name: 'Relay CSP Deck', url: 'https://www.figma.com/deck/Mzinz9WNxlzJ5xkI1OM3KN/Relay-CSP?node-id=1-96&t=gsLzbUAUcFuWjjFH-1', type: 'figma deck', icon: '📋' },
+      { name: '4 Website iterations', url: 'https://www.figma.com/proto/GVJXwNIoI4EuC9gxKeDLMU/globacom?node-id=1-2&p=f&t=L7Y71J9WtqhsJqfg-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1', type: 'iterations', icon: '🔗' },
+      { name: '2 mobile iterations', url: 'https://www.figma.com/proto/GVJXwNIoI4EuC9gxKeDLMU/globacom?node-id=3-5423&p=f&t=sktF21TELUhqMYlK-1&scaling=min-zoom&content-scaling=fixed&page-id=3%3A5217&starting-point-node-id=3%3A5423&show-proto-sidebar=1', type: 'iterations', icon: '🔗' },
+      { name: 'final draft', url: 'https://www.figma.com/proto/GVJXwNIoI4EuC9gxKeDLMU/globacom?node-id=3-6435&p=f&t=YCW8n91z3vA1G9fB-1&scaling=contain&content-scaling=fixed&page-id=3%3A6429&starting-point-node-id=3%3A6435', type: 'live', icon: '🌐' }
     ]
   },
   {
