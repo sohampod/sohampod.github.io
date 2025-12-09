@@ -58,28 +58,30 @@ export const TimelineModal: React.FC<TimelineModalProps> = ({ isOpen, onClose })
             </div>
           </div>
 
-          {/* Timeline Content */}
-          <div className="flex-1 p-6 overflow-y-auto">
-            <div className="space-y-8 text-black w-full">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="flex gap-4 items-start">
-                  {/* Timeline Dot + Line */}
-                  <div className="flex flex-col items-center">
-                    <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
-                    {index < milestones.length - 1 && (
-                      <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
-                    )}
+          {/* Timeline Content - Using absolute positioning for guaranteed scroll */}
+          <div className="flex-1 relative">
+            <div className="absolute inset-0 overflow-y-auto p-6">
+              <div className="space-y-8 text-black w-full">
+                {milestones.map((milestone, index) => (
+                  <div key={index} className="flex gap-4 items-start">
+                    {/* Timeline Dot + Line */}
+                    <div className="flex flex-col items-center">
+                      <span className="h-3 w-3 rounded-full bg-blue-500 flex-shrink-0"></span>
+                      {index < milestones.length - 1 && (
+                        <div className="h-full w-0.5 mt-2 bg-blue-500/50"></div>
+                      )}
+                    </div>
+                    {/* Content */}
+                    <div className="flex flex-col">
+                      <p className="text-sm font-light uppercase text-gray-500">
+                        {milestone.date}
+                      </p>
+                      <h3 className="text-lg font-bold">{milestone.title}</h3>
+                      <p className="mt-1 text-sm text-gray-700">{milestone.description}</p>
+                    </div>
                   </div>
-                  {/* Content */}
-                  <div className="flex flex-col">
-                    <p className="text-sm font-light uppercase text-gray-500">
-                      {milestone.date}
-                    </p>
-                    <h3 className="text-lg font-bold">{milestone.title}</h3>
-                    <p className="mt-1 text-sm text-gray-700">{milestone.description}</p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
