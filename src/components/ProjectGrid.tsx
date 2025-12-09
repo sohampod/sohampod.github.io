@@ -26,7 +26,7 @@ const projects: Project[] = [
   },
   {
     id: 'project1',
-    title: 'project 1 (discord)',
+    title: 'discord case study',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'TLDR; Case Study', url: 'https://www.figma.com/deck/e0fGZ4yg77hcKYDzUdQxxA/Discord-Case-Study?node-id=1-42&viewport=-73%2C-100%2C0.58&t=2IGbubGZaTfajX4M-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', type: 'figma', icon: '🔗' },
@@ -37,7 +37,7 @@ const projects: Project[] = [
   },
   {
     id: 'project2',
-    title: 'project 2 (atherEV)',
+    title: 'atherEV case study',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'TLDR; Ather Case Study', url: 'https://www.figma.com/deck/guBpY7Y7WqUYSTWGLY9Xfu/Ather-Slide-Deck?node-id=1-42&t=qxKMN5gv7yOUvVsd-1', type: 'figma', icon: '🔗' },
@@ -48,7 +48,7 @@ const projects: Project[] = [
   },
   {
     id: 'project3',
-    title: 'project 3 (theswagco)',
+    title: 'theswagco files',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'Presentation', url: 'https://www.figma.com/proto/zkr6MAcgUbu3jDmer8LjGp/UX-Case-Study-ReWorks?node-id=0-1&p=f&viewport=194%2C693%2C0.07&t=qki6xhNZcXR5ccOy-0&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A3', type: 'figma', icon: '🔗' },
@@ -58,7 +58,7 @@ const projects: Project[] = [
   },
   {
     id: 'project4',
-    title: 'project 4 (globacom)',
+    title: 'globacom works and files',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'Relay CSP Deck', url: 'https://www.figma.com/deck/Mzinz9WNxlzJ5xkI1OM3KN/Relay-CSP?node-id=1-96&t=gsLzbUAUcFuWjjFH-1', type: 'figma deck', icon: '📋' },
@@ -69,7 +69,7 @@ const projects: Project[] = [
   },
   {
     id: 'project5',
-    title: 'project 5 (tranquilstay)',
+    title: 'tranquilstay files',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'Brand Guidelines', url: 'https://www.figma.com/deck/0lND8fw9VhOpKsVwC5HkIs/Brand-Guidelines?node-id=2-456&t=zdTRfekygRh4fHv9-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', type: 'github', icon: '🔗' },
@@ -79,7 +79,7 @@ const projects: Project[] = [
   },
   {
     id: 'project6',
-    title: 'project 6 (AR christmas markt [WIP])',
+    title: 'dont open its still in progress, nothing to see here',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
@@ -89,7 +89,7 @@ const projects: Project[] = [
   },
   {
     id: 'project7',
-    title: 'project 7 (WIP)',
+    title: 'dont open its still in progress, nothing to see here',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
@@ -99,7 +99,7 @@ const projects: Project[] = [
   },
   {
     id: 'project8',
-    title: 'project 8 (serenezen)',
+    title: 'serenezen mini project',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'Presentation', url: 'https://www.figma.com/proto/4K7tWUuwAqiYiiozBqTBWv/Meditation-App--Serenezen-?page-id=2301%3A454&node-id=2301-486&p=f&viewport=45%2C266%2C0.08&t=emskZLLAfVIExx8S-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2301%3A486&show-proto-sidebar=1', type: 'figma', icon: '📄' },
