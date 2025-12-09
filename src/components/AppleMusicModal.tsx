@@ -15,7 +15,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
 
       <DialogContent
         className="
-          max-w-md w-[420px] h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
+          max-w-md w-[95vw] sm:w-[420px] h-auto sm:h-[265px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
           data-[state=open]:animate-in data-[state=closed]:animate-out 
           data-[state=closed]:fade-out data-[state=open]:fade-in 
           data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 
@@ -33,7 +33,7 @@ export const AppleMusicModal: React.FC<AppleMusicModalProps> = ({ isOpen, onClos
             <iframe
               allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
               height="175"
-              width="380"
+              className="w-full max-w-[380px]"
               style={{
                 overflow: 'hidden',
                 background: 'transparent',
