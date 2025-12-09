@@ -9,7 +9,7 @@ interface Project {
   links: {
     name: string;
     url: string;
-    type: 'github' | 'live' | 'demo' | 'documentation';
+    type: 'github' | 'live' | 'demo' | 'documentation' | 'figma' | 'video' | 'figma deck' | 'iterations';
     icon?: string;
   }[];
 }
@@ -121,9 +121,9 @@ export const ProjectGrid: React.FC = () => {
   };
 
   return (
-    <section className="flex w-full justify-end">
-      {/* 2-column grid */}
-      <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-[300px]">
+    <section className="flex w-full justify-center md:justify-end">
+      {/* Responsive grid: 3 cols on mobile, 2 cols on larger screens */}
+      <div className="grid grid-cols-3 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 w-full max-w-[280px] sm:max-w-[300px] px-2 md:px-0">
         {projects.map((project, index) => (
           <div key={project.id} className="flex justify-center">
             <ProjectIcon

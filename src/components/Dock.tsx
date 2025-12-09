@@ -5,6 +5,7 @@ import { PhotosModal } from './PhotosModal';
 import { TimelineModal } from './TimelineModal';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@radix-ui/react-tooltip';
 import { AppleMusicModal } from './AppleMusicModal';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface DockApp {
   id: string;
@@ -75,6 +76,9 @@ export const Dock: React.FC = () => {
   const [isPhotosModalOpen, setIsPhotosModalOpen] = useState(false);
   const [isTimelineModalOpen, setIsTimelineModalOpen] = useState(false);
   const [isAppleMusicModalOpen, setIsAppleMusicModalOpen] = useState(false);
+  const isMobile = useIsMobile();
+  
+  const iconSize = isMobile ? 32 : 40;
 
   const handleAppClick = (app?: DockApp) => {
     if (!app) return;
@@ -100,12 +104,12 @@ export const Dock: React.FC = () => {
 
   return (
     <nav
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl 
-                 shadow-2xl mx-auto w-fit px-4 py-2 rounded-[17px] border border-[rgba(255,255,255,0.1)]"
+      className="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 bg-[rgba(255,255,255,0.05)] backdrop-blur-xl 
+                 shadow-2xl mx-auto w-fit px-2 sm:px-4 py-1.5 sm:py-2 rounded-[14px] sm:rounded-[17px] border border-[rgba(255,255,255,0.1)]"
       role="navigation"
       aria-label="Application dock"
     >
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-2 sm:gap-4 items-center">
 
         {/* Main Icons */}
         {dockApps
@@ -119,7 +123,7 @@ export const Dock: React.FC = () => {
                       src={app.icon}
                       alt={app.name}
                       onClick={() => handleAppClick(app)}
-                      size={40}
+                      size={iconSize}
                       visualScale={app.visualScale ?? 1}
                     />
                   </TooltipTrigger>
@@ -134,7 +138,7 @@ export const Dock: React.FC = () => {
                 src={app.icon}
                 alt={app.name}
                 onClick={() => handleAppClick(app)}
-                size={40}
+                size={iconSize}
                 visualScale={app.visualScale ?? 1}
               />
             )
@@ -145,7 +149,7 @@ export const Dock: React.FC = () => {
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/1e16124ee43a3ce418d64092cbba50cede15404e?placeholderIfAbsent=true"
             alt=""
-            className="aspect-[0.02] object-contain w-px shrink-0 h-10"
+            className="aspect-[0.02] object-contain w-px shrink-0 h-8 sm:h-10"
             role="separator"
           />
         </div>
@@ -155,7 +159,7 @@ export const Dock: React.FC = () => {
           src={dockApps.find(app => app.id === 'trash')?.icon || ""}
           alt="Apple Music"
           onClick={() => handleAppClick(dockApps.find(app => app.id === 'trash'))}
-          size={40}
+          size={iconSize}
           visualScale={dockApps.find(app => app.id === 'trash')?.visualScale ?? 1}
         />
       </div>

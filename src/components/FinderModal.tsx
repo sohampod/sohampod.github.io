@@ -5,7 +5,7 @@ import { X, Minus, Plus, ChevronLeft, ChevronRight, Grid3X3, List, ExternalLink 
 interface ProjectLink {
   name: string;
   url: string;
-  type: 'github' | 'live' | 'demo' | 'documentation';
+  type: 'github' | 'live' | 'demo' | 'documentation' | 'figma' | 'video' | 'figma deck' | 'iterations';
   icon?: string;
 }
 
@@ -49,7 +49,7 @@ export const FinderModal: React.FC<FinderModalProps> = ({
       
       <DialogContent 
         className="
-          max-w-[600px] w-[95vw] h-[400px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
+          max-w-[600px] w-[95vw] sm:w-[90vw] h-[70vh] sm:h-[400px] p-0 border-none shadow-2xl rounded-[12px] overflow-hidden
           
           /* New animation classes for the macOS effect */
           data-[state=open]:animate-in data-[state=closed]:animate-out 
@@ -101,8 +101,8 @@ export const FinderModal: React.FC<FinderModalProps> = ({
           </div>
 
           {/* Content Area (remains the same) */}
-          <div className="flex-1 p-4 bg-white overflow-auto">
-            <div className="grid grid-cols-4 gap-4">
+          <div className="flex-1 p-3 sm:p-4 bg-white overflow-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
               {projectLinks.map((link, index) => (
                 <button
                   key={index}
