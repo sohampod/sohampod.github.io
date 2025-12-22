@@ -79,7 +79,7 @@ const projects: Project[] = [
   },
   {
     id: 'project6',
-    title: 'dont open its still in progress, nothing to see here',
+    title: 'empty folder',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
@@ -89,7 +89,7 @@ const projects: Project[] = [
   },
   {
     id: 'project7',
-    title: 'dont open its still in progress, nothing to see here',
+    title: 'empty folder',
     image: 'https://api.builder.io/api/v1/image/assets/TEMP/053a9f02e0dea8521ef246f2c170b44d66c19ffb?placeholderIfAbsent=true',
     links: [
       { name: 'GitHub Repository', url: '', type: 'github', icon: '🔗' },
