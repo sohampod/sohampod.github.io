@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function Connect() {
     const containerVariants = {
@@ -15,9 +16,9 @@ function Connect() {
             <div className="md:min-w-[512px] md:w-full md:max-w-2xl md:mx-auto">
                 <div className="flex flex-col justify-start max-w-2xl px-8 py-24">
                     <div className="grid w-8 h-8 mb-8 group">
-                        <a aria-label="Go to the homepage" href="/">
-                            <img alt="Soham Poddar" loading="lazy" width="128" height="128" className="rounded-full object-cover w-12 h-12" src="/avatar.png" />
-                        </a>
+                        <Link aria-label="Go to the homepage" to="/">
+                            <img alt="Soham Poddar" loading="lazy" width="128" height="128" className="rounded-full object-cover w-12 h-12" src={`${import.meta.env.BASE_URL}avatar.png`} />
+                        </Link>
                     </div>
 
                     <motion.div className="flex flex-col gap-12 origin-left" variants={containerVariants} initial="hidden" animate="visible">
@@ -33,8 +34,8 @@ function Connect() {
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="flex flex-row gap-12 mt-8">
-                            <a className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" href="/about">About</a>
-                            <a className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" href="/">Back to home</a>
+                            <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/about">About</Link>
+                            <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/">Back to home</Link>
                         </motion.div>
                     </motion.div>
                 </div>

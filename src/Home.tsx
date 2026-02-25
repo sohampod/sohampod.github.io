@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const projects = [
     {
@@ -129,7 +130,7 @@ function Home() {
                                 animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                                 exit={{ opacity: 0, scale: 0.95, y: -20, filter: 'blur(10px)' }}
                                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-full max-w-sm aspect-[9/19.5] rounded-[3rem] overflow-hidden border-[8px] border-zinc-50 shadow-2xl bg-zinc-50 relative group"
+                                className="w-[384px] h-[384px] rounded-2xl overflow-hidden border-[8px] border-zinc-50 shadow-2xl bg-zinc-50 relative group"
                             >
                                 {projects[hoveredIndex].type === 'video' ? (
                                     <video
@@ -156,19 +157,19 @@ function Home() {
             <div className="relative z-10 md:min-w-[512px] md:w-full md:max-w-7xl md:mx-auto">
                 <div className="flex flex-col justify-start max-w-2xl px-8 py-24 sm:py-32">
                     <div className="grid w-8 h-8 mb-8 group">
-                        <a aria-label="Go to the homepage" href="/">
+                        <Link aria-label="Go to the homepage" to="/">
                             <motion.img
                                 alt="Soham Poddar"
                                 loading="lazy"
                                 width="128"
                                 height="128"
                                 className="rounded-full object-cover w-10 h-10 transition-transform duration-300 group-hover:scale-110"
-                                src="/avatar.png"
+                                src={`${import.meta.env.BASE_URL}avatar.png`}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     <motion.div
@@ -186,8 +187,8 @@ function Home() {
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="flex flex-row gap-4">
-                            <a className="text-zinc-400 hover:text-black transition-colors" href="/about">About</a>
-                            <a className="text-zinc-400 hover:text-black transition-colors" href="/connect">Connect</a>
+                            <Link className="text-zinc-400 hover:text-black transition-colors" to="/about">About</Link>
+                            <Link className="text-zinc-400 hover:text-black transition-colors" to="/connect">Connect</Link>
                         </motion.div>
 
                         <motion.div
@@ -215,9 +216,9 @@ function Home() {
                                         )}
                                     </AnimatePresence>
 
-                                    <a
+                                    <Link
                                         className="relative inline-flex flex-col gap-1 py-2 px-4 no-underline cursor-pointer group"
-                                        href={project.link}
+                                        to={project.link}
                                     >
                                         <span className={`flex flex-col gap-0.5 transition-opacity duration-300 ${hoveredIndex !== null && hoveredIndex !== index ? 'opacity-30' : 'opacity-100'}`}>
                                             <span className="text-[15px] font-medium text-black transition-colors">
@@ -227,7 +228,7 @@ function Home() {
                                                 {project.desc}
                                             </span>
                                         </span>
-                                    </a>
+                                    </Link>
                                 </motion.div>
                             ))}
                         </motion.div>

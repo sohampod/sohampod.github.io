@@ -24,7 +24,7 @@ function ProjectPlaceholder() {
                 <div className="flex flex-col justify-start max-w-2xl px-8 py-24">
                     <div className="grid w-8 h-8 mb-8 group">
                         <Link aria-label="Go to the homepage" to="/">
-                            <img alt="Soham Poddar" loading="lazy" width="128" height="128" className="rounded-full object-cover w-12 h-12" src="/avatar.png" />
+                            <img alt="Soham Poddar" loading="lazy" width="128" height="128" className="rounded-full object-cover w-12 h-12" src={`${import.meta.env.BASE_URL}avatar.png`} />
                         </Link>
                     </div>
 

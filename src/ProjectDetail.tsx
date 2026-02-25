@@ -32,7 +32,7 @@ function ProjectDetail() {
                 <header className="w-full max-w-[608px] px-8 pt-24 sm:pt-32 flex flex-col gap-10">
                     <motion.div variants={fadeIn}>
                         <Link aria-label="Go to the homepage" to="/" className="w-8 h-8 block group">
-                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src="/avatar.png" />
+                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src={`${import.meta.env.BASE_URL}avatar.png`} />
                         </Link>
                     </motion.div>
 
