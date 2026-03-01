@@ -3,6 +3,7 @@ import Home from './Home';
 import About from './About';
 import Connect from './Connect';
 import InteractionPrototypes from './InteractionPrototypes';
+import DiscordCS from './DiscordCS';
 import ProjectDetail from './ProjectDetail';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/connect" element={<Connect />} />
       <Route path="/work/interaction-prototypes" element={<InteractionPrototypes />} />
+      <Route path="/work/discordcs" element={<DiscordCS />} />
       <Route path="/work/:id" element={<ProjectDetail />} />
       <Route path="/:id" element={<ProjectDetail />} />
     </Routes>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const projects = [
     {
-        title: 'Interaction prototypes',
-        desc: '2024–present · Interaction design',
-        link: '/work/interaction-prototypes',
+        title: 'Discord Case Study',
+        desc: '2021',
+        link: '/work/discordcs',
         preview: 'https://nelson.co/interactions/pinchscrolling.mp4',
         type: 'video'
     },

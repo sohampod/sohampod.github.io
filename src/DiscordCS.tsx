@@ -1,0 +1,108 @@
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const fadeIn = {
+    hidden: { opacity: 0, y: 16, filter: 'blur(8px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+function DiscordCS() {
+    return (
+        <div className="selection:bg-zinc-100 selection:text-black min-h-screen font-sans text-base lowercase bg-white pb-32">
+            <motion.div
+                className="flex flex-col items-center"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+            >
+                {/* Header Section */}
+                <header className="w-full max-w-[608px] px-8 pt-24 sm:pt-32 flex flex-col gap-10">
+                    <motion.div variants={fadeIn}>
+                        <Link aria-label="Go to the homepage" to="/" className="w-8 h-8 block group">
+                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src={`${import.meta.env.BASE_URL}avatar.png`} />
+                        </Link>
+                    </motion.div>
+
+                    <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-0.5">
+                            <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
+                                Interaction prototypes
+                            </motion.h1>
+                            <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
+                                Interaction design
+                            </motion.span>
+                        </div>
+                        <motion.p variants={fadeIn} className="text-black leading-relaxed mt-4">
+                            A series of software interaction prototypes I created to explore new and fluid ways to interact with operating systems. This project was driven by curiosity and a desire to become more proficient prototyping in SwiftUI.
+                        </motion.p>
+                    </div>
+                </header>
+
+                {/* Hero Media Section (832px) */}
+                <motion.div
+                    variants={fadeIn}
+                    className="w-full max-w-[832px] px-8 mt-16"
+                >
+                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
+                        <video
+                            src="https://v.nelson.co/pinchscrolling.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </motion.div>
+
+                {/* Content Section (608px) */}
+                <article className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-12">
+                    <motion.section variants={fadeIn} className="flex flex-col gap-4">
+                        <p className="text-black leading-relaxed">
+                            To replicate the nelson.co look, this page now uses a centered 608px text column. The typography is set to 16px with a 1.65 line-height, ensuring a premium reading experience.
+                        </p>
+                    </motion.section>
+                </article>
+
+                {/* Project Grid / Media Section (832px) */}
+                <motion.div
+                    variants={fadeIn}
+                    className="w-full max-w-[832px] px-8 mt-16 flex flex-col gap-12"
+                >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="flex flex-col gap-3">
+                            <div className="aspect-[3/4] bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
+                                <video src="https://v.nelson.co/splitview.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                            </div>
+                            <div className="px-1">
+                                <span className="text-[15px] font-medium text-black">ios split view concept</span>
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <div className="aspect-[3/4] bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
+                                <video src="https://v.nelson.co/visionos.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                            </div>
+                            <div className="px-1">
+                                <span className="text-[15px] font-medium text-black">ios × visionos concept</span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Footer Spacer */}
+                <footer className="w-full max-w-[608px] px-8 mt-24">
+                    <motion.div variants={fadeIn}>
+                        <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/">Back to home</Link>
+                    </motion.div>
+                </footer>
+            </motion.div>
+        </div>
+    );
+}
+
+export default DiscordCS;
