@@ -13,7 +13,7 @@ const staggerContainer = {
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
 
-const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { src: string, alt: string, caption?: string, className?: string }) => {
+const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-video" }: { src: string, fullResSrc?: string, alt: string, caption?: string, className?: string }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { 
         <>
             <motion.div
                 className={`${className} bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden cursor-zoom-in relative group`}
-                whileHover={{ scale: 1.015 }}
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setIsOpen(true)}
             >
@@ -46,65 +46,79 @@ const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { 
                     alt={alt}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
                 />
 
-                {/* Hover Overlay Button */}
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="text-[10px] uppercase tracking-widest font-medium text-black">view full screen</span>
+                {/* Subtle Hover Affordance */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-zinc-200 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <span className="text-[9px] uppercase tracking-widest font-medium text-black">quick preview</span>
                     </div>
                 </div>
             </motion.div>
 
             <AnimatePresence>
                 {isOpen && createPortal(
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                        {/* Full Screen Dull Backdrop - Click anywhere to close */}
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
+                        {/* Dull Backdrop - Click to close */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-zinc-950/98 backdrop-blur-2xl cursor-zoom-out"
+                            className="fixed inset-0 bg-zinc-950/98 backdrop-blur-3xl cursor-zoom-out"
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Content Layer */}
+                        {/* Preview Container */}
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, filter: 'blur(20px)' }}
-                            animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-                            exit={{ scale: 0.9, opacity: 0, filter: 'blur(20px)' }}
+                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
                             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                             className="relative z-10 w-full max-w-7xl flex flex-col items-center pointer-events-none"
                         >
-                            <div className="relative flex flex-col items-center gap-8 w-full pointer-events-auto">
-                                <img
-                                    src={src}
-                                    alt={alt}
-                                    className="max-w-full max-h-[80vh] object-contain rounded-sm shadow-[0_0_100px_rgba(0,0,0,0.5)] bg-white"
-                                    onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
-                                />
+                            <div className="relative flex flex-col items-center gap-6 w-full pointer-events-auto">
+                                <div className="relative group/preview shadow-[0_0_100px_rgba(0,0,0,0.4)] rounded-sm overflow-hidden bg-white">
+                                    <img
+                                        src={src}
+                                        alt={alt}
+                                        className="max-w-full max-h-[75vh] object-contain"
+                                        onClick={(e) => e.stopPropagation()}
+                                    />
+                                    {/* Tooltip hint */}
+                                    <div className="absolute top-4 right-4 opacity-0 group-hover/preview:opacity-100 transition-opacity">
+                                        <button
+                                            onClick={() => setIsOpen(false)}
+                                            className="bg-black/20 backdrop-blur-sm text-white/70 hover:text-white px-3 py-1.5 rounded-sm text-[9px] uppercase tracking-tighter"
+                                        >
+                                            click outside to close
+                                        </button>
+                                    </div>
+                                </div>
 
-                                <div className="flex flex-col items-center gap-6 w-full text-center">
+                                <div className="flex flex-col items-center gap-5 w-full text-center">
                                     {caption && (
-                                        <p className="text-white/50 text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
+                                        <p className="text-white/40 text-[10px] sm:text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
                                             {caption}
                                         </p>
                                     )}
 
                                     <div className="flex items-center gap-4">
                                         <a
-                                            href={src}
+                                            href={fullResSrc || src}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[10px] text-zinc-900 hover:text-black transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.2em] bg-white shadow-xl hover:scale-105 active:scale-95 font-sans"
+                                            className="text-[10px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-sans flex items-center gap-2"
                                         >
-                                            open in new tab
+                                            view high resolution
+                                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1H7V7M7 1L1 7" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
                                         </a>
 
                                         <button
                                             onClick={() => setIsOpen(false)}
-                                            className="text-[10px] text-white/50 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.2em] backdrop-blur-sm hover:bg-white/10"
+                                            className="text-[10px] text-white/40 hover:text-white transition-all border border-white/10 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] backdrop-blur-sm hover:bg-white/5"
                                         >
                                             [close]
                                         </button>
@@ -160,7 +174,8 @@ function DiscordCS() {
                 {/* Visual 1: Competitor Comparison */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}discord/companalysis.png`}
+                        src={`${import.meta.env.BASE_URL}discord/companalysis_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}discord/companalysis.png`}
                         alt="Competitor Comparison: Discord vs Slack vs Teams"
                         caption="competitor analysis: affordability vs feature visibility"
                     />
@@ -194,7 +209,8 @@ function DiscordCS() {
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
+                            src={`${import.meta.env.BASE_URL}discord/jargon_map_compressed.webp`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
                             alt="Gaming Terminology vs Professional Terminology Map"
                             caption="the jargon map: bridging the gap between social and professional language"
                             className="aspect-square"
@@ -205,7 +221,8 @@ function DiscordCS() {
                     </div>
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/persona.png`}
+                            src={`${import.meta.env.BASE_URL}discord/persona_compressed.webp`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/persona.png`}
                             alt="User Persona: The Frustrated Professional"
                             caption="user persona: Sarah, representing the professional demographic struggling with cognitive load"
                             className="aspect-square"
@@ -240,7 +257,8 @@ function DiscordCS() {
                 {/* Visual 4: Wireframes */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}discord/wireframes.png`}
+                        src={`${import.meta.env.BASE_URL}discord/wireframes_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}discord/wireframes.png`}
                         alt="Onboarding Workflow Wireframes"
                         caption="onboarding flow wireframes: simplified entry points and feature discovery tooltips"
                     />
@@ -262,7 +280,8 @@ function DiscordCS() {
                 {/* Final Visual: High-Fi Mockup */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}discord/mockup.png`}
+                        src={`${import.meta.env.BASE_URL}discord/mockup_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}discord/mockup.png`}
                         alt="Final Redesigned Professional Dashboard"
                         caption="final high-fidelity mockup: a clean, elegant, and modern interface redesigned for focus"
                     />
