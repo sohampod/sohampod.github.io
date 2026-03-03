@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const fadeIn = {
@@ -9,6 +10,79 @@ const fadeIn = {
 const staggerContainer = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { src: string, alt: string, caption?: string, className?: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsOpen(false);
+        };
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            window.addEventListener('keydown', handleEsc);
+        } else {
+            document.body.style.overflow = 'unset';
+            window.removeEventListener('keydown', handleEsc);
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [isOpen]);
+
+    return (
+        <>
+            <motion.div
+                className={`${className} bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden cursor-zoom-in relative group`}
+                whileHover={{ scale: 1.015 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                onClick={() => setIsOpen(true)}
+            >
+                <img
+                    src={src}
+                    alt={alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+            </motion.div>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-md p-4 sm:p-20 cursor-zoom-out"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
+                            animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
+                            exit={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
+                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center gap-6"
+                        >
+                            <img
+                                src={src}
+                                alt={alt}
+                                className="max-w-full max-h-[80vh] object-contain rounded-sm shadow-2xl bg-white"
+                            />
+                            {caption && (
+                                <motion.span
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="text-zinc-500 text-sm lowercase text-center max-w-2xl px-8"
+                                >
+                                    {caption}
+                                </motion.span>
+                            )}
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
+    );
 };
 
 function DiscordCS() {
@@ -44,21 +118,19 @@ function DiscordCS() {
                         context
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
-                        Discord is a powerful, affordable alternative to Slack and Microsoft Teams, yet it struggles to gain traction in professional environments. While exploring the platform’s potential for remote work, I conducted a competitor analysis against Google Workspace and Zoom, identifying a major gap in **Visibility**—a core principle of Human-Computer Interaction (HCI).
+                        Discord is a powerful, affordable alternative to Slack and Microsoft Teams, yet it struggles to gain traction in professional environments. While exploring the platform’s potential for remote work, I conducted a competitor analysis against Google Workspace and Zoom, identifying a major gap in Visibility a core principle of Human Computer Interaction (HCI).
                     </motion.p>
                 </section>
 
                 {/* Visual 1: Competitor Comparison */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                        <img
-                            src={`${import.meta.env.BASE_URL}discord/comparison.png`}
-                            alt="Competitor Comparison: Discord vs Slack vs Teams"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}discord/companalysis.png`}
+                        alt="Competitor Comparison: Discord vs Slack vs Teams"
+                        caption="competitor analysis: affordability vs feature visibility"
+                    />
                     <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">competitor analysis: affordability vs feature visibility</span>
+                        <span className="text-[11px] text-zinc-400">competitor analysis</span>
                     </div>
                 </motion.div>
 
@@ -86,25 +158,23 @@ function DiscordCS() {
                 {/* Visual 2 & 3: Jargon Map & Persona */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
-                        <div className="aspect-square bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                            <img
-                                src={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
-                                alt="Gaming Terminology vs Professional Terminology Map"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
+                            alt="Gaming Terminology vs Professional Terminology Map"
+                            caption="the jargon map: bridging the gap between social and professional language"
+                            className="aspect-square"
+                        />
                         <div className="px-1">
                             <span className="text-[11px] text-zinc-400">the jargon map: bridge the communication gap</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-3">
-                        <div className="aspect-square bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                            <img
-                                src={`${import.meta.env.BASE_URL}discord/persona.png`}
-                                alt="User Persona: The Frustrated Professional"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}discord/persona.png`}
+                            alt="User Persona: The Frustrated Professional"
+                            caption="user persona: Sarah, representing the professional demographic struggling with cognitive load"
+                            className="aspect-square"
+                        />
                         <div className="px-1">
                             <span className="text-[11px] text-zinc-400">user persona: Sarah, the frustrated professional</span>
                         </div>
@@ -134,13 +204,11 @@ function DiscordCS() {
 
                 {/* Visual 4: Wireframes */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                        <img
-                            src={`${import.meta.env.BASE_URL}discord/wireframes.png`}
-                            alt="Onboarding Workflow Wireframes"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}discord/wireframes.png`}
+                        alt="Onboarding Workflow Wireframes"
+                        caption="onboarding flow wireframes: simplified entry points and feature discovery tooltips"
+                    />
                     <div className="px-1 text-right mt-1.5">
                         <span className="text-[11px] text-zinc-400">new onboarding flow development & user journey</span>
                     </div>
@@ -158,13 +226,11 @@ function DiscordCS() {
 
                 {/* Final Visual: High-Fi Mockup */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden shadow-sm">
-                        <img
-                            src={`${import.meta.env.BASE_URL}discord/mockup.png`}
-                            alt="Final Redesigned Professional Dashboard"
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}discord/mockup.png`}
+                        alt="Final Redesigned Professional Dashboard"
+                        caption="final high-fidelity mockup: a clean, elegant, and modern interface redesigned for focus"
+                    />
                     <div className="px-1 text-right mt-1.5">
                         <span className="text-[11px] text-zinc-400">final high-fidelity mockup: clean, elegant, and modern interface</span>
                     </div>
