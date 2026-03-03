@@ -39,8 +39,8 @@ function DiscordCS() {
                 </header>
 
                 {/* Problem Section */}
-                <section className="w-full max-w-[608px] px-8 mt-32 flex flex-col gap-2">
-                    <motion.h2 variants={fadeIn} className="text-base font-bold text-black uppercase tracking-tight">
+                <section className="w-full max-w-[608px] px-8 mt-10 flex flex-col gap-2">
+                    <motion.h2 variants={fadeIn} className="text-lg font-medium text-black tracking-tight">
                         the problem "the why?"
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
@@ -51,7 +51,7 @@ function DiscordCS() {
                 {/* Hero Media Section (832px) */}
                 <motion.div
                     variants={fadeIn}
-                    className="w-full max-w-[832px] px-8 mt-16"
+                    className="w-full max-w-[832px] px-8 mt-12"
                 >
                     <div className="flex flex-col gap-3">
                         <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
@@ -61,13 +61,13 @@ function DiscordCS() {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="px-1 text-right mt-2">
+                        <div className="px-1 text-right mt-1.5">
                             <motion.a
                                 variants={fadeIn}
                                 href="https://medium.com/doctolib/interactive-remote-meetup-using-discord-3c593705c0a2"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[13px] text-zinc-400 hover:text-black transition-colors underline decoration-zinc-200 underline-offset-2"
+                                className="text-[12px] text-zinc-400 hover:text-black transition-colors underline decoration-zinc-200 underline-offset-2"
                             >
                                 source: medium / doctolib
                             </motion.a>
