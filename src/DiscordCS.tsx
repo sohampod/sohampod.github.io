@@ -44,61 +44,72 @@ const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { 
                 <img
                     src={src}
                     alt={alt}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+
+                {/* Hover Overlay Button */}
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span className="text-[10px] uppercase tracking-widest font-medium text-black">view full screen</span>
+                    </div>
+                </div>
             </motion.div>
 
             <AnimatePresence>
                 {isOpen && createPortal(
-                    <div className="fixed inset-0 z-[100] flex items-center justify-center">
-                        {/* Full Screen Dull Backdrop */}
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        {/* Full Screen Dull Backdrop - Click anywhere to close */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-zinc-950/95 backdrop-blur-xl cursor-zoom-out"
+                            className="fixed inset-0 bg-zinc-950/98 backdrop-blur-2xl cursor-zoom-out"
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* Content Layer (pointer-events-none to let clicks hit backdrop) */}
+                        {/* Content Layer */}
                         <motion.div
-                            initial={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
+                            initial={{ scale: 0.9, opacity: 0, filter: 'blur(20px)' }}
                             animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-                            exit={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative z-10 max-w-7xl w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 pointer-events-none"
+                            exit={{ scale: 0.9, opacity: 0, filter: 'blur(20px)' }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative z-10 w-full max-w-7xl flex flex-col items-center pointer-events-none"
                         >
-                            <div className="relative flex flex-col items-center gap-10 pointer-events-auto">
+                            <div className="relative flex flex-col items-center gap-8 w-full pointer-events-auto">
                                 <img
                                     src={src}
                                     alt={alt}
-                                    className="max-w-full max-h-[60vh] object-contain rounded-sm shadow-2xl bg-white"
+                                    className="max-w-full max-h-[80vh] object-contain rounded-sm shadow-[0_0_100px_rgba(0,0,0,0.5)] bg-white"
+                                    onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
                                 />
 
-                                <div className="flex flex-col items-center gap-8 w-full text-center">
+                                <div className="flex flex-col items-center gap-6 w-full text-center">
                                     {caption && (
-                                        <span className="text-white/60 text-xs lowercase max-w-xl px-8 font-sans tracking-tight leading-relaxed">
+                                        <p className="text-white/50 text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
                                             {caption}
-                                        </span>
+                                        </p>
                                     )}
 
-                                    <a
-                                        href={src}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-[10px] text-zinc-900 hover:text-black transition-all border border-zinc-200 px-6 py-3 rounded-full lowercase tracking-[0.2em] bg-white shadow-2xl hover:scale-105 active:scale-95 font-sans"
-                                    >
-                                        view full resolution (native zoom)
-                                    </a>
-                                </div>
+                                    <div className="flex items-center gap-4">
+                                        <a
+                                            href={src}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[10px] text-zinc-900 hover:text-black transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.2em] bg-white shadow-xl hover:scale-105 active:scale-95 font-sans"
+                                        >
+                                            open in new tab
+                                        </a>
 
-                                {/* Subtle Close Hint */}
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="absolute -top-12 right-0 sm:-right-12 text-white/30 hover:text-white transition-colors text-[11px] lowercase tracking-widest font-sans"
-                                >
-                                    [close]
-                                </button>
+                                        <button
+                                            onClick={() => setIsOpen(false)}
+                                            className="text-[10px] text-white/50 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.2em] backdrop-blur-sm hover:bg-white/10"
+                                        >
+                                            [close]
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
                     </div>,
