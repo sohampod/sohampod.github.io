@@ -7,8 +7,8 @@ const projects = [
         title: 'Discord Case Study',
         desc: '2021',
         link: '/work/discordcs',
-        preview: 'https://nelson.co/interactions/pinchscrolling.mp4',
-        type: 'video'
+        preview: `${import.meta.env.BASE_URL}discord/discordhero.webp`,
+        type: 'image'
     },
     {
         title: 'App icon design',

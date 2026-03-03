@@ -39,7 +39,7 @@ function DiscordCS() {
                 </header>
 
                 {/* Problem Section */}
-                <section className="w-full max-w-[608px] px-8 mt-32 flex flex-col gap-4">
+                <section className="w-full max-w-[608px] px-8 mt-32 flex flex-col gap-2">
                     <motion.h2 variants={fadeIn} className="text-base font-bold text-black uppercase tracking-tight">
                         the problem "the why?"
                     </motion.h2>
