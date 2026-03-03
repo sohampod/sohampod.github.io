@@ -201,30 +201,30 @@ function DiscordCS() {
                     </motion.div>
                 </section>
 
-                {/* Visual 2 & 3: Jargon Map & Persona */}
+                {/* Visual 2 & 3: customer journey & Persona */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/jargon_map_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
-                            alt="Gaming Terminology vs Professional Terminology Map"
-                            caption="the jargon map: bridging the gap between social and professional language"
+                            src={`${import.meta.env.BASE_URL}discord/userjourney.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/userjourney.png`}
+                            alt="user journey & persona"
+                            caption="user journey map"
                             className="aspect-square"
                         />
                         <div className="px-1">
-                            <span className="text-[11px] text-zinc-400">the jargon map: bridge the communication gap</span>
+                            <span className="text-[11px] text-zinc-400">user journey map</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/persona_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}discord/persona.png`}
-                            alt="User Persona: The Frustrated Professional"
-                            caption="user persona: Sarah, representing the professional demographic struggling with cognitive load"
+                            src={`${import.meta.env.BASE_URL}discord/userpersona.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/userpersona.png`}
+                            alt="user persona"
+                            caption="user persona"
                             className="aspect-square"
                         />
                         <div className="px-1">
-                            <span className="text-[11px] text-zinc-400">user persona: Sarah, the frustrated professional</span>
+                            <span className="text-[11px] text-zinc-400">user persona</span>
                         </div>
                     </div>
                 </motion.div>
