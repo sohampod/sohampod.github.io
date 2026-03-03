@@ -37,10 +37,13 @@ function DiscordCS() {
                                 research and ux design
                             </motion.span>
                         </div>
-                        <h2 className="text-black"> the problem "the why?"</h2>
-                        <motion.p variants={fadeIn} className="text-black leading-relaxed mt-4">
-                            While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
-                        </motion.p>
+                        <div>
+                            <motion.h2 variants={fadeIn} className="text-base font-medium text-black">
+                                <h2 className="text-black"> the problem "the why?"</h2></motion.h2>
+                            <motion.p variants={fadeIn} className="text-black leading-relaxed mt-4">
+                                While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
+                            </motion.p>
+                        </div>
                     </div>
                 </header>
 
