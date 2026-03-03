@@ -40,7 +40,7 @@ function DiscordCS() {
 
                 {/* Problem Section */}
                 <section className="w-full max-w-[608px] px-8 mt-32 flex flex-col gap-4">
-                    <motion.h2 variants={fadeIn} className="text-base font-medium text-black">
+                    <motion.h2 variants={fadeIn} className="text-base font-bold text-black uppercase tracking-tight">
                         the problem "the why?"
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
@@ -61,16 +61,17 @@ function DiscordCS() {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <motion.div variants={fadeIn} className="px-1 text-right">
-                            <a
+                        <div className="px-1 text-right mt-2">
+                            <motion.a
+                                variants={fadeIn}
                                 href="https://medium.com/doctolib/interactive-remote-meetup-using-discord-3c593705c0a2"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[12px] text-zinc-400 hover:text-black transition-colors"
+                                className="text-[13px] text-zinc-400 hover:text-black transition-colors underline decoration-zinc-200 underline-offset-2"
                             >
                                 source: medium / doctolib
-                            </a>
-                        </motion.div>
+                            </motion.a>
+                        </div>
                     </div>
                 </motion.div>
 
