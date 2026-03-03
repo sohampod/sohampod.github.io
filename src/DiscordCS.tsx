@@ -205,7 +205,7 @@ function DiscordCS() {
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/userjourney.png`}
+                            src={`${import.meta.env.BASE_URL}discord/userjourney_compressed.webp`}
                             fullResSrc={`${import.meta.env.BASE_URL}discord/userjourney.png`}
                             alt="user journey & persona"
                             caption="user journey map"
@@ -217,7 +217,7 @@ function DiscordCS() {
                     </div>
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}discord/userpersona.png`}
+                            src={`${import.meta.env.BASE_URL}discord/userpersona_compressed.webp`}
                             fullResSrc={`${import.meta.env.BASE_URL}discord/userpersona.png`}
                             alt="user persona"
                             caption="user persona"
@@ -253,13 +253,13 @@ function DiscordCS() {
                 {/* Visual 4: Wireframes */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}discord/wireframes_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}discord/wireframes.png`}
+                        src={`${import.meta.env.BASE_URL}discord/lofi.png`}
+                        fullResSrc={`${import.meta.env.BASE_URL}discord/lofi.png`}
                         alt="Onboarding Workflow Wireframes"
                         caption="onboarding flow wireframes: simplified entry points and feature discovery tooltips"
                     />
                     <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">new onboarding flow development & user journey</span>
+                        <span className="text-[11px] text-zinc-400">new onboarding flow development</span>
                     </div>
                 </motion.div>
 
@@ -273,16 +273,31 @@ function DiscordCS() {
                     </motion.p>
                 </section>
 
-                {/* Final Visual: High-Fi Mockup */}
-                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}discord/mockup_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}discord/mockup.png`}
-                        alt="Final Redesigned Professional Dashboard"
-                        caption="final high-fidelity mockup: a clean, elegant, and modern interface redesigned for focus"
-                    />
-                    <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">final high-fidelity mockup: clean, elegant, and modern interface</span>
+                {/* Visual: hifi */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-3">
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}discord/hifi1.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/hifi1.png`}
+                            alt="high fidelity"
+                            caption="onboarding screens"
+                            className="aspect-square"
+                        />
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">onboarding screens</span>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}discord/hifi2.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}discord/hifi2.png`}
+                            alt="high fidelity"
+                            caption="onboarding screens"
+                            className="aspect-square"
+                        />
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">onboarding screens</span>
+                        </div>
                     </div>
                 </motion.div>
 
