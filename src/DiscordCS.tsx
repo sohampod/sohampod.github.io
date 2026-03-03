@@ -55,7 +55,7 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                         onClick={(e) => e.stopPropagation()}
                         className="pointer-events-auto bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
                     >
-                        <span className="text-[10px] uppercase tracking-widest font-bold text-black pointer-events-none">open in new tab</span>
+                        <span className="text-[10px] lowercase tracking-widest font-bold text-black pointer-events-none">open in new tab</span>
                     </a>
                 </div>
             </motion.div>
