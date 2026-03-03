@@ -37,8 +37,8 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
         <>
             <motion.div
                 className={`${className} bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden cursor-zoom-in relative group`}
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
                 onClick={() => setIsOpen(true)}
             >
                 <img
@@ -46,13 +46,13 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                     alt={alt}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-90"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Subtle Hover Affordance */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-zinc-200 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                        <span className="text-[9px] uppercase tracking-widest font-medium text-black">quick preview</span>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                        <span className="text-[10px] uppercase tracking-widest font-bold text-black pointer-events-none">click to preview</span>
                     </div>
                 </div>
             </motion.div>
@@ -61,44 +61,37 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                 {isOpen && createPortal(
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
                         {/* Dull Backdrop - Click to close */}
+                        {/* Removed backdrop-blur as it causes major lagging on large surfaces */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-zinc-950/98 backdrop-blur-3xl cursor-zoom-out"
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-black/90 cursor-auto"
                             onClick={() => setIsOpen(false)}
                         />
 
                         {/* Preview Container */}
                         <motion.div
-                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                            initial={{ scale: 0.95, opacity: 0, y: 10 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
                             className="relative z-10 w-full max-w-7xl flex flex-col items-center pointer-events-none"
                         >
                             <div className="relative flex flex-col items-center gap-6 w-full pointer-events-auto">
-                                <div className="relative group/preview shadow-[0_0_100px_rgba(0,0,0,0.4)] rounded-sm overflow-hidden bg-white">
+                                <div className="relative group/preview shadow-2xl rounded-sm overflow-hidden bg-white">
                                     <img
                                         src={src}
                                         alt={alt}
                                         className="max-w-full max-h-[75vh] object-contain"
                                         onClick={(e) => e.stopPropagation()}
                                     />
-                                    {/* Tooltip hint */}
-                                    <div className="absolute top-4 right-4 opacity-0 group-hover/preview:opacity-100 transition-opacity">
-                                        <button
-                                            onClick={() => setIsOpen(false)}
-                                            className="bg-black/20 backdrop-blur-sm text-white/70 hover:text-white px-3 py-1.5 rounded-sm text-[9px] uppercase tracking-tighter"
-                                        >
-                                            click outside to close
-                                        </button>
-                                    </div>
                                 </div>
 
                                 <div className="flex flex-col items-center gap-5 w-full text-center">
                                     {caption && (
-                                        <p className="text-white/40 text-[10px] sm:text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
+                                        <p className="text-white/60 text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
                                             {caption}
                                         </p>
                                     )}
@@ -108,17 +101,17 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                                             href={fullResSrc || src}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[10px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-sans flex items-center gap-2"
+                                            className="text-[11px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-medium flex items-center gap-2"
                                         >
-                                            view high resolution
+                                            view fullscreen
                                             <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 1H7V7M7 1L1 7" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M1 1H7V7M7 1L1 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </a>
 
                                         <button
                                             onClick={() => setIsOpen(false)}
-                                            className="text-[10px] text-white/40 hover:text-white transition-all border border-white/10 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] backdrop-blur-sm hover:bg-white/5"
+                                            className="text-[11px] text-white/60 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] hover:bg-white/10 font-medium"
                                         >
                                             [close]
                                         </button>
