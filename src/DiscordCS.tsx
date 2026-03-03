@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -48,37 +49,60 @@ const ImageWithLightbox = ({ src, alt, caption, className = "aspect-video" }: { 
             </motion.div>
 
             <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center bg-white/90 backdrop-blur-md p-4 sm:p-20 cursor-zoom-out"
-                        onClick={() => setIsOpen(false)}
-                    >
+                {isOpen && createPortal(
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+                        {/* Full Screen Dull Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-zinc-950/95 backdrop-blur-xl cursor-zoom-out"
+                            onClick={() => setIsOpen(false)}
+                        />
+
+                        {/* Content Layer (pointer-events-none to let clicks hit backdrop) */}
                         <motion.div
                             initial={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
                             animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
                             exit={{ scale: 0.95, opacity: 0, filter: 'blur(10px)' }}
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center gap-6"
+                            className="relative z-10 max-w-7xl w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 pointer-events-none"
                         >
-                            <img
-                                src={src}
-                                alt={alt}
-                                className="max-w-full max-h-[80vh] object-contain rounded-sm shadow-2xl bg-white"
-                            />
-                            {caption && (
-                                <motion.span
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="text-zinc-500 text-sm lowercase text-center max-w-2xl px-8"
+                            <div className="relative flex flex-col items-center gap-10 pointer-events-auto">
+                                <img
+                                    src={src}
+                                    alt={alt}
+                                    className="max-w-full max-h-[60vh] object-contain rounded-sm shadow-2xl bg-white"
+                                />
+
+                                <div className="flex flex-col items-center gap-8 w-full text-center">
+                                    {caption && (
+                                        <span className="text-white/60 text-xs lowercase max-w-xl px-8 font-sans tracking-tight leading-relaxed">
+                                            {caption}
+                                        </span>
+                                    )}
+
+                                    <a
+                                        href={src}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[10px] text-zinc-900 hover:text-black transition-all border border-zinc-200 px-6 py-3 rounded-full lowercase tracking-[0.2em] bg-white shadow-2xl hover:scale-105 active:scale-95 font-sans"
+                                    >
+                                        view full resolution (native zoom)
+                                    </a>
+                                </div>
+
+                                {/* Subtle Close Hint */}
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="absolute -top-12 right-0 sm:-right-12 text-white/30 hover:text-white transition-colors text-[11px] lowercase tracking-widest font-sans"
                                 >
-                                    {caption}
-                                </motion.span>
-                            )}
+                                    [close]
+                                </button>
+                            </div>
                         </motion.div>
-                    </motion.div>
+                    </div>,
+                    document.body
                 )}
             </AnimatePresence>
         </>

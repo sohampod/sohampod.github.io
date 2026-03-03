@@ -7,7 +7,7 @@ const projects = [
         title: 'Discord Case Study',
         desc: '2021',
         link: '/work/discordcs',
-        preview: `${import.meta.env.BASE_URL}discord/discordhero.webp`,
+        preview: `${import.meta.env.BASE_URL}discord/mockup.png`,
         type: 'image'
     },
     {
