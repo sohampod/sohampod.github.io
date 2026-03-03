@@ -49,7 +49,7 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                 {/* Subtle Hover Affordance */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                     <a
-                        href={fullResSrc || src}
+                        href={`${import.meta.env.BASE_URL}discord/image-viewer.html?src=${encodeURIComponent(fullResSrc || src)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
@@ -101,7 +101,7 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
 
                                     <div className="flex items-center gap-4">
                                         <a
-                                            href={fullResSrc || src}
+                                            href={`${import.meta.env.BASE_URL}discord/image-viewer.html?src=${encodeURIComponent(fullResSrc || src)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-[11px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-medium flex items-center gap-2"
