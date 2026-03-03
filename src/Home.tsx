@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const projects = [
     {
-        title: 'Discord Case Study',
-        desc: '2021',
+        title: "improving discord's onboarding experience",
+        desc: 'research & ux design · 2021',
         link: '/work/discordcs',
-        preview: `${import.meta.env.BASE_URL}discord/mockup.png`,
+        preview: `${import.meta.env.BASE_URL}discord/hifi2.png`,
         type: 'image'
     },
     {
