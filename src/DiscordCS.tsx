@@ -21,14 +21,11 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
             if (e.key === 'Escape') setIsOpen(false);
         };
         if (isOpen) {
-            document.body.style.overflow = 'hidden';
             window.addEventListener('keydown', handleEsc);
         } else {
-            document.body.style.overflow = 'unset';
             window.removeEventListener('keydown', handleEsc);
         }
         return () => {
-            document.body.style.overflow = 'unset';
             window.removeEventListener('keydown', handleEsc);
         };
     }, [isOpen]);
@@ -51,9 +48,15 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
 
                 {/* Subtle Hover Affordance */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        <span className="text-[10px] uppercase tracking-widest font-bold text-black pointer-events-none">click to preview</span>
-                    </div>
+                    <a
+                        href={fullResSrc || src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="pointer-events-auto bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                        <span className="text-[10px] uppercase tracking-widest font-bold text-black pointer-events-none">open in new tab</span>
+                    </a>
                 </div>
             </motion.div>
 
