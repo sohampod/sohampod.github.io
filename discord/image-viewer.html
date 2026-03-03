@@ -10,67 +10,98 @@
         body {
             margin: 0;
             background-color: #0e0e0e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             overflow: auto;
         }
 
-        img {
-            max-width: 100vw;
-            height: auto;
-            object-fit: contain;
-            cursor: zoom-in;
-            display: block;
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #555;
+            font-family: sans-serif;
+            font-size: 14px;
+            pointer-events: none;
         }
 
-        .zoomed {
-            cursor: zoom-out;
-            max-width: none;
-            width: auto;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100vw;
+            max-height: 100vh;
+            cursor: zoom-in;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        img.zoomed {
             position: absolute;
             top: 0;
             left: 0;
+            transform: none;
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
             margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <img id="viewer-image" src="" alt="Full Resolution Image" />
+    <div id="loading">Loading...</div>
+    <img id="viewer-image" alt="" />
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imgSrc = urlParams.get('src');
         const imgEl = document.getElementById('viewer-image');
-
-        if (imgSrc) {
-            imgEl.src = decodeURIComponent(imgSrc);
-        } else {
-            imgEl.alt = 'Image source not provided';
-        }
+        const loadingEl = document.getElementById('loading');
 
         let isZoomed = false;
 
+        if (imgSrc) {
+            imgEl.onload = () => {
+                imgEl.classList.add('loaded');
+                loadingEl.style.display = 'none';
+
+                if (imgEl.naturalWidth > window.innerWidth || imgEl.naturalHeight > window.innerHeight) {
+                    imgEl.style.cursor = 'zoom-in';
+                } else {
+                    imgEl.style.cursor = 'default';
+                }
+            };
+            imgEl.onerror = () => {
+                loadingEl.innerText = 'Failed to load image';
+            };
+            imgEl.src = decodeURIComponent(imgSrc);
+        } else {
+            loadingEl.innerText = 'No image provided';
+        }
+
         imgEl.addEventListener('click', function (e) {
+            if (imgEl.naturalWidth <= window.innerWidth && imgEl.naturalHeight <= window.innerHeight) {
+                return;
+            }
+
             if (!isZoomed) {
-                // Determine click position ratio relative to the currently visible dimensions
                 const rect = imgEl.getBoundingClientRect();
                 const ratioX = (e.clientX - rect.left) / rect.width;
                 const ratioY = (e.clientY - rect.top) / rect.height;
 
-                // Zoom in
                 isZoomed = true;
                 imgEl.classList.add('zoomed');
 
-                // Calculate target scroll positions to center on where the user clicked
-                requestAnimationFrame(() => {
-                    const targetScrollX = (imgEl.width * ratioX) - (window.innerWidth / 2);
-                    const targetScrollY = (imgEl.height * ratioY) - (window.innerHeight / 2);
-                    window.scrollTo(targetScrollX, targetScrollY);
-                });
+                setTimeout(() => {
+                    const targetX = imgEl.naturalWidth * ratioX;
+                    const targetY = imgEl.naturalHeight * ratioY;
+                    window.scrollTo(targetX - e.clientX, targetY - e.clientY);
+                }, 0);
             } else {
-                // Zoom out
                 isZoomed = false;
                 imgEl.classList.remove('zoomed');
             }
