@@ -31,14 +31,15 @@ function DiscordCS() {
                     <div className="flex flex-col gap-2">
                         <div className="flex flex-col gap-0.5">
                             <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
-                                Interaction prototypes
+                                improving discord's onboarding experience
                             </motion.h1>
                             <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
-                                Interaction design
+                                research and ux design
                             </motion.span>
                         </div>
+                        <h2 className="text-black"> the problem "the why?"</h2>
                         <motion.p variants={fadeIn} className="text-black leading-relaxed mt-4">
-                            A series of software interaction prototypes I created to explore new and fluid ways to interact with operating systems. This project was driven by curiosity and a desire to become more proficient prototyping in SwiftUI.
+                            While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
                         </motion.p>
                     </div>
                 </header>
@@ -50,7 +51,7 @@ function DiscordCS() {
                 >
                     <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
                         <video
-                            src="https://v.nelson.co/pinchscrolling.mp4"
+                            src="public/discordhero.webp"
                             autoPlay
                             loop
                             muted

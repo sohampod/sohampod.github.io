@@ -30,6 +30,7 @@ function Connect() {
                                 <a href="https://linkedin.com/in/sohampoddar" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">LinkedIn</a>
                                 <a href="https://www.behance.net/sohampoddar" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">Behance</a>
                                 <a href="https://dribbble.com/sohampod" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">Dribbble</a>
+                                <a href="https://medium.com/@soham.poddar23" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">Medium</a>
                             </div>
                         </motion.div>
 
