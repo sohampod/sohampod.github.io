@@ -28,39 +28,49 @@ function DiscordCS() {
                         </Link>
                     </motion.div>
 
-                    <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-0.5">
-                            <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
-                                improving discord's onboarding experience
-                            </motion.h1>
-                            <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
-                                research and ux design
-                            </motion.span>
-                        </div>
-                        <div>
-                            <motion.h2 variants={fadeIn} className="text-base font-medium text-black">
-                                <h2 className="text-black"> the problem "the why?"</h2></motion.h2>
-                            <motion.p variants={fadeIn} className="text-black leading-relaxed mt-4">
-                                While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
-                            </motion.p>
-                        </div>
+                    <div className="flex flex-col gap-0.5">
+                        <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
+                            improving discord's onboarding experience
+                        </motion.h1>
+                        <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
+                            research and ux design
+                        </motion.span>
                     </div>
                 </header>
+
+                {/* Problem Section */}
+                <section className="w-full max-w-[608px] px-8 mt-32 flex flex-col gap-4">
+                    <motion.h2 variants={fadeIn} className="text-base font-medium text-black">
+                        the problem "the why?"
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
+                    </motion.p>
+                </section>
 
                 {/* Hero Media Section (832px) */}
                 <motion.div
                     variants={fadeIn}
                     className="w-full max-w-[832px] px-8 mt-16"
                 >
-                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
-                        <video
-                            src="public/discordhero.webp"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-full h-full object-cover"
-                        />
+                    <div className="flex flex-col gap-3">
+                        <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
+                            <img
+                                src={`${import.meta.env.BASE_URL}discord/discordhero.webp`}
+                                alt="Discord Case Study Hero"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <motion.div variants={fadeIn} className="px-1 text-right">
+                            <a
+                                href="https://medium.com/doctolib/interactive-remote-meetup-using-discord-3c593705c0a2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[12px] text-zinc-400 hover:text-black transition-colors"
+                            >
+                                source: medium / doctolib
+                            </a>
+                        </motion.div>
                     </div>
                 </motion.div>
 
@@ -68,7 +78,7 @@ function DiscordCS() {
                 <article className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-12">
                     <motion.section variants={fadeIn} className="flex flex-col gap-4">
                         <p className="text-black leading-relaxed">
-                            To replicate the nelson.co look, this page now uses a centered 608px text column. The typography is set to 16px with a 1.65 line-height, ensuring a premium reading experience.
+                            Through user interviews and competitive analysis, I discovered that the casual nature of Discord was its biggest strength for socializing, but its biggest weakness for focus. Messaging noise, lack of threading visibility, and unstructured channels were the primary pain points for teams.
                         </p>
                     </motion.section>
                 </article>
