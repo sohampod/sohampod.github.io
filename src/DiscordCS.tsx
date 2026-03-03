@@ -39,8 +39,8 @@ function DiscordCS() {
                 </header>
 
                 {/* Problem Section */}
-                <section className="w-full max-w-[608px] px-8 mt-10 flex flex-col gap-2">
-                    <motion.h2 variants={fadeIn} className="text-lg font-medium text-black tracking-tight">
+                <section className="w-full max-w-[608px] px-8 mt-2 flex flex-col gap-2">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-medium text-black">
                         the problem "the why?"
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
@@ -61,7 +61,7 @@ function DiscordCS() {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="px-1 text-right mt-1.5">
+                        <div className="px-1 text-right mt-1">
                             <motion.a
                                 variants={fadeIn}
                                 href="https://medium.com/doctolib/interactive-remote-meetup-using-discord-3c593705c0a2"
