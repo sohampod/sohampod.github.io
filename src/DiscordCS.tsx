@@ -149,17 +149,17 @@ function DiscordCS() {
 
                     <div className="flex flex-col gap-0.5">
                         <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
-                            rethinking discord: solving the "gamer jargon" barrier
+                            improving discord's onboarding experience
                         </motion.h1>
                         <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
-                            ux design case study · 2021
+                            research & ux design · 2021
                         </motion.span>
                     </div>
                 </header>
 
                 {/* Context Section */}
                 <section className="w-full max-w-[608px] px-8 mt-12 flex flex-col gap-3">
-                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
                         context
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
@@ -186,7 +186,7 @@ function DiscordCS() {
                         the problem "the why?"
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
-                        My research revealed a significant "Age & Experience Gap." Users under 25 navigate Discord with ease, while the **25–40 demographic** suffers from high cognitive load.
+                        My research revealed a significant "Age & Experience Gap." Users under 25 navigate Discord with ease, while the 25–40 demographic suffers from high cognitive load.
                     </motion.p>
                     <motion.div variants={fadeIn} className="flex flex-col gap-4 mt-2">
                         <p className="text-black leading-relaxed">
@@ -231,11 +231,11 @@ function DiscordCS() {
 
                 {/* Solution Section */}
                 <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
-                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
                         the solution
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
-                        I designed a **context-aware onboarding flow** tailored to the professional user.
+                        I designed a context aware onboarding flow tailored to the professional user.
                     </motion.p>
                     <ul className="flex flex-col gap-4 mt-2">
                         <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
@@ -245,7 +245,7 @@ function DiscordCS() {
                             <span className="font-bold">feature discovery:</span> Using "Hotspots" to bring "hidden" collaboration tools to the surface, reducing the learning curve.
                         </motion.li>
                         <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
-                            <span className="font-bold">personalized entry:</span> An onboarding quiz that allows experienced users to "Skip All" while providing a "Professional Workspace" preset for teams.
+                            <span className="font-bold">personalized entry:</span> An onboarding flow that allows users to skip the tutorial while providing a "Professional Workspace" preset for teams.
                         </motion.li>
                     </ul>
                 </section>
@@ -265,11 +265,11 @@ function DiscordCS() {
 
                 {/* Impact Section */}
                 <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
-                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
                         the impact
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
-                        By focusing on **Cognitive Load Reduction**, the redesign ensures that users spend less time "learning the app" and more time collaborating. This transition moves Discord from a niche community hub to a viable, high-performance enterprise tool.
+                        By focusing on cognitive load reduction, the redesign ensures that users spend less time "learning the app" and more time collaborating. This transition moves Discord from a niche community hub to a viable, high-performance enterprise tool.
                     </motion.p>
                 </section>
 
