@@ -30,87 +30,148 @@ function DiscordCS() {
 
                     <div className="flex flex-col gap-0.5">
                         <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
-                            improving discord's onboarding experience
+                            rethinking discord: solving the "gamer jargon" barrier
                         </motion.h1>
                         <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
-                            research and ux design
+                            ux design case study · 2021
                         </motion.span>
                     </div>
                 </header>
 
+                {/* Context Section */}
+                <section className="w-full max-w-[608px] px-8 mt-12 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                        context
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        Discord is a powerful, affordable alternative to Slack and Microsoft Teams, yet it struggles to gain traction in professional environments. While exploring the platform’s potential for remote work, I conducted a competitor analysis against Google Workspace and Zoom, identifying a major gap in **Visibility**—a core principle of Human-Computer Interaction (HCI).
+                    </motion.p>
+                </section>
+
+                {/* Visual 1: Competitor Comparison */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
+                        <img
+                            src={`${import.meta.env.BASE_URL}discord/comparison.png`}
+                            alt="Competitor Comparison: Discord vs Slack vs Teams"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">competitor analysis: affordability vs feature visibility</span>
+                    </div>
+                </motion.div>
+
                 {/* Problem Section */}
-                <section className="w-full max-w-[608px] px-8 mt-10 flex flex-col gap-3">
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-4">
                     <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
                         the problem "the why?"
                     </motion.h2>
                     <motion.p variants={fadeIn} className="text-black leading-relaxed">
-                        While platforms like Discord offer a foundation for remote work, they often lack the structure needed for professional collaboration. My goal was to identify the specific barriers preventing teams from connecting effectively and to redesign the environment for a more productive, work-focused experience.
+                        My research revealed a significant "Age & Experience Gap." Users under 25 navigate Discord with ease, while the **25–40 demographic** suffers from high cognitive load.
                     </motion.p>
+                    <motion.div variants={fadeIn} className="flex flex-col gap-4 mt-2">
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold">the barrier:</span> Discord relies heavily on gaming jargon and hidden menus. Professional users often requested features that already existed but were invisible to them.
+                        </p>
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold">the friction:</span> A total lack of guided onboarding means new users are dropped into a complex interface with no clear direction.
+                        </p>
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold">the opportunity:</span> By stripping away "gamer" gatekeeping and making features visible, Discord can become the most robust, cost-effective collaboration tool for the modern workforce.
+                        </p>
+                    </motion.div>
                 </section>
 
-                {/* Hero Media Section (832px) */}
-                <motion.div
-                    variants={fadeIn}
-                    className="w-full max-w-[832px] px-8 mt-12"
-                >
+                {/* Visual 2 & 3: Jargon Map & Persona */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
-                        <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden relative">
+                        <div className="aspect-square bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
                             <img
-                                src={`${import.meta.env.BASE_URL}discord/discordhero.webp`}
-                                alt="Discord Case Study Hero"
+                                src={`${import.meta.env.BASE_URL}discord/jargon_map.png`}
+                                alt="Gaming Terminology vs Professional Terminology Map"
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="px-1 text-right mt-1">
-                            <motion.a
-                                variants={fadeIn}
-                                href="https://medium.com/doctolib/interactive-remote-meetup-using-discord-3c593705c0a2"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[12px] text-zinc-400 hover:text-black transition-colors underline decoration-zinc-200 underline-offset-2"
-                            >
-                                source: medium / doctolib
-                            </motion.a>
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">the jargon map: bridge the communication gap</span>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <div className="aspect-square bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
+                            <img
+                                src={`${import.meta.env.BASE_URL}discord/persona.png`}
+                                alt="User Persona: The Frustrated Professional"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">user persona: Sarah, the frustrated professional</span>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Content Section (608px) */}
-                <article className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-12">
-                    <motion.section variants={fadeIn} className="flex flex-col gap-4">
-                        <p className="text-black leading-relaxed">
-                            Through user interviews and competitive analysis, I discovered that the casual nature of Discord was its biggest strength for socializing, but its biggest weakness for focus. Messaging noise, lack of threading visibility, and unstructured channels were the primary pain points for teams.
-                        </p>
-                    </motion.section>
-                </article>
+                {/* Solution Section */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                        the solution
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        I designed a **context-aware onboarding flow** tailored to the professional user.
+                    </motion.p>
+                    <ul className="flex flex-col gap-4 mt-2">
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">guided navigation:</span> A step-by-step walkthrough that replaces technical jargon with professional terminology.
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">feature discovery:</span> Using "Hotspots" to bring "hidden" collaboration tools to the surface, reducing the learning curve.
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">personalized entry:</span> An onboarding quiz that allows experienced users to "Skip All" while providing a "Professional Workspace" preset for teams.
+                        </motion.li>
+                    </ul>
+                </section>
 
-                {/* Project Grid / Media Section (832px) */}
-                <motion.div
-                    variants={fadeIn}
-                    className="w-full max-w-[832px] px-8 mt-16 flex flex-col gap-12"
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="flex flex-col gap-3">
-                            <div className="aspect-[3/4] bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                                <video src="https://v.nelson.co/splitview.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                            </div>
-                            <div className="px-1">
-                                <span className="text-[15px] font-medium text-black">ios split view concept</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                            <div className="aspect-[3/4] bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
-                                <video src="https://v.nelson.co/visionos.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                            </div>
-                            <div className="px-1">
-                                <span className="text-[15px] font-medium text-black">ios × visionos concept</span>
-                            </div>
-                        </div>
+                {/* Visual 4: Wireframes */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden">
+                        <img
+                            src={`${import.meta.env.BASE_URL}discord/wireframes.png`}
+                            alt="Onboarding Workflow Wireframes"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">new onboarding flow development & user journey</span>
+                    </div>
+                </motion.div>
+
+                {/* Impact Section */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black uppercase tracking-tight">
+                        the impact
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        By focusing on **Cognitive Load Reduction**, the redesign ensures that users spend less time "learning the app" and more time collaborating. This transition moves Discord from a niche community hub to a viable, high-performance enterprise tool.
+                    </motion.p>
+                </section>
+
+                {/* Final Visual: High-Fi Mockup */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <div className="aspect-video bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden shadow-sm">
+                        <img
+                            src={`${import.meta.env.BASE_URL}discord/mockup.png`}
+                            alt="Final Redesigned Professional Dashboard"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">final high-fidelity mockup: clean, elegant, and modern interface</span>
                     </div>
                 </motion.div>
 
                 {/* Footer Spacer */}
-                <footer className="w-full max-w-[608px] px-8 mt-24">
+                <footer className="w-full max-w-[608px] px-8 mt-32 border-t border-zinc-100 pt-12">
                     <motion.div variants={fadeIn}>
                         <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/">Back to home</Link>
                     </motion.div>
