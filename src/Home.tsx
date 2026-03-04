@@ -31,13 +31,6 @@ const projects = [
         containerClass: 'w-[600px]'
     },
     {
-        title: 'Explorations',
-        desc: '2020–present · Misc. creative exercises',
-        link: '/explorations',
-        preview: 'https://nelson.co/explorations/findershadercompressed.mp4',
-        type: 'video'
-    },
-    {
         title: 'Linear Navigation',
         desc: '2025 · Product and interaction design',
         link: '/work/linear-navigation',
