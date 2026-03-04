@@ -34,7 +34,7 @@ const projects = [
         title: 'the tranquil stay: identity & digital ecosystem',
         desc: 'brand identity, web development & print design · 2024',
         link: '/work/tranquilstay',
-        preview: `${import.meta.env.BASE_URL}tranquilstay/thumb.png`,
+        preview: `${import.meta.env.BASE_URL}tranquilstay/moodboard_compressed.webp`,
         type: 'image',
         fitAspect: true,
         containerClass: 'w-[600px]'
