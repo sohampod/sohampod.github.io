@@ -22,6 +22,15 @@ const projects = [
         containerClass: 'w-[600px]'
     },
     {
+        title: 'navigating christmas markets with augmented reality',
+        desc: 'ar glasses & ux case study 2025',
+        link: '/work/ar-markets',
+        preview: `${import.meta.env.BASE_URL}ather/hifi1.png`, // Placeholder preview
+        type: 'image',
+        fitAspect: true,
+        containerClass: 'w-[600px]'
+    },
+    {
         title: 'Explorations',
         desc: '2020–present · Misc. creative exercises',
         link: '/explorations',
