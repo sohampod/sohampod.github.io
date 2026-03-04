@@ -292,13 +292,10 @@ function TranquilStayCS() {
                     </motion.h2>
                     <motion.div variants={fadeIn} className="flex flex-col gap-3">
                         <a href="https://www.thetranquilstay.in/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
-                            live website ↗
+                            thetranquilstay.in ↗
                         </a>
                         <a href="https://www.figma.com/deck/0lND8fw9VhOpKsVwC5HkIs/Brand-Guidelines?node-id=2-456&t=zdTRfekygRh4fHv9-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
                             brand guidelines deck ↗
-                        </a>
-                        <a href="https://www.figma.com/proto/dXhpNq4MsdH9UhIbNhkPI5/tranquil-kitchen?node-id=1-39&t=IZpMPcPqoPjG4EWh-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A39" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
-                            tranquil kitchen menu ↗
                         </a>
                     </motion.div>
                 </section>
