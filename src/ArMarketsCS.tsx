@@ -305,6 +305,21 @@ function ArMarketsCS() {
                     </div>
                 </motion.div>
 
+                {/* Links Section */}
+                <section className="w-full max-w-[608px] px-8 mt-24 flex flex-col gap-4">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        links
+                    </motion.h2>
+                    <motion.div variants={fadeIn} className="flex flex-col gap-3">
+                        <a href="https://www.figma.com/proto/SieWlqzFblFwdhrRivRhd9/Klar-AR?node-id=1-3115&p=f&t=XCNp7IArBn5PmQhx-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A4768" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            high fidelity prototype ↗
+                        </a>
+                        <a href="https://www.figma.com/deck/R2g30Ge6NQVdW2MEeBMzAx/Klar-AR?node-id=1-266&t=PzOyoo9EMTC94RQa-1" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            presentation ↗
+                        </a>
+                    </motion.div>
+                </section>
+
                 {/* Footer Spacer */}
                 <footer className="w-full max-w-[608px] px-8 mt-32 border-t border-zinc-100 pt-12">
                     <motion.div variants={fadeIn}>
