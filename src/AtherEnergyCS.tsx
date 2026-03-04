@@ -301,6 +301,27 @@ function AtherEnergyCS() {
                     </div>
                 </motion.div>
 
+                {/* Links Section */}
+                <section className="w-full max-w-[608px] px-8 mt-24 flex flex-col gap-4">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        links
+                    </motion.h2>
+                    <motion.div variants={fadeIn} className="flex flex-col gap-3">
+                        <a href="https://www.figma.com/deck/guBpY7Y7WqUYSTWGLY9Xfu/Ather-Slide-Deck?node-id=1-42&t=qxKMN5gv7yOUvVsd-1" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            case study (tldr) ↗
+                        </a>
+                        <a href="https://sohampod.super.site/ather-ev-a-ux-case-study" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            complete case study ↗
+                        </a>
+                        <a href="https://www.figma.com/proto/54Ldmu2FbAIUxWymNvwtNg/Ather-EV?kind=proto&node-id=97-424&page-id=0:1&scaling=scale-down&starting-point-node-id=97:424&viewport=1636,362,0.42" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            redesigned app screens ↗
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=v393ghXUWbg" target="_blank" rel="noopener noreferrer" className="text-black hover:text-zinc-500 transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400 w-fit">
+                            case study presentation ↗
+                        </a>
+                    </motion.div>
+                </section>
+
                 {/* Footer Spacer */}
                 <footer className="w-full max-w-[608px] px-8 mt-32 border-t border-zinc-100 pt-12">
                     <motion.div variants={fadeIn}>
