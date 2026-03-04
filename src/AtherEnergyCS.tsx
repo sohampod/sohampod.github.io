@@ -1,0 +1,315 @@
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const fadeIn = {
+    hidden: { opacity: 0, y: 16, filter: 'blur(8px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
+
+const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-video" }: { src: string, fullResSrc?: string, alt: string, caption?: string, className?: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsOpen(false);
+        };
+        if (isOpen) {
+            window.addEventListener('keydown', handleEsc);
+        } else {
+            window.removeEventListener('keydown', handleEsc);
+        }
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+        };
+    }, [isOpen]);
+
+    return (
+        <>
+            <motion.div
+                className={`${className} bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden cursor-zoom-in relative group`}
+                whileHover={{ scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                onClick={() => setIsOpen(true)}
+            >
+                <img
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Subtle Hover Affordance */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                    <a
+                        href={`${import.meta.env.BASE_URL}discord/image-viewer.html?v=3&src=${encodeURIComponent(fullResSrc || src)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="pointer-events-auto bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                        <span className="text-[10px] lowercase tracking-widest font-bold text-black pointer-events-none">open in new tab</span>
+                    </a>
+                </div>
+            </motion.div>
+
+            <AnimatePresence>
+                {isOpen && createPortal(
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
+                        {/* Dull Backdrop - Click to close */}
+                        {/* Removed backdrop-blur as it causes major lagging on large surfaces */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-black/90 cursor-auto"
+                            onClick={() => setIsOpen(false)}
+                        />
+
+                        {/* Preview Container */}
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                            className="relative z-10 w-full max-w-7xl flex flex-col items-center pointer-events-none"
+                        >
+                            <div className="relative flex flex-col items-center gap-6 w-full pointer-events-auto">
+                                <div className="relative group/preview shadow-2xl rounded-sm overflow-hidden bg-white">
+                                    <img
+                                        src={src}
+                                        alt={alt}
+                                        className="max-w-full max-h-[75vh] object-contain"
+                                        onClick={(e) => e.stopPropagation()}
+                                    />
+                                </div>
+
+                                <div className="flex flex-col items-center gap-5 w-full text-center">
+                                    {caption && (
+                                        <p className="text-white/60 text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
+                                            {caption}
+                                        </p>
+                                    )}
+
+                                    <div className="flex items-center gap-4">
+                                        <a
+                                            href={`${import.meta.env.BASE_URL}discord/image-viewer.html?v=3&src=${encodeURIComponent(fullResSrc || src)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[11px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-medium flex items-center gap-2"
+                                        >
+                                            view fullscreen
+                                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1H7V7M7 1L1 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </a>
+
+                                        <button
+                                            onClick={() => setIsOpen(false)}
+                                            className="text-[11px] text-white/60 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] hover:bg-white/10 font-medium"
+                                        >
+                                            [close]
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>,
+                    document.body
+                )}
+            </AnimatePresence>
+        </>
+    );
+};
+
+function AtherEnergyCS() {
+    return (
+        <div className="selection:bg-zinc-100 selection:text-black min-h-screen font-sans text-base lowercase bg-white pb-32">
+            <motion.div
+                className="flex flex-col items-center"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+            >
+                {/* Header Section */}
+                <header className="w-full max-w-[608px] px-8 pt-24 sm:pt-32 flex flex-col gap-10">
+                    <motion.div variants={fadeIn}>
+                        <Link aria-label="Go to the homepage" to="/" className="w-8 h-8 block group">
+                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src={`${import.meta.env.BASE_URL}avatar.png`} />
+                        </Link>
+                    </motion.div>
+
+                    <div className="flex flex-col gap-0.5">
+                        <motion.h1 variants={fadeIn} className="text-base font-medium text-black">
+                            redesigning ather energy
+                        </motion.h1>
+                        <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
+                            app design & ux improvement · 2021
+                        </motion.span>
+                    </div>
+                </header>
+
+                {/* Context Section */}
+                <section className="w-full max-w-[608px] px-8 mt-12 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        context
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        Ather Energy is a leader in the Indian EV space, but owners struggled with a companion app that felt disconnected from the daily realities of electric commuting. My goal was to redesign the app to improve battery management, charging schedules, and long-term vehicle maintenance. This case study highlights my transition from theoretical research to "boots-on-the-ground" testing. It's a great example of uncovering <span className="font-bold text-black">Dark Patterns</span> and replacing them with user-centric safety features.
+                    </motion.p>
+                </section>
+
+                {/* Visual 1: Expectation vs Reality */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}ather/atherui.png`}
+                        fullResSrc={`${import.meta.env.BASE_URL}ather/atherui.png`}
+                        alt="ather existing screens"
+                        caption="ather existing screens"
+                    />
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">ather existing screens</span>
+                    </div>
+                </motion.div>
+
+                {/* Problem Section */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-4">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        the problem & opportunity
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        Through user research and a hands-on <span className="font-bold text-black">test ride</span>, I discovered a major gap between the app's marketing and its actual utility.
+                    </motion.p>
+                    <motion.div variants={fadeIn} className="flex flex-col gap-4 mt-2">
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold text-black">the "one-way" trap:</span> A critical "Dark Pattern" in the navigation failed to account for round-trips. Users could plan a route <i>to</i> a destination without the app warning them they lacked the charge to return.
+                        </p>
+
+                        {/* Visual 2: Journey Map Insight in Problem Section */}
+                        <div className="w-full mt-2 mb-2">
+                            <ImageWithLightbox
+                                src={`${import.meta.env.BASE_URL}ather/darkpattern.png`}
+                                fullResSrc={`${import.meta.env.BASE_URL}ather/darkpattern.png`}
+                                alt="dark pattern"
+                                caption="dark pattern"
+                            />
+                            <div className="px-1 mt-1.5 text-right">
+                                <span className="text-[11px] text-zinc-400">dark pattern</span>
+                            </div>
+                        </div>
+
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold text-black">hidden utility:</span> Many touted features were technically present but buried, leading users to believe they didn't exist.
+                        </p>
+                        <p className="text-black leading-relaxed">
+                            <span className="font-bold text-black">maintenance anxiety:</span> Owners had zero guidance on how to prolong battery life, leading to "range anxiety" and poor long-term care habits.
+                        </p>
+                    </motion.div>
+                </section>
+
+                {/* Visual 3: Trust Builder - Test Ride */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}ather/hifi1.png`}
+                        fullResSrc={`${import.meta.env.BASE_URL}ather/hifi1.png`}
+                        alt="hifi1"
+                        caption="hifi1"
+                    />
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">making important functions visible</span>
+                    </div>
+                </motion.div>
+
+                {/* Solution Section */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        the solution
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        I redesigned the interface to prioritize <span className="font-bold text-black">Visibility</span> and <span className="font-bold text-black">Predictive Safety</span>.
+                    </motion.p>
+                    <ul className="flex flex-col gap-4 mt-2">
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold text-black">proactive navigation:</span> Re-engineered the "Commute Route" to automatically calculate round-trip feasibility with clear warnings if the nearest charging station is out of reach.
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold text-black">utility dashboard:</span> Placed high-frequency actions—<i>Locate My Ather, Charge Nearby, and Lock/Unlock</i>—front and center.
+                        </motion.li>
+
+                        {/* Visual 4: Before vs After within Solution */}
+                        <div className="w-full mt-4 mb-2">
+                            <ImageWithLightbox
+                                src={`${import.meta.env.BASE_URL}ather/hifi2.png`}
+                                fullResSrc={`${import.meta.env.BASE_URL}ather/hifi2.png`}
+                                alt="hifi2"
+                                caption="hifi2"
+                            />
+                            <div className="px-1 mt-1.5 text-right">
+                                <span className="text-[11px] text-zinc-400">save locations</span>
+                            </div>
+                        </div>
+
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4 mt-2">
+                            <span className="font-bold text-black">frictionless commuting:</span> Added "Frequent Locations" and quick location-sharing to reduce the time spent interacting with the screen while on the move.
+                        </motion.li>
+                    </ul>
+                </section>
+
+                {/* Impact Section */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        extra details & impact
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        By replacing vague navigation with a transparent, safety-first communication model, the redesign transforms the app from a simple "remote control" into a reliable co-pilot. This ensures the user is never "stuck" and feels empowered to maintain their vehicle's health over time.
+                    </motion.p>
+                </section>
+
+                {/* Visual 5: Safe Route UI */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-3">
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}ather/hifi3.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}ather/hifi3.png`}
+                            alt="hifi3"
+                            caption="hifi3"
+                            className="aspect-square"
+                        />
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">safe route ui</span>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}ather/hifi4.png`}
+                            fullResSrc={`${import.meta.env.BASE_URL}ather/hifi4.png`}
+                            alt="hifi4"
+                            caption="hifi4"
+                            className="aspect-square"
+                        />
+                        <div className="px-1">
+                            <span className="text-[11px] text-zinc-400">share location</span>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Footer Spacer */}
+                <footer className="w-full max-w-[608px] px-8 mt-32 border-t border-zinc-100 pt-12">
+                    <motion.div variants={fadeIn}>
+                        <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/">Back to home</Link>
+                    </motion.div>
+                </footer>
+            </motion.div>
+        </div>
+    );
+}
+
+export default AtherEnergyCS;

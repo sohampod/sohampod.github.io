@@ -4,6 +4,7 @@ import About from './About';
 import Connect from './Connect';
 import InteractionPrototypes from './InteractionPrototypes';
 import DiscordCS from './DiscordCS';
+import AtherEnergyCS from './AtherEnergyCS';
 import ProjectDetail from './ProjectDetail';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/connect" element={<Connect />} />
       <Route path="/work/interaction-prototypes" element={<InteractionPrototypes />} />
       <Route path="/work/discordcs" element={<DiscordCS />} />
+      <Route path="/work/atherenergycs" element={<AtherEnergyCS />} />
       <Route path="/work/:id" element={<ProjectDetail />} />
       <Route path="/:id" element={<ProjectDetail />} />
     </Routes>

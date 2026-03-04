@@ -8,14 +8,18 @@ const projects = [
         desc: 'research & ux design · 2021',
         link: '/work/discordcs',
         preview: `${import.meta.env.BASE_URL}discord/hifi2.png`,
-        type: 'image'
+        type: 'image',
+        fitAspect: true,
+        containerClass: 'w-[600px]'
     },
     {
-        title: 'App icon design',
-        desc: '2020–present · iOS and macOS app icons',
-        link: '/icon-design',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fappiconsog.028b816d.png&w=3840&q=100',
-        type: 'image'
+        title: 'redesigning ather energy',
+        desc: 'app design & ux improvement · 2021',
+        link: '/work/atherenergycs',
+        preview: `${import.meta.env.BASE_URL}ather/hifi1.png`,
+        type: 'image',
+        fitAspect: true,
+        containerClass: 'w-[600px]'
     },
     {
         title: 'Explorations',
@@ -130,7 +134,7 @@ function Home() {
                                 animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                                 exit={{ opacity: 0, scale: 0.95, y: -20, filter: 'blur(10px)' }}
                                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                className="w-[384px] h-[384px] rounded-2xl overflow-hidden border-[8px] border-zinc-50 shadow-2xl bg-zinc-50 relative group"
+                                className={`${(projects[hoveredIndex] as any).containerClass || 'w-[384px]'} ${(projects[hoveredIndex] as any).fitAspect ? 'h-fit' : 'h-[384px]'} rounded-2xl overflow-hidden border-[8px] border-zinc-50 shadow-2xl bg-zinc-50 relative group bg-white flex flex-col items-center justify-center`}
                             >
                                 {projects[hoveredIndex].type === 'video' ? (
                                     <video
@@ -139,13 +143,13 @@ function Home() {
                                         loop
                                         muted
                                         playsInline
-                                        className="w-full h-full object-cover"
+                                        className={`w-full ${(projects[hoveredIndex] as any).fitAspect ? 'h-auto object-cover' : 'h-full object-cover'}`}
                                     />
                                 ) : (
                                     <img
                                         src={projects[hoveredIndex].preview}
                                         alt={projects[hoveredIndex].title}
-                                        className="w-full h-full object-cover"
+                                        className={`w-full ${(projects[hoveredIndex] as any).fitAspect ? 'h-auto object-cover' : 'h-full object-cover'}`}
                                     />
                                 )}
                             </motion.div>
