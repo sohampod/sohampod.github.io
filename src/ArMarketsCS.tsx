@@ -164,12 +164,12 @@ function ArMarketsCS() {
                     </motion.p>
                 </section>
 
-                {/* Visual 1: Field Observation Photo/Sketch */}
+                {/* Visual 1: Field Observation Photo */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/observation_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/observation.png`}
-                        alt="Field Observation Photo/Sketch"
+                        src={`${import.meta.env.BASE_URL}armarkets/boards_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/boards.png`}
+                        alt="Field Observation Photo"
                         caption="field observation: the chaos of a crowded market"
                     />
                     <div className="px-1 text-right mt-1.5">
@@ -190,17 +190,17 @@ function ArMarketsCS() {
                             <span className="font-bold">the "social chain":</span> Groups often form physical chains or hold hands just to stay together, as digital tools are too distracting to use while walking.
                         </p>
 
-                        {/* Visual 2: The "Pain Point" Storyboard */}
+                        {/* Visual 2: User Persona */}
                         <div className="my-6">
                             <ImageWithLightbox
-                                src={`${import.meta.env.BASE_URL}armarkets/painpoint_compressed.webp`}
-                                fullResSrc={`${import.meta.env.BASE_URL}armarkets/painpoint.png`}
-                                alt="The 'Pain Point' Storyboard"
-                                caption="storyboard showing a user struggling to see a menu or losing a friend"
+                                src={`${import.meta.env.BASE_URL}armarkets/userpersona_compressed.webp`}
+                                fullResSrc={`${import.meta.env.BASE_URL}armarkets/userpersona.png`}
+                                alt="user persona"
+                                caption="user persona"
                                 className="aspect-video"
                             />
                             <div className="px-1 mt-1.5 text-right">
-                                <span className="text-[11px] text-zinc-400">user pain points storyboard</span>
+                                <span className="text-[11px] text-zinc-400">user persona</span>
                             </div>
                         </div>
 
@@ -216,16 +216,16 @@ function ArMarketsCS() {
                     </motion.div>
                 </section>
 
-                {/* Visual 3: Gaze & Gesture Diagram */}
+                {/* Visual 3: Low Fidelity Wireframe */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/gaze_gesture_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/gaze_gesture.png`}
-                        alt="Gaze & Gesture Diagram"
-                        caption="diagram showing hmd field of view and hand performing a pinch gesture"
+                        src={`${import.meta.env.BASE_URL}armarkets/lofi_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/lofi.png`}
+                        alt="lofi"
+                        caption="lofi"
                     />
                     <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">interaction model</span>
+                        <span className="text-[11px] text-zinc-400">low fidelity wireframe</span>
                     </div>
                 </motion.div>
 
@@ -253,30 +253,30 @@ function ArMarketsCS() {
                     </ul>
                 </section>
 
-                {/* Visual 4: The "Friend Radar" & "Glowing Path" Mockups */}
+                {/* Visual 4: Hierarchical Task Analysis & Solutions */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}armarkets/radar_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/radar.png`}
-                            alt="Friend Radar Mockup"
-                            caption="spatial radar showing relative direction of group members"
+                            src={`${import.meta.env.BASE_URL}armarkets/hta_compressed.webp`}
+                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/hta.png`}
+                            alt="Hierarchical task analysis"
+                            caption="hierarchical task analysis"
                             className="aspect-square"
                         />
                         <div className="px-1">
-                            <span className="text-[11px] text-zinc-400">friend radar interface</span>
+                            <span className="text-[11px] text-zinc-400">hierarchical task analysis</span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}armarkets/glowing_path_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/glowing_path.png`}
-                            alt="Glowing Path Mockup"
-                            caption="glowing path overlaid on the ground for dynamic pathfinding"
+                            src={`${import.meta.env.BASE_URL}armarkets/working_compressed.webp`}
+                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/working.png`}
+                            alt="working on solutions"
+                            caption="working on solutions"
                             className="aspect-square"
                         />
                         <div className="px-1">
-                            <span className="text-[11px] text-zinc-400">glowing ground path</span>
+                            <span className="text-[11px] text-zinc-400">working on solutions</span>
                         </div>
                     </div>
                 </motion.div>
@@ -291,17 +291,17 @@ function ArMarketsCS() {
                     </motion.p>
                 </section>
 
-                {/* Visual 5: The NASA-TLX Chart or User Testing Photo */}
+                {/* Visual 5: Klar AR Visualized */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/nasa_tlx_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/nasa_tlx.png`}
-                        alt="NASA-TLX Chart or User Testing Photo"
-                        caption="nasa-tlx results: mental demand vs. physical effort"
+                        src={`${import.meta.env.BASE_URL}armarkets/hifi_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/hifi.png`}
+                        alt="Klar AR visualized"
+                        caption="Klar AR visualized"
                         className="aspect-video"
                     />
                     <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">nasa-tlx testing results</span>
+                        <span className="text-[11px] text-zinc-400">Klar AR visualized</span>
                     </div>
                 </motion.div>
 
