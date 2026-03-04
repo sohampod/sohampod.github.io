@@ -256,7 +256,12 @@ function TranquilStayCS() {
 
                 {/* Visual 3: Physical Extension */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <ImagePlaceholder label="physical extension: menu pages (thali & non-veg sections)" />
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}tranquilstay/menu_compressed.webp`}
+                        fullResSrc={`${import.meta.env.BASE_URL}tranquilstay/menu.png`}
+                        alt="The Tranquil Stay Menu Design"
+                        caption="physical extension: menu pages (thali & non-veg sections)"
+                    />
                     <div className="px-1 text-right mt-1.5">
                         <span className="text-[11px] text-zinc-400">print design & menu system</span>
                     </div>
