@@ -140,7 +140,7 @@ function ArMarketsCS() {
                 <header className="w-full max-w-[608px] px-8 pt-24 sm:pt-32 flex flex-col gap-10">
                     <motion.div variants={fadeIn}>
                         <Link aria-label="Go to the homepage" to="/" className="w-8 h-8 block group">
-                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src={`${import.meta.env.BASE_URL}avatar.png`} />
+                            <img alt="Soham Poddar" loading="lazy" width="64" height="64" className="rounded-full object-cover w-8 h-8 transition-transform duration-300 group-hover:scale-110" src={`${import.meta.env.BASE_URL}avatar.png?v=2`} />
                         </Link>
                     </motion.div>
 
@@ -167,8 +167,8 @@ function ArMarketsCS() {
                 {/* Visual 1: Field Observation Photo */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/boards_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/boards.png`}
+                        src={`${import.meta.env.BASE_URL}armarkets/boards_compressed.webp?v=2`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/boards.png?v=2`}
                         alt="Field Observation Photo"
                         caption="field observation: the chaos of a crowded market"
                     />
@@ -193,8 +193,8 @@ function ArMarketsCS() {
                         {/* Visual 2: User Persona */}
                         <div className="my-6">
                             <ImageWithLightbox
-                                src={`${import.meta.env.BASE_URL}armarkets/userpersona_compressed.webp`}
-                                fullResSrc={`${import.meta.env.BASE_URL}armarkets/userpersona.png`}
+                                src={`${import.meta.env.BASE_URL}armarkets/userpersona_compressed.webp?v=2`}
+                                fullResSrc={`${import.meta.env.BASE_URL}armarkets/userpersona.png?v=2`}
                                 alt="user persona"
                                 caption="user persona"
                                 className="aspect-video"
@@ -219,8 +219,8 @@ function ArMarketsCS() {
                 {/* Visual 3: Low Fidelity Wireframe */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/lofi_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/lofi.png`}
+                        src={`${import.meta.env.BASE_URL}armarkets/lofi_compressed.webp?v=2`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/lofi.png?v=2`}
                         alt="lofi"
                         caption="lofi"
                     />
@@ -257,8 +257,8 @@ function ArMarketsCS() {
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}armarkets/hta_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/hta.png`}
+                            src={`${import.meta.env.BASE_URL}armarkets/hta_compressed.webp?v=2`}
+                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/hta.png?v=2`}
                             alt="Hierarchical task analysis"
                             caption="hierarchical task analysis"
                             className="aspect-square"
@@ -269,8 +269,8 @@ function ArMarketsCS() {
                     </div>
                     <div className="flex flex-col gap-3">
                         <ImageWithLightbox
-                            src={`${import.meta.env.BASE_URL}armarkets/working_compressed.webp`}
-                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/working.png`}
+                            src={`${import.meta.env.BASE_URL}armarkets/working_compressed.webp?v=2`}
+                            fullResSrc={`${import.meta.env.BASE_URL}armarkets/working.png?v=2`}
                             alt="working on solutions"
                             caption="working on solutions"
                             className="aspect-square"
@@ -294,8 +294,8 @@ function ArMarketsCS() {
                 {/* Visual 5: Klar AR Visualized */}
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}armarkets/hifi_compressed.webp`}
-                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/hifi.png`}
+                        src={`${import.meta.env.BASE_URL}armarkets/hifi_compressed.webp?v=2`}
+                        fullResSrc={`${import.meta.env.BASE_URL}armarkets/hifi.png?v=2`}
                         alt="Klar AR visualized"
                         caption="Klar AR visualized"
                         className="aspect-video"

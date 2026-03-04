@@ -23,9 +23,9 @@ const projects = [
     },
     {
         title: 'navigating christmas markets with augmented reality',
-        desc: 'ar glasses & ux case study · 2025',
+        desc: 'ar glasses & ux case study · 2025 (v2)',
         link: '/work/ar-markets',
-        preview: `${import.meta.env.BASE_URL}armarkets/hifi.png`,
+        preview: `${import.meta.env.BASE_URL}armarkets/hifi.png?v=2`,
         type: 'image',
         fitAspect: true,
         containerClass: 'w-[600px]'
