@@ -30,62 +30,6 @@ const projects = [
         fitAspect: true,
         containerClass: 'w-[600px]'
     },
-    {
-        title: 'Linear Navigation',
-        desc: '2025 · Product and interaction design',
-        link: '/work/linear-navigation',
-        preview: 'https://nelson.co/work/linear26/linear26.mp4',
-        type: 'video'
-    },
-    {
-        title: 'Linear Search',
-        desc: '2025 · Product and interaction design',
-        link: '/work/linear-search',
-        preview: 'https://nelson.co/work/linearsearch/searchsolution.mp4',
-        type: 'video'
-    },
-    {
-        title: 'Linear Documents',
-        desc: '2024 · Product and interaction design',
-        link: '/work/linear-documents',
-        preview: 'https://nelson.co/work/lineardocuments/hero.mp4',
-        type: 'video'
-    },
-    {
-        title: 'Linear Mobile v1.0',
-        desc: '2024 · Product design',
-        link: '/work/linear-mobile',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flinearv1og.8e92c0c2.png&w=3840&q=100',
-        type: 'image'
-    },
-    {
-        title: 'Linear homepage renders',
-        desc: '2024 · 3D rendering',
-        link: '/work/renders',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Froadmap.2c1a5c49.png&w=3840&q=100',
-        type: 'image'
-    },
-    {
-        title: 'GitHub Copilot',
-        desc: '2024 · Product and interaction design',
-        link: '/work/github-copilot',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcopilotog.fb1992c1.png&w=3840&q=100',
-        type: 'image'
-    },
-    {
-        title: 'GitHub Achievements',
-        desc: '2023 · Interaction design',
-        link: '/work/achievements',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fachievementsog.5564dc42.png&w=3840&q=100',
-        type: 'image'
-    },
-    {
-        title: 'GitHub Navigation Shortcuts',
-        desc: '2022 · Product design',
-        link: '/work/shortcuts',
-        preview: 'https://nelson.co/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshortcutsog.cae76ea8.png&w=3840&q=100',
-        type: 'image'
-    },
 ];
 
 function Home() {
