@@ -34,8 +34,8 @@ const projects = [
         title: 'the tranquil stay: identity & digital ecosystem',
         desc: 'brand identity, web development & print design · 2024',
         link: '/work/tranquilstay',
-        preview: `${import.meta.env.BASE_URL}tranquilstay/moodboard_compressed.webp`,
-        type: 'image',
+        preview: `${import.meta.env.BASE_URL}tranquilstay/ts.mp4`,
+        type: 'video',
         fitAspect: true,
         containerClass: 'w-[600px]'
     },
@@ -99,6 +99,7 @@ function Home() {
                                         muted
                                         playsInline
                                         className={`w-full ${(projects[hoveredIndex] as any).fitAspect ? 'h-auto object-cover' : 'h-full object-cover'}`}
+                                        onCanPlay={(e) => (e.target as HTMLVideoElement).play()}
                                     />
                                 ) : (
                                     <img
@@ -160,7 +161,13 @@ function Home() {
                                     key={project.link}
                                     variants={listItemVariants}
                                     className="relative inline-flex w-fit"
-                                    onMouseEnter={() => setHoveredIndex(index)}
+                                    onMouseEnter={() => {
+                                        console.log('Project hover START:', index, projects[index].title);
+                                        setHoveredIndex(index);
+                                    }}
+                                    onMouseLeave={() => {
+                                        console.log('Project hover END:', index);
+                                    }}
                                 >
                                     <AnimatePresence>
                                         {hoveredIndex === index && (
