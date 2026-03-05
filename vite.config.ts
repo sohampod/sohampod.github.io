@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/wip/",
+  // Deploying as a root site at sohampod.github.io, so base is "/"
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
