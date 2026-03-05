@@ -322,10 +322,21 @@ function DiscordCS() {
                     </motion.div>
                 </section>
 
-                {/* Footer Spacer */}
-                <footer className="w-full max-w-[608px] px-8 mt-32 border-t border-zinc-100 pt-12">
-                    <motion.div variants={fadeIn}>
-                        <Link className="text-zinc-500 hover:text-black transition-colors underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-400" to="/">Back to home</Link>
+                {/* Footer Navigation */}
+                <footer className="w-full max-w-[832px] px-8 mt-32 border-t border-zinc-100 pt-12">
+                    <motion.div variants={fadeIn} className="flex items-start justify-between gap-4">
+                        <Link to="/work/tranquilstay" className="flex flex-col gap-1 group max-w-[35%]">
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">← previous</span>
+                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug">the tranquil stay</span>
+                        </Link>
+                        <Link to="/" className="flex flex-col items-center gap-1 group">
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">home</span>
+                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors">↑</span>
+                        </Link>
+                        <Link to="/work/atherenergycs" className="flex flex-col items-end gap-1 group max-w-[35%]">
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">next →</span>
+                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug text-right">redesigning ather energy</span>
+                        </Link>
                     </motion.div>
                 </footer>
             </motion.div>
