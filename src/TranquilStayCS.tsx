@@ -313,15 +313,15 @@ function TranquilStayCS() {
                 <footer className="w-full max-w-[832px] px-8 mt-32 border-t border-zinc-100 pt-12">
                     <motion.div variants={fadeIn} className="flex items-start justify-between gap-4">
                         <Link to="/work/ar-markets" className="flex flex-col gap-1 group max-w-[35%]">
-                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">← previous</span>
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">← previous</span>
                             <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug">navigating christmas markets with ar</span>
                         </Link>
                         <Link to="/" className="flex flex-col items-center gap-1 group">
-                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">home</span>
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">home</span>
                             <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors">↑</span>
                         </Link>
                         <Link to="/work/discordcs" className="flex flex-col items-end gap-1 group max-w-[35%]">
-                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] uppercase font-medium">next →</span>
+                            <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">next →</span>
                             <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug text-right">improving discord's onboarding</span>
                         </Link>
                     </motion.div>

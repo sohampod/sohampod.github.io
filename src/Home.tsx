@@ -198,6 +198,15 @@ function Home() {
                                 </motion.div>
                             ))}
                         </motion.div>
+
+                        <motion.div variants={listItemVariants} className="flex flex-col gap-3 -mx-4 px-4">
+                            <span className="text-[13px] text-zinc-400 font-normal uppercase tracking-widest">additional works</span>
+                            <div className="flex flex-col gap-1">
+                                <a href="https://www.behance.net/sohampoddar" target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-black hover:text-zinc-500 transition-colors py-1">Behance</a>
+                                <a href="https://dribbble.com/sohampod" target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-black hover:text-zinc-500 transition-colors py-1">Dribbble</a>
+                                <a href="https://medium.com/@soham.poddar23" target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-black hover:text-zinc-500 transition-colors py-1">Medium</a>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>
