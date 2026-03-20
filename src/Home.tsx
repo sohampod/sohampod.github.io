@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 
 const projects = [
     {
+        title: 'navantis: building a brand through iteration',
+        desc: 'brand identity, visual design & web development · 2024–2025',
+        link: '/work/navantis',
+        preview: `${import.meta.env.BASE_URL}navantis/nav-hero.png`,
+        type: 'image',
+        fitAspect: true,
+        containerClass: 'w-[600px]'
+    },
+    {
         title: "improving discord's onboarding experience",
         desc: 'research & ux design · 2021',
         link: '/work/discordcs',

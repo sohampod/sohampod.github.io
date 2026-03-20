@@ -7,6 +7,7 @@ import DiscordCS from './DiscordCS';
 import AtherEnergyCS from './AtherEnergyCS';
 import ArMarketsCS from './ArMarketsCS';
 import TranquilStayCS from './TranquilStayCS';
+import NavantisCS from './NavantisCS';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path="/work/atherenergycs" element={<AtherEnergyCS />} />
         <Route path="/work/ar-markets" element={<ArMarketsCS />} />
         <Route path="/work/tranquilstay" element={<TranquilStayCS />} />
+        <Route path="/work/navantis" element={<NavantisCS />} />
       </Routes>
     </>
   );

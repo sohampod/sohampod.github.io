@@ -320,9 +320,9 @@ function TranquilStayCS() {
                             <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">home</span>
                             <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors">↑</span>
                         </Link>
-                        <Link to="/work/discordcs" className="flex flex-col items-end gap-1 group max-w-[35%]">
+                        <Link to="/work/navantis" className="flex flex-col items-end gap-1 group max-w-[35%]">
                             <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">next →</span>
-                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug text-right">improving discord's onboarding</span>
+                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug text-right">navantis: building a brand</span>
                         </Link>
                     </motion.div>
                 </footer>
