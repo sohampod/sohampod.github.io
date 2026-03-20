@@ -22,8 +22,12 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
         };
         if (isOpen) {
             window.addEventListener('keydown', handleEsc);
+        } else {
+            window.removeEventListener('keydown', handleEsc);
         }
-        return () => window.removeEventListener('keydown', handleEsc);
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+        };
     }, [isOpen]);
 
     return (
@@ -41,16 +45,25 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+
+                {/* Subtle Hover Affordance */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                    <span className="pointer-events-none bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        <span className="text-[10px] lowercase tracking-widest font-bold text-black pointer-events-none">view</span>
-                    </span>
+                    <a
+                        href={`${import.meta.env.BASE_URL}navantis/image-viewer.html?v=1&src=${encodeURIComponent(fullResSrc || src)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="pointer-events-auto bg-white/95 px-5 py-2.5 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                        <span className="text-[10px] lowercase tracking-widest font-bold text-black pointer-events-none">open in new tab</span>
+                    </a>
                 </div>
             </motion.div>
 
             <AnimatePresence>
                 {isOpen && createPortal(
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
+                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -59,6 +72,8 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                             className="fixed inset-0 bg-black/90 cursor-auto"
                             onClick={() => setIsOpen(false)}
                         />
+
+                        {/* Preview Container */}
                         <motion.div
                             initial={{ scale: 0.95, opacity: 0, y: 10 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -67,26 +82,42 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
                             className="relative z-10 w-full max-w-7xl flex flex-col items-center pointer-events-none"
                         >
                             <div className="relative flex flex-col items-center gap-6 w-full pointer-events-auto">
-                                <div className="relative shadow-2xl rounded-sm overflow-hidden bg-white">
+                                <div className="relative group/preview shadow-2xl rounded-sm overflow-hidden bg-white">
                                     <img
-                                        src={fullResSrc || src}
+                                        src={src}
                                         alt={alt}
                                         className="max-w-full max-h-[75vh] object-contain"
                                         onClick={(e) => e.stopPropagation()}
                                     />
                                 </div>
+
                                 <div className="flex flex-col items-center gap-5 w-full text-center">
                                     {caption && (
                                         <p className="text-white/60 text-[11px] lowercase max-w-2xl px-8 font-sans tracking-tight leading-relaxed">
                                             {caption}
                                         </p>
                                     )}
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        className="text-[11px] text-white/60 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] hover:bg-white/10 font-medium"
-                                    >
-                                        [close]
-                                    </button>
+
+                                    <div className="flex items-center gap-4">
+                                        <a
+                                            href={`${import.meta.env.BASE_URL}navantis/image-viewer.html?v=1&src=${encodeURIComponent(fullResSrc || src)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[11px] text-zinc-900 transition-all border border-zinc-200 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] bg-white shadow-xl hover:bg-zinc-50 hover:scale-105 active:scale-95 font-medium flex items-center gap-2"
+                                        >
+                                            view fullscreen
+                                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1H7V7M7 1L1 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </a>
+
+                                        <button
+                                            onClick={() => setIsOpen(false)}
+                                            className="text-[11px] text-white/60 hover:text-white transition-all border border-white/20 px-6 py-2.5 rounded-full lowercase tracking-[0.15em] hover:bg-white/10 font-medium"
+                                        >
+                                            [close]
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -183,7 +214,40 @@ function NavantisCS() {
                     </div>
                 </motion.div>
 
-                {/* Iteration 2: The Pivot */}
+                {/* Iteration 2: Neuroweave */}
+                <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-4">
+                    <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
+                        iteration 02 — neuroweave
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-black leading-relaxed">
+                        The second attempt. <span className="font-bold">Neuroweave</span> kept the dark foundation but swapped the generic blue for a sharp lime accent (#C4FF47), switched to Space Grotesk + IBM Plex Mono, and added a noise texture overlay. It was more distinctive, but still had issues:
+                    </motion.p>
+                    <ul className="flex flex-col gap-3 mt-1">
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">still dark-mode:</span> the dark canvas was better executed but still signaled "developer tool" rather than "trusted consultancy."
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">lime felt experimental:</span> the high-contrast lime worked for attention but undermined the seriousness needed for enterprise clients.
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">name didn't land:</span> "neuroweave" leaned too heavily into AI buzzwords. it sounded like a product, not a firm.
+                        </motion.li>
+                    </ul>
+                </section>
+
+                {/* Visual: Neuroweave */}
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
+                    <ImageWithLightbox
+                        src={`${import.meta.env.BASE_URL}navantis/nw-hero.png`}
+                        alt="Neuroweave — Second Iteration"
+                        caption="neuroweave: dark theme, lime accent (#c4ff47), space grotesk — distinctive but too experimental"
+                    />
+                    <div className="px-1 text-right mt-1.5">
+                        <span className="text-[11px] text-zinc-400">iteration 02 — neuroweave</span>
+                    </div>
+                </motion.div>
+
+                {/* The Pivot */}
                 <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-4">
                     <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
                         the pivot — what changed
@@ -278,21 +342,26 @@ function NavantisCS() {
                 </section>
 
                 <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <ImageWithLightbox
                             src={`${import.meta.env.BASE_URL}navantis/kic-hero.png`}
-                            alt="KIC — Before"
+                            alt="KIC — Iteration 01"
                             caption="kic: dark, blue accent, rounded typography"
                         />
                         <ImageWithLightbox
+                            src={`${import.meta.env.BASE_URL}navantis/nw-hero.png`}
+                            alt="Neuroweave — Iteration 02"
+                            caption="neuroweave: dark, lime accent, space grotesk"
+                        />
+                        <ImageWithLightbox
                             src={`${import.meta.env.BASE_URL}navantis/nav-hero.png`}
-                            alt="Navantis — After"
+                            alt="Navantis — Iteration 03"
                             caption="navantis: light, restrained accent, editorial typography"
                         />
                     </div>
                     <div className="px-1 mt-3 flex items-center justify-between">
-                        <span className="text-[11px] text-zinc-400">iteration 01 → iteration 03</span>
-                        <span className="text-[11px] text-zinc-400">dark → light · generic → institutional</span>
+                        <span className="text-[11px] text-zinc-400">iteration 01 → 02 → 03</span>
+                        <span className="text-[11px] text-zinc-400">dark/blue → dark/lime → light/institutional</span>
                     </div>
                 </motion.div>
 
@@ -307,6 +376,9 @@ function NavantisCS() {
                     <ul className="flex flex-col gap-3 mt-2">
                         <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
                             <span className="font-bold">KIC</span> taught that dark themes and blue accents are the path of least resistance — and least distinction.
+                        </motion.li>
+                        <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
+                            <span className="font-bold">Neuroweave</span> taught that being different isn't the same as being right. lime on black is distinctive but signals "developer tool" — not the institutional authority the brand needed.
                         </motion.li>
                         <motion.li variants={fadeIn} className="text-black leading-relaxed list-disc ml-4">
                             <span className="font-bold">the pivot</span> taught that studying the best (microsoft.ai, axiom) reveals principles, not patterns to copy.

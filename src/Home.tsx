@@ -170,13 +170,8 @@ function Home() {
                                     key={project.link}
                                     variants={listItemVariants}
                                     className="relative inline-flex w-fit"
-                                    onMouseEnter={() => {
-                                        console.log('Project hover START:', index, projects[index].title);
-                                        setHoveredIndex(index);
-                                    }}
-                                    onMouseLeave={() => {
-                                        console.log('Project hover END:', index);
-                                    }}
+                                    onMouseEnter={() => setHoveredIndex(index)}
+                                    onMouseLeave={() => {}}
                                 >
                                     <AnimatePresence>
                                         {hoveredIndex === index && (
