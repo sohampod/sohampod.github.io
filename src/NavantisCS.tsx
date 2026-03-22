@@ -397,19 +397,6 @@ function NavantisCS() {
                     </ul>
                 </section>
 
-                {/* Visual: Navantis Full */}
-                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}navantis/nav-full.png`}
-                        alt="Navantis — Full Page"
-                        caption="navantis full page: hero, philosophy, capabilities, work, process, cta"
-                        className="aspect-[1440/3000]"
-                    />
-                    <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">full page composition</span>
-                    </div>
-                </motion.div>
-
                 {/* Brand System */}
                 <section className="w-full max-w-[608px] px-8 mt-16 flex flex-col gap-3">
                     <motion.h2 variants={fadeIn} className="text-[17px] font-bold text-black lowercase tracking-tight">
