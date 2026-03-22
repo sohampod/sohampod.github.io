@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Document, Page, pdfjs } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.mjs',
+    import.meta.url,
+).toString();
 
 const fadeIn = {
     hidden: { opacity: 0, y: 16, filter: 'blur(8px)' },
@@ -129,6 +135,102 @@ const ImageWithLightbox = ({ src, fullResSrc, alt, caption, className = "aspect-
     );
 };
 
+const PDFViewer = ({ src, label }: { src: string; label?: string }) => {
+    const [numPages, setNumPages] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [containerWidth, setContainerWidth] = useState<number>(0);
+    const [isInView, setIsInView] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { setIsInView(true); observer.disconnect(); } },
+            { rootMargin: '200px' }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const ro = new ResizeObserver(([entry]) => {
+            setContainerWidth(entry.contentRect.width);
+        });
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
+
+    const goToPrev = () => setCurrentPage((p) => Math.max(1, p - 1));
+    const goToNext = () => setCurrentPage((p) => Math.min(numPages, p + 1));
+
+    return (
+        <div ref={containerRef} className="flex flex-col gap-0">
+            {isInView && containerWidth > 0 ? (
+                <Document
+                    file={src}
+                    onLoadSuccess={({ numPages: n }) => setNumPages(n)}
+                    loading={
+                        <div className="flex items-center justify-center bg-zinc-50 border border-zinc-100 rounded-md aspect-[16/9]">
+                            <span className="text-[11px] text-zinc-400 lowercase tracking-widest">loading brand book…</span>
+                        </div>
+                    }
+                    error={
+                        <div className="flex items-center justify-center bg-zinc-50 border border-zinc-100 rounded-md aspect-[16/9]">
+                            <span className="text-[11px] text-zinc-400 lowercase tracking-widest">failed to load pdf</span>
+                        </div>
+                    }
+                >
+                    <div className="bg-zinc-50 border border-zinc-100 rounded-md overflow-hidden flex items-center justify-center">
+                        <Page
+                            pageNumber={currentPage}
+                            width={containerWidth}
+                            renderTextLayer={false}
+                            renderAnnotationLayer={false}
+                        />
+                    </div>
+
+                    {/* Controls */}
+                    {numPages > 0 && (
+                        <div className="flex items-center justify-between mt-3 px-1">
+                            <button
+                                onClick={goToPrev}
+                                disabled={currentPage <= 1}
+                                className="text-[11px] lowercase tracking-[0.15em] text-zinc-500 hover:text-black disabled:text-zinc-300 disabled:cursor-not-allowed transition-colors border border-zinc-200 disabled:border-zinc-100 px-4 py-2 rounded-full hover:bg-zinc-50 active:scale-95 font-medium"
+                            >
+                                ← prev
+                            </button>
+                            <span className="text-[11px] text-zinc-400 tabular-nums">
+                                {currentPage} / {numPages}
+                            </span>
+                            <button
+                                onClick={goToNext}
+                                disabled={currentPage >= numPages}
+                                className="text-[11px] lowercase tracking-[0.15em] text-zinc-500 hover:text-black disabled:text-zinc-300 disabled:cursor-not-allowed transition-colors border border-zinc-200 disabled:border-zinc-100 px-4 py-2 rounded-full hover:bg-zinc-50 active:scale-95 font-medium"
+                            >
+                                next →
+                            </button>
+                        </div>
+                    )}
+                </Document>
+            ) : (
+                <div className="flex items-center justify-center bg-zinc-50 border border-zinc-100 rounded-md" style={{ height: 540 }}>
+                    <span className="text-[11px] text-zinc-400 lowercase tracking-widest">loading brand book…</span>
+                </div>
+            )}
+            {label && (
+                <div className="px-1 text-right mt-1.5">
+                    <span className="text-[11px] text-zinc-400">{label}</span>
+                </div>
+            )}
+        </div>
+    );
+};
+
 function NavantisCS() {
     return (
         <div className="selection:bg-zinc-100 selection:text-black min-h-screen font-sans text-base lowercase bg-white pb-32">
@@ -151,7 +253,7 @@ function NavantisCS() {
                             navantis: building a brand through iteration
                         </motion.h1>
                         <motion.span variants={fadeIn} className="text-zinc-400 font-normal">
-                            brand identity, visual design & web development · 2024–2025
+                            brand identity, visual design & web development · 2026
                         </motion.span>
                     </div>
                 </header>
@@ -318,17 +420,12 @@ function NavantisCS() {
                     </motion.p>
                 </section>
 
-                {/* Visual: Brand Page */}
-                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
-                    <ImageWithLightbox
-                        src={`${import.meta.env.BASE_URL}navantis/nav-brand.png`}
-                        alt="Navantis Brand System"
-                        caption="living brand system: logo, color palette, typography scale, spacing, anti-patterns"
-                        className="aspect-[1440/2000]"
+                {/* Visual: Brand Book PDF */}
+                <motion.div variants={fadeIn} className="w-full max-w-[1920px] px-8 mt-12">
+                    <PDFViewer
+                        src={`${import.meta.env.BASE_URL}navantis/navbrandbook.pdf`}
+                        label="brand book"
                     />
-                    <div className="px-1 text-right mt-1.5">
-                        <span className="text-[11px] text-zinc-400">brand guidelines page</span>
-                    </div>
                 </motion.div>
 
                 {/* Side-by-Side Evolution */}

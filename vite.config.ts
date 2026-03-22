@@ -10,4 +10,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'pdf-viewer': ['react-pdf', 'pdfjs-dist'],
+        },
+      },
+    },
+  },
 })
