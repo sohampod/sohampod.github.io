@@ -13,6 +13,15 @@ const projects = [
         containerClass: 'w-[600px]'
     },
     {
+        title: 'planet: it infrastructure, built from scratch',
+        desc: 'brand identity, web design & development · 2026',
+        link: '/work/planet',
+        preview: `${import.meta.env.BASE_URL}planet/hero.png`,
+        type: 'image',
+        fitAspect: true,
+        containerClass: 'w-[600px]'
+    },
+    {
         title: "improving discord's onboarding experience",
         desc: 'research & ux design · 2021',
         link: '/work/discordcs',

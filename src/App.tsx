@@ -8,6 +8,7 @@ import AtherEnergyCS from './AtherEnergyCS';
 import ArMarketsCS from './ArMarketsCS';
 import TranquilStayCS from './TranquilStayCS';
 import NavantisCS from './NavantisCS';
+import PlaNetCS from './PlaNetCS';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/work/ar-markets" element={<ArMarketsCS />} />
         <Route path="/work/tranquilstay" element={<TranquilStayCS />} />
         <Route path="/work/navantis" element={<NavantisCS />} />
+        <Route path="/work/planet" element={<PlaNetCS />} />
       </Routes>
     </>
   );

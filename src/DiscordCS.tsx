@@ -325,9 +325,9 @@ function DiscordCS() {
                 {/* Footer Navigation */}
                 <footer className="w-full max-w-[832px] px-8 mt-32 border-t border-zinc-100 pt-12">
                     <motion.div variants={fadeIn} className="flex items-start justify-between gap-4">
-                        <Link to="/work/tranquilstay" className="flex flex-col gap-1 group max-w-[35%]">
+                        <Link to="/work/planet" className="flex flex-col gap-1 group max-w-[35%]">
                             <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">← previous</span>
-                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug">the tranquil stay</span>
+                            <span className="text-[13px] text-zinc-500 group-hover:text-black transition-colors leading-snug">planet: it infrastructure</span>
                         </Link>
                         <Link to="/" className="flex flex-col items-center gap-1 group">
                             <span className="text-[10px] text-zinc-400 tracking-[0.2em] font-medium">home</span>
