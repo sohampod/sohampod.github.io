@@ -389,7 +389,7 @@ function PlaNetCS() {
                 </section>
 
                 {/* Brand Book PDF */}
-                <motion.div variants={fadeIn} className="w-full max-w-[1920px] px-8 mt-12">
+                <motion.div variants={fadeIn} className="w-full max-w-[832px] px-8 mt-12">
                     <PDFViewer
                         src={`${import.meta.env.BASE_URL}planet/planet-brandbook.pdf`}
                         label="brand book"

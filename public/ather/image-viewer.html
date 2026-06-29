@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Viewer</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+        body {
+            margin: 0;
+            background-color: #0e0e0e;
+            overflow: auto;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #555;
+            font-family: sans-serif;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100vw;
+            max-height: 100vh;
+            cursor: zoom-in;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        img.zoomed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: none;
+            max-width: none;
+            max-height: none;
+            cursor: zoom-out;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">Loading...</div>
+    <img id="viewer-image" alt="" />
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const imgSrc = urlParams.get('src');
+        const imgEl = document.getElementById('viewer-image');
+        const loadingEl = document.getElementById('loading');
+
+        let isZoomed = false;
+
+        if (imgSrc) {
+            imgEl.onload = () => {
+                imgEl.classList.add('loaded');
+                loadingEl.style.display = 'none';
+
+                if (imgEl.naturalWidth > window.innerWidth || imgEl.naturalHeight > window.innerHeight) {
+                    imgEl.style.cursor = 'zoom-in';
+                } else {
+                    imgEl.style.cursor = 'default';
+                }
+            };
+            imgEl.onerror = () => {
+                loadingEl.innerText = 'Failed to load image';
+            };
+            imgEl.src = decodeURIComponent(imgSrc);
+        } else {
+            loadingEl.innerText = 'No image provided';
+        }
+
+        imgEl.addEventListener('click', function (e) {
+            if (imgEl.naturalWidth <= window.innerWidth && imgEl.naturalHeight <= window.innerHeight) {
+                return;
+            }
+
+            if (!isZoomed) {
+                const rect = imgEl.getBoundingClientRect();
+                const ratioX = (e.clientX - rect.left) / rect.width;
+                const ratioY = (e.clientY - rect.top) / rect.height;
+
+                isZoomed = true;
+                imgEl.classList.add('zoomed');
+
+                setTimeout(() => {
+                    const targetX = imgEl.naturalWidth * ratioX;
+                    const targetY = imgEl.naturalHeight * ratioY;
+                    window.scrollTo(targetX - e.clientX, targetY - e.clientY);
+                }, 0);
+            } else {
+                isZoomed = false;
+                imgEl.classList.remove('zoomed');
+            }
+        });
+    </script>
+</body>
+
+</html>
